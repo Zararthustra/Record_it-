@@ -1,8 +1,5 @@
 import React from 'react';
-import Axios from 'axios'
-import { useState } from "react";
 import { useHistory } from 'react-router-dom';
-import Navigation from '../components/Navigation';
 import '../App.css';
 
 const Games = () => {
@@ -12,13 +9,14 @@ const Games = () => {
     const goHome = () => {
         history.push('/Home')
     }
-
+    const goFlappy = () => {
+        history.push('/Flappy')
+      }
     return (
-        <div className="games">
+        <div className="profile">
             <h1>Games</h1>
             <button onClick={goHome}>Back to Home</button>
-            <div id="root"></div>
-            <div id="phaser"></div>
+            <button onClick={goFlappy}>Play Flappy Holbie</button>
         </div>
     )
 }

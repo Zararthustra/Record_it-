@@ -88,3 +88,10 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+.phaser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
