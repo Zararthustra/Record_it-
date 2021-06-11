@@ -33,7 +33,7 @@ const Signup = () => {
     }
 
     const getUsers = () => {
-        Axios.get('http://localhost:3001/users').then((response) => {
+        Axios.get('http://localhost:3001/apiroutes/users').then((response) => {
             setUsersList(response.data);
         });
     };

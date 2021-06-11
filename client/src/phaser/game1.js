@@ -1,3 +1,4 @@
+import Axios from 'axios'
 import Phaser from "phaser";
 import pipebot from './assets/images/pipebot.png';
 import pipetop from './assets/images/pipetop.png';
@@ -106,6 +107,13 @@ class game1 extends Phaser.Scene {
     die() {
         localStorage.setItem(gameOptions.localStorageName, Math.max(this.score, this.topScore));
         this.scene.start('game1');
+
+        // POST record in database
+        Axios.put('http://localhost:3001/apiroutes/addRecord', {
+            record: this.topScore,
+        }).then(() => {
+            console.log("Insertion success");
+        })
     }
 }
 

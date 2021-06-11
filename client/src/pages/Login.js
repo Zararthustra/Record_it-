@@ -7,10 +7,10 @@ import '../App.css';
 
 const Login = () => {
     let history = useHistory();
-
+    
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState('');
+    const [currentUser, setCurrentUser] = useState('');
     const [usersList, setUsersList] = useState([]);
     const [userObject, setUserObject] = useState([]);
     const [newName, setNewName] = useState('')
@@ -20,13 +20,14 @@ const Login = () => {
         history.push('/Home')
     }
     /* ------------------------------------------------------------------------------------------- */
-    
+
     const login = () => {
         Axios.post('http://localhost:3001/login', {
             name: name,
             password: password
         }).then((response) => {
-            if (response.data.length > 0) {
+            if (response.data[0]) {
+                setCurrentUser(response.data[0].id)
                 setLoginStatus(
                     <div>
                         <h1>Welcome back {name} !</h1>

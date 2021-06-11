@@ -13,7 +13,7 @@ app.listen(3001, () => {
 })
 
 app.use(cors());
-app.use("/", routes);
+app.use("/apiroutes", routes);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -40,7 +40,12 @@ app.post('/login', (req, res) => {
             name: name,
             password: password
         }
-    }).then(checkedUser => res.send(checkedUser))
+    })
+    .then((checkedUser) => {
+        res.send(checkedUser)
+        currentUser = checkedUser
+        //console.log(currentUser[0].dataValues);
+    })
 })
 
 //GET ONE

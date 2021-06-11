@@ -2,6 +2,11 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import '../App.css';
 
+//ajout row quand meilleur score dans table record
+//besoin d'avoir user_ID pour update la bonne row
+//besoin de stocker les données de l'utilisateur à sa connexion
+// => qui joue ?
+
 const Home = () => {
   
   let history = useHistory();
