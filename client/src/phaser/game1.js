@@ -45,7 +45,7 @@ class game1 extends Phaser.Scene {
             this.placePipes(false);
         }
         this.pipeGroup.setVelocityX(-gameOptions.birdSpeed);
-/**/    this.bird = this.physics.add.sprite(80, this.sys.game.canvas.height / 2, 'bird').setScale(0.5);
+        this.bird = this.physics.add.sprite(80, this.sys.game.canvas.height / 2, 'bird').setScale(0.5);
         this.bird.body.gravity.y = gameOptions.birdGravity;
         this.input.on('pointerdown', this.flap, this);
         this.score = 0;
@@ -60,7 +60,7 @@ class game1 extends Phaser.Scene {
     placePipes(addScore) {
         let rightmost = this.getRightmostPipe();
         let pipeHoleHeight = Phaser.Math.Between(gameOptions.pipeHole[0], gameOptions.pipeHole[1]);
-/**/    let pipeHolePosition = Phaser.Math.Between(gameOptions.minPipeHeight + pipeHoleHeight / 2, this.sys.game.canvas.height - gameOptions.minPipeHeight - pipeHoleHeight / 2);
+        let pipeHolePosition = Phaser.Math.Between(gameOptions.minPipeHeight + pipeHoleHeight / 2, this.sys.game.canvas.height - gameOptions.minPipeHeight - pipeHoleHeight / 2);
         this.pipePool[0].x = rightmost + this.pipePool[0].getBounds().width + Phaser.Math.Between(gameOptions.pipeDistance[0], gameOptions.pipeDistance[1]);
         this.pipePool[0].y = pipeHolePosition - pipeHoleHeight / 2;
         this.pipePool[0].setOrigin(0, 1);
@@ -92,7 +92,7 @@ class game1 extends Phaser.Scene {
         this.physics.world.collide(this.bird, this.pipeGroup, function () {
             this.die();
         }, null, this);
-/**/    if (this.bird.y > this.sys.game.canvas.height || this.bird.y < 0) {
+        if (this.bird.y > this.sys.game.canvas.height || this.bird.y < 0) {
             this.die();
         }
         this.pipeGroup.getChildren().forEach(function (pipe) {
@@ -106,11 +106,13 @@ class game1 extends Phaser.Scene {
     }
     die() {
         localStorage.setItem(gameOptions.localStorageName, Math.max(this.score, this.topScore));
+        localStorage.setItem('test', 32);
         this.scene.start('game1');
 
         // POST record in database
         Axios.put('http://localhost:3001/apiroutes/addRecord', {
             record: this.topScore,
+            user_id: localStorage.getItem("userid")
         }).then(() => {
             console.log("Insertion success");
         })

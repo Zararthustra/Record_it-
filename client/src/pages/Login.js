@@ -7,18 +7,15 @@ import '../App.css';
 
 const Login = () => {
     let history = useHistory();
-    
+
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const [currentUser, setCurrentUser] = useState('');
-    const [usersList, setUsersList] = useState([]);
-    const [userObject, setUserObject] = useState([]);
-    const [newName, setNewName] = useState('')
     const [loginStatus, setLoginStatus] = useState('')
 
     const redirect = () => {
         history.push('/Home')
     }
+
     /* ------------------------------------------------------------------------------------------- */
 
     const login = () => {
@@ -27,14 +24,21 @@ const Login = () => {
             password: password
         }).then((response) => {
             if (response.data[0]) {
-                setCurrentUser(response.data[0].id)
+                //have to load all records
+                localStorage.setItem("userid", response.data[0].id)
+                localStorage.setItem("username", response.data[0].name)
+                localStorage.setItem("password", response.data[0].password)
+                localStorage.setItem("createdat", response.data[0].createdAt)
                 setLoginStatus(
                     <div>
                         <h1>Welcome back {name} !</h1>
                         <button onClick={redirect}>Go to homepage</button>
                     </div>)
             } else {
-                setLoginStatus(`No user named ${name} or wrong password !`)
+                setLoginStatus(
+                    <div>
+                        <h1>No user named "{name}" or wrong password !</h1>
+                    </div>)
             }
         })
     }
@@ -46,6 +50,7 @@ const Login = () => {
             <Navigation />
             <div className="add">
                 <h1>LOGIN</h1>
+                <h1>{loginStatus}</h1>
                 <label>Name </label>
                 <input type="text" onChange={(event) => {
                     setName(event.target.value)
@@ -57,7 +62,6 @@ const Login = () => {
                 }}
                 />
                 <button onClick={login}>Log in</button>
-                <h1>{loginStatus}</h1>
             </div>
         </div>
     );

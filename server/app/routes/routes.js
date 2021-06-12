@@ -19,7 +19,7 @@ router.put("/addRecord", (req, res) => {
   db.record.update({
     record: req.body.record
   }, { where: {
-    //id: id of the current user
+      user_id: req.body.id,
       record: {
         [Op.lt]: req.body.record
       }

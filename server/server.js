@@ -3,7 +3,7 @@ const db = require("./app/models");
 const cors = require('cors')
 const app = express()
 const routes = require('./app/routes/routes')
-
+let currentUser = null
 /* Setup ------------------------------------------------------------------------------------ */
 
 db.sequelize.sync();
@@ -12,8 +12,8 @@ app.listen(3001, () => {
     console.log("Server running on 3001");
 })
 
-app.use(cors());
 app.use("/apiroutes", routes);
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -41,16 +41,16 @@ app.post('/login', (req, res) => {
             password: password
         }
     })
-    .then((checkedUser) => {
-        res.send(checkedUser)
-        currentUser = checkedUser
-        //console.log(currentUser[0].dataValues);
-    })
+        .then((checkedUser) => {
+            //send checked user object to front
+            res.send(checkedUser)
+            currentUser = checkedUser
+            //console.log(currentUser[0].dataValues);
+        })
 })
 
 //GET ONE
 app.get("/users/:id", (req, res) => {
-    console.log(req.params.id);
     db.user.findAll({
         where: {
             id: req.params.id

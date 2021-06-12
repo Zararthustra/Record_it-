@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios'
+import Axios from 'axios';
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Navigation from '../components/Navigation';
@@ -107,7 +107,7 @@ const Signup = () => {
                 }}
                 />
                 <button onClick={getOne}>Get user by id</button>
-                {userObject.map((value, key) => {
+                {userObject.map((value) => {
                     return <div className="user">
                         <p>id :{value.id}</p>
                         <p>Name: {value.name}</p>
