@@ -75,6 +75,7 @@ const Signup = () => {
                 <button onClick={addUser}>Create account</button>
             </div>
             <div className="users">
+                <button onClick={getUsers}>Show users</button>
                 {usersList.map((value, key) => {
                     return <div className="user">
                         <h2>id:</h2>
@@ -98,7 +99,6 @@ const Signup = () => {
                         </div>
                     </div>
                 })}
-                <button onClick={getUsers}>Show users</button>
             </div>
             <div className="users">
                 <label>Find User by id</label>
