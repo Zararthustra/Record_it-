@@ -106,16 +106,17 @@ class game1 extends Phaser.Scene {
     }
     die() {
         localStorage.setItem(gameOptions.localStorageName, Math.max(this.score, this.topScore));
-        localStorage.setItem('test', 32);
-        this.scene.start('game1');
-
+        
         // POST record in database
         Axios.put('http://localhost:3001/apiroutes/addRecord', {
             record: this.topScore,
-            user_id: localStorage.getItem("userid")
+            user_id: localStorage.getItem("userid"),
+            game_id: localStorage.getItem("gameid")
         }).then(() => {
             console.log("Insertion success");
         })
+        
+        this.scene.start('game1');
     }
 }
 

@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       }
     });
 

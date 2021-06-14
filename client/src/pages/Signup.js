@@ -28,7 +28,6 @@ const Signup = () => {
             password: password
         }).then(() => {
             console.log("Insertion success");
-            return true
         })
     }
 
@@ -54,7 +53,7 @@ const Signup = () => {
             setUserObject(response.data)
         });
     };
-    
+
     /* ------------------------------------------------------------------------------------------- */
 
     return (

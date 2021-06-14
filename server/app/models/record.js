@@ -4,10 +4,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER
     },
     user_id: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     game_id: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     }
   });
 
