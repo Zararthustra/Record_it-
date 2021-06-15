@@ -37,6 +37,7 @@ class game1 extends Phaser.Scene {
         this.load.image('pipetop', pipetop);
     }
     create() {
+
         this.pipeGroup = this.physics.add.group();
         this.pipePool = [];
         for (let i = 0; i < 5; i++) {
@@ -49,9 +50,17 @@ class game1 extends Phaser.Scene {
         this.bird.body.gravity.y = gameOptions.birdGravity;
         this.input.on('pointerdown', this.flap, this);
         this.score = 0;
-        this.topScore = localStorage.getItem(gameOptions.localStorageName) == null ? 0 : localStorage.getItem(gameOptions.localStorageName);
+        this.topScore = this.getRecord() > 0 ? 0 : localStorage.getItem(gameOptions.localStorageName);
         this.scoreText = this.add.text(10, 10, '');
         this.updateScore(this.score);
+    }
+    getRecord() {
+        Axios.get('http://localhost:3001/apiroutes/getRecords', {
+            user_id: localStorage.getItem("userid"),
+            game_id: localStorage.getItem("gameid")
+        }).then((response) => {
+            return response.data
+        })
     }
     updateScore(inc) {
         this.score += inc;
@@ -106,16 +115,18 @@ class game1 extends Phaser.Scene {
     }
     die() {
         localStorage.setItem(gameOptions.localStorageName, Math.max(this.score, this.topScore));
-        
+
         // POST record in database
         Axios.put('http://localhost:3001/apiroutes/addRecord', {
             record: this.topScore,
             user_id: localStorage.getItem("userid"),
-            game_id: localStorage.getItem("gameid")
+            user_name: localStorage.getItem("username"),
+            game_id: localStorage.getItem("gameid"),
+            game_name: localStorage.getItem("gamename")
         }).then(() => {
             console.log("Insertion success");
         })
-        
+
         this.scene.start('game1');
     }
 }

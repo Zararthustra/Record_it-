@@ -10,6 +10,7 @@ import Records from './pages/Records';
 import Profile from './pages/Profile';
 import Games from './pages/Games';
 import Flappy from './pages/Flappy';
+import Admin from './pages/Admin';
 import './App.css';
 
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/Profile" component={Profile} />
             <Route path="/Records" component={Records} />
             <Route path="/Games" component={Games} />
+            <Route path="/Admin" component={Admin} />
             <Route path="/Flappy" component={Flappy} />
           </Switch>
         </BrowserRouter>

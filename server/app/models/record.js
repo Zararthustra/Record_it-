@@ -6,8 +6,14 @@ module.exports = (sequelize, Sequelize) => {
     user_id: {
       type: Sequelize.INTEGER
     },
+    user_name: {
+      type: Sequelize.STRING
+    },
     game_id: {
       type: Sequelize.INTEGER
+    },
+    game_name: {
+      type: Sequelize.STRING
     }
   });
 

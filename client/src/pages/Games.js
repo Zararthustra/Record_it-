@@ -12,8 +12,9 @@ const Games = () => {
     }
     const goFlappy = () => {
         const id = 1
-        localStorage.setItem("gameid", id)
         const name = "FlappyHolbie"
+        localStorage.setItem("gameid", id)
+        localStorage.setItem("gamename", name)
 
         Axios.put('http://localhost:3001/apiroutes/addGame', {
             name: name,

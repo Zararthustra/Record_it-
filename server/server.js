@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* Methods ------------------------------------------------------------------------------------------- */
+/* Users Methods ------------------------------------------------------------------------------------------- */
 
 //POST create user
 app.post('/create', (req, res) => {
