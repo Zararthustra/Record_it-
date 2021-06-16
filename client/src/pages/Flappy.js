@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Phaser from 'phaser'
 import { IonPhaser } from '@ion-phaser/react'
-import game1 from '../phaser/game1'
+import game1 from '../phaser/flappyCode'
+import game0 from '../phaser/flappyStart'
 import '../App.css';
 
 /******************************************* PHASER ******************************************************/
@@ -21,7 +22,7 @@ class Game extends Component {
                     debug: false
                 }
             },
-            scene: game1
+            scene: [ game0, game1 ]
         }
     }
 

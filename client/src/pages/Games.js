@@ -22,7 +22,14 @@ const Games = () => {
         })
 
         history.push('/Flappy')
-      }
+    }
+    Axios.post('http://localhost:3001/apiroutes/getRecords', {
+        user_id: localStorage.getItem("userid"),
+        game_id: localStorage.getItem("gameid")
+    }).then((response) => {
+        if (response.data[0]) localStorage.setItem("record", JSON.stringify(response.data));
+        else localStorage.setItem("record", 0);
+    })
     return (
         <div className="profile">
             <h1>Games</h1>

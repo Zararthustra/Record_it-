@@ -4,6 +4,15 @@ import pipebot from './assets/images/pipebot.png';
 import pipetop from './assets/images/pipetop.png';
 import holbie from './assets/images/holbie.png';
 
+function getRecord() {
+    Axios.post('http://localhost:3001/apiroutes/getRecords', {
+        user_id: localStorage.getItem("userid"),
+        game_id: localStorage.getItem("gameid")
+    }).then((response) => {
+        if (response.data) gameOptions.topScore = response.data[0].record
+    })
+}
+
 const gameOptions = {
 
     // bird gravity, will make bird fall if you dont flap
@@ -16,7 +25,7 @@ const gameOptions = {
     birdFlapPower: 300,
 
     // minimum pipe height, in pixels. Affects hole position
-    minPipeHeight: 50,
+    minPipeHeight: 30,
 
     // distance range from next pipe, in pixels
     pipeDistance: [220, 280],
@@ -24,12 +33,13 @@ const gameOptions = {
     // hole range between pipes, in pixels
     pipeHole: [210, 230],
 
-    // local storage object name
-    localStorageName: 'bestFlappyScore'
+    //highscore variable
+    topScore: 0,
 };
 class game1 extends Phaser.Scene {
     constructor() {
         super('game1');
+        getRecord()
     }
     preload() {
         this.load.image('bird', holbie);
@@ -50,21 +60,13 @@ class game1 extends Phaser.Scene {
         this.bird.body.gravity.y = gameOptions.birdGravity;
         this.input.on('pointerdown', this.flap, this);
         this.score = 0;
-        this.topScore = this.getRecord() > 0 ? 0 : localStorage.getItem(gameOptions.localStorageName);
         this.scoreText = this.add.text(10, 10, '');
         this.updateScore(this.score);
     }
-    getRecord() {
-        Axios.get('http://localhost:3001/apiroutes/getRecords', {
-            user_id: localStorage.getItem("userid"),
-            game_id: localStorage.getItem("gameid")
-        }).then((response) => {
-            return response.data
-        })
-    }
+
     updateScore(inc) {
         this.score += inc;
-        this.scoreText.text = 'Score: ' + this.score + '\nBest: ' + this.topScore;
+        this.scoreText.text = 'Score: ' + this.score + '\nBest: ' + gameOptions.topScore;
     }
     placePipes(addScore) {
         let rightmost = this.getRightmostPipe();
@@ -114,11 +116,11 @@ class game1 extends Phaser.Scene {
         }, this)
     }
     die() {
-        localStorage.setItem(gameOptions.localStorageName, Math.max(this.score, this.topScore));
-
-        // POST record in database
+        gameOptions.topScore = Math.max(this.score, gameOptions.topScore);
+        const record = gameOptions.topScore
+        // POST/PUT record in database
         Axios.put('http://localhost:3001/apiroutes/addRecord', {
-            record: this.topScore,
+            record: record,
             user_id: localStorage.getItem("userid"),
             user_name: localStorage.getItem("username"),
             game_id: localStorage.getItem("gameid"),
@@ -127,7 +129,7 @@ class game1 extends Phaser.Scene {
             console.log("Insertion success");
         })
 
-        this.scene.start('game1');
+        this.scene.start('game0');
     }
 }
 
