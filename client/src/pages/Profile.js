@@ -20,7 +20,6 @@ const Profile = () => {
     const getRecords = () => {
         Axios.post('http://localhost:3001/apiroutes/getRecords', {
             user_id: localStorage.getItem("userid"),
-            game_id: localStorage.getItem("gameid")
         }).then((response) => {
             setRecordObject(response.data);
         })

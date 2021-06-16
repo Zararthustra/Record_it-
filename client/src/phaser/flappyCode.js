@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import Axios from 'axios';
 import Phaser from "phaser";
 import pipebot from './assets/images/pipebot.png';
 import pipetop from './assets/images/pipetop.png';
@@ -7,9 +7,8 @@ import holbie from './assets/images/holbie.png';
 function getRecord() {
     Axios.post('http://localhost:3001/apiroutes/getRecords', {
         user_id: localStorage.getItem("userid"),
-        game_id: localStorage.getItem("gameid")
     }).then((response) => {
-        if (response.data) gameOptions.topScore = response.data[0].record
+        if (response.data[0]) gameOptions.topScore = response.data[0].record
     })
 }
 
@@ -36,9 +35,9 @@ const gameOptions = {
     //highscore variable
     topScore: 0,
 };
-class game1 extends Phaser.Scene {
+class flappy extends Phaser.Scene {
     constructor() {
-        super('game1');
+        super('flappy');
         getRecord()
     }
     preload() {
@@ -129,8 +128,8 @@ class game1 extends Phaser.Scene {
             console.log("Insertion success");
         })
 
-        this.scene.start('game0');
+        this.scene.start('flappystart');
     }
 }
 
-export default game1;
+export default flappy;

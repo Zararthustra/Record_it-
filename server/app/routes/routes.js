@@ -20,7 +20,7 @@ router.get("/users", (req, res) => {
 
 /* Records Methods ------------------------------------------------------------------------------------------- */
 
-// GET all Records
+// GET all Records of all users
 router.get("/records", (req, res) => {
   db.record.findAll().then((users) => {
     res.json(users);
@@ -41,8 +41,19 @@ router.put("/addGame", (req, res) => {
   })
 });
 
-// Get a record of user
+// Get all records of all games of user
 router.post("/getRecords", (req, res) => {
+  db.record.findAll({
+    where: {
+      user_id: req.body.user_id,
+    }
+  }).then((record) => {
+    res.json(record);
+  });
+})
+
+// Get a selected game record of user
+router.post("/getRecord", (req, res) => {
   db.record.findAll({
     where: {
       user_id: req.body.user_id,
@@ -53,34 +64,34 @@ router.post("/getRecords", (req, res) => {
   });
 })
 
-  // Add or update a new record
-  router.put("/addRecord", (req, res) => {
-    db.record.findOrCreate({
+// Add or update a new record
+router.put("/addRecord", (req, res) => {
+  db.record.findOrCreate({
+    where: {
+      user_id: req.body.user_id,
+      game_id: req.body.game_id
+    },
+    defaults: {
+      record: req.body.record,
+      user_id: req.body.user_id,
+      user_name: req.body.user_name,
+      game_id: req.body.game_id,
+      game_name: req.body.game_name
+    }
+  }).then(() => {
+    db.record.update({
+      record: req.body.record
+    }, {
       where: {
+        record: {
+          [Op.lt]: req.body.record
+        },
         user_id: req.body.user_id,
         game_id: req.body.game_id
-      },
-      defaults: {
-        record: req.body.record,
-        user_id: req.body.user_id,
-        user_name: req.body.user_name,
-        game_id: req.body.game_id,
-        game_name: req.body.game_name
       }
-    }).then(() => {
-      db.record.update({
-        record: req.body.record
-      }, {
-        where: {
-          record: {
-            [Op.lt]: req.body.record
-          },
-          user_id: req.body.user_id,
-          game_id: req.body.game_id
-        }
-      }
-      )
-    })
-  });
+    }
+    )
+  })
+});
 
-  module.exports = router;
+module.exports = router;

@@ -1,15 +1,15 @@
 import Phaser from "phaser";
 import holbie from './assets/images/holbie.png';
 
-class game0 extends Phaser.Scene {
+class flappystart extends Phaser.Scene {
     constructor() {
-        super('game0');
+        super('flappystart');
     }
     preload() {
         this.load.image('bird', holbie);
     }
     clickToStart() {
-        this.scene.start('game1');
+        this.scene.start('flappy');
     }
     create() {
         this.add.text(this.sys.game.canvas.width/3 , this.sys.game.canvas.height/3 - 100, 'Flappy Holbie', { font: '5em Arial black' });
@@ -18,4 +18,4 @@ class game0 extends Phaser.Scene {
         this.input.on('pointerdown', this.clickToStart, this);
     }
 }
-export default game0;
+export default flappystart;
