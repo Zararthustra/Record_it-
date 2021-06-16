@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Phaser from 'phaser'
 import { IonPhaser } from '@ion-phaser/react'
-import snake from '../phaser/snakeCode'
+import snakegame from '../phaser/snakeCode'
+import snakestart from '../phaser/snakeStart'
 import '../App.css';
 
 /******************************************* PHASER ******************************************************/
@@ -10,11 +11,11 @@ class Game extends Component {
     state = {
         initialize: true,
         game: {
-            width: "80vw",
-            height: "80vh",
+            width: 640,
+            height: 480,
             type: Phaser.AUTO,
-            backgroundColor: '#bfcc00',
-            scene: [ snake ]
+            backgroundColor: '#fff',
+            scene: [ snakestart, snakegame ]
         }
     }
 

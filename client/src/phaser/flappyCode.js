@@ -5,8 +5,9 @@ import pipetop from './assets/images/pipetop.png';
 import holbie from './assets/images/holbie.png';
 
 function getRecord() {
-    Axios.post('http://localhost:3001/apiroutes/getRecords', {
+    Axios.post('http://localhost:3001/apiroutes/getRecord', {
         user_id: localStorage.getItem("userid"),
+        game_id: localStorage.getItem("gameid"),
     }).then((response) => {
         if (response.data[0]) gameOptions.topScore = response.data[0].record
     })
