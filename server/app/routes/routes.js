@@ -4,12 +4,12 @@ const db = require("../models");
 const { Op } = require("sequelize");
 const cors = require('cors')
 
-// check localstorage score
-
+//______________________________SetUp__________________________________
 
 router.use(express.json());
 router.use(cors());
-/* Users Methods ------------------------------------------------------------------------------------------- */
+
+//______________________________USER Methods___________________________
 
 // GET all Users
 router.get("/users", (req, res) => {
@@ -18,7 +18,7 @@ router.get("/users", (req, res) => {
   });
 });
 
-/* Records Methods ------------------------------------------------------------------------------------------- */
+//______________________________RECORD Methods___________________________
 
 // GET all Records of all users
 router.get("/records", (req, res) => {

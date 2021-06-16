@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
 import Phaser from 'phaser'
+import React, { Component } from 'react'
 import { IonPhaser } from '@ion-phaser/react'
 import snakegame from '../phaser/snakeCode'
 import snakestart from '../phaser/snakeStart'
 import '../App.css';
 
-/******************************************* PHASER ******************************************************/
 
 class Game extends Component {
     state = {
@@ -22,6 +21,7 @@ class Game extends Component {
     render() {
 
         const { initialize, game } = this.state
+        
         return (
             <div>
                 <div className="phaser">

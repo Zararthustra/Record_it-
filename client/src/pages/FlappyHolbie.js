@@ -5,7 +5,6 @@ import flappy from '../phaser/flappyCode'
 import flappystart from '../phaser/flappyStart'
 import '../App.css';
 
-/******************************************* PHASER ******************************************************/
 
 class Game extends Component {
     state = {

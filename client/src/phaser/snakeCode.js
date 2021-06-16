@@ -5,25 +5,35 @@ import head from './assets/images/head.png'
 import grass from './assets/images/grass.png'
 import Phaser from "phaser";
 
+
+    //______________________________Variables__________________________________
+
 let snake;
 let food;
 let cursors;
 
-//  Direction consts
 let UP = 0;
 let DOWN = 1;
 let LEFT = 2;
 let RIGHT = 3;
+
+
 class snakegame extends Phaser.Scene {
+
     constructor() {
         super('snakegame');
     }
+
+    //_______________________________Preload___________________________________
+
     preload() {
         this.load.image('food', foodimage);
         this.load.image('body', body);
         this.load.image('head', head);
         this.load.image('grass', grass);
     }
+
+    //_______________________________Create___________________________________
 
     create() {
 
@@ -198,12 +208,15 @@ class snakegame extends Phaser.Scene {
             }
 
         });
+
         food = new Food(this, 3, 4).setScale(0.15);
         snake = new Snake(this, 8, 8);
 
-        //  Create our keyboard controls
+        //  Create keyboard controls
         cursors = this.input.keyboard.createCursorKeys();
     }
+
+    //_______________________________Update___________________________________
 
     update(time, delta) {
         if (!snake.alive) {
@@ -245,7 +258,6 @@ class snakegame extends Phaser.Scene {
 
         if (snake.update(time)) {
             //  If the snake updated, we need to check for collision against food
-
             if (snake.collideWithFood(food)) {
                 repositionFood();
             }
@@ -295,4 +307,5 @@ function repositionFood() {
         return false;
     }
 }
+
 export default snakegame;

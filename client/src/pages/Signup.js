@@ -4,14 +4,16 @@ import { useState } from "react";
 import Navigation from '../components/Navigation';
 import '../App.css';
 
+
 const Signup = () => {
+    
+    //______________________________Variables__________________________________
 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [signUpStatus, setSignUpStatus] = useState('')
 
-
-    /* ------------------------------------------------------------------------------------------- */
+    //______________________________Functions__________________________________
 
     const addUser = () => {
         Axios.post('http://localhost:3001/create', {
@@ -27,7 +29,7 @@ const Signup = () => {
         })
     }
 
-    /* ------------------------------------------------------------------------------------------- */
+    //_______________________________Return___________________________________
 
     return (
         <div className="App">

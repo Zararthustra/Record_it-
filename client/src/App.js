@@ -3,16 +3,18 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import './App.css';
+
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/Signup';
 import Records from './pages/Records';
 import Profile from './pages/Profile';
 import Games from './pages/Games';
+import Admin from './pages/Admin';
+
 import FlappyHolbie from './pages/FlappyHolbie';
 import Snake from './pages/Snake';
-import Admin from './pages/Admin';
-import './App.css';
 
 
 function App() {

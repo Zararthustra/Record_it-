@@ -4,14 +4,19 @@ import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import '../App.css';
 
+
 const Profile = () => {
 
-    const [recordObject, setRecordObject] = useState([]);
-    const userName = localStorage.getItem("username")
+    //______________________________Variables__________________________________
+
     let history = useHistory();
-    let noRecord = ""
     
-    if (recordObject.length === 0) noRecord = "No record yet !";
+    const userName = localStorage.getItem("username")
+    const [recordObject, setRecordObject] = useState([]);
+    
+    let noRecord = recordObject.length === 0 ? "No record yet, click below to load" : "";
+
+    //______________________________Functions__________________________________
 
     const goHome = () => {
         history.push('/Home')

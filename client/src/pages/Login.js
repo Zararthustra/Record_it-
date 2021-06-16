@@ -1,23 +1,29 @@
 import React from 'react';
-import Axios from 'axios'
-import { useHistory } from 'react-router-dom';
 import { useState } from "react";
+import { useHistory } from 'react-router-dom';
+import Axios from 'axios'
 import Navigation from '../components/Navigation';
 import '../App.css';
 
+
 const Login = () => {
+
+    //______________________________Variables__________________________________
+
     let history = useHistory();
 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [loginStatus, setLoginStatus] = useState('')
 
+    //______________________________Functions__________________________________
+
     const redirect = () => {
         history.push('/Home')
     }
 
-    /* ------------------------------------------------------------------------------------------- */
-
+    // Check user info,
+    // setLocalStorage if success, otherwise throw error
     const login = () => {
         Axios.post('http://localhost:3001/login', {
             name: name,
@@ -28,7 +34,6 @@ const Login = () => {
                 localStorage.setItem("userid", response.data[0].id)
                 localStorage.setItem("username", response.data[0].name)
                 localStorage.setItem("password", response.data[0].password)
-                localStorage.setItem("createdat", response.data[0].createdAt)
                 setLoginStatus(
                     <div>
                         <h1>Welcome back {name} !</h1>
@@ -43,7 +48,7 @@ const Login = () => {
         })
     }
 
-    /* ------------------------------------------------------------------------------------------- */
+    //_______________________________Return___________________________________
 
     return (
         <div className="App">

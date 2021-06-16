@@ -4,14 +4,6 @@ import pipebot from './assets/images/pipebot.png';
 import pipetop from './assets/images/pipetop.png';
 import holbie from './assets/images/holbie.png';
 
-function getRecord() {
-    Axios.post('http://localhost:3001/apiroutes/getRecord', {
-        user_id: localStorage.getItem("userid"),
-        game_id: localStorage.getItem("gameid"),
-    }).then((response) => {
-        if (response.data[0]) gameOptions.topScore = response.data[0].record
-    })
-}
 
 const gameOptions = {
 
@@ -36,18 +28,35 @@ const gameOptions = {
     //highscore variable
     topScore: 0,
 };
+
+// Check for previous record
+function getRecord() {
+    Axios.post('http://localhost:3001/apiroutes/getRecord', {
+        user_id: localStorage.getItem("userid"),
+        game_id: localStorage.getItem("gameid"),
+    }).then((response) => {
+        if (response.data[0]) gameOptions.topScore = response.data[0].record
+    })
+}
+
 class flappy extends Phaser.Scene {
+
     constructor() {
         super('flappy');
         getRecord()
     }
+
+    //_______________________________Preload___________________________________
+
     preload() {
         this.load.image('bird', holbie);
         this.load.image('pipebot', pipebot);
         this.load.image('pipetop', pipetop);
     }
-    create() {
 
+    //_______________________________Create___________________________________
+
+    create() {
         this.pipeGroup = this.physics.add.group();
         this.pipePool = [];
         for (let i = 0; i < 5; i++) {
@@ -68,6 +77,7 @@ class flappy extends Phaser.Scene {
         this.score += inc;
         this.scoreText.text = 'Score: ' + this.score + '\nBest: ' + gameOptions.topScore;
     }
+
     placePipes(addScore) {
         let rightmost = this.getRightmostPipe();
         let pipeHoleHeight = Phaser.Math.Between(gameOptions.pipeHole[0], gameOptions.pipeHole[1]);
@@ -83,9 +93,11 @@ class flappy extends Phaser.Scene {
             this.updateScore(1);
         }
     }
+
     flap() {
         this.bird.body.velocity.y = -gameOptions.birdFlapPower;
     }
+
     getRightmostPipe() {
         let rightmostPipe = 0;
         this.pipeGroup.getChildren().forEach(function (pipe) {
@@ -93,6 +105,9 @@ class flappy extends Phaser.Scene {
         });
         return rightmostPipe;
     }
+
+    //_______________________________Update___________________________________
+
     update() {
         if (this.bird.angle < 20) {
             this.bird.angle += 0.6
@@ -115,6 +130,7 @@ class flappy extends Phaser.Scene {
             }
         }, this)
     }
+
     die() {
         gameOptions.topScore = Math.max(this.score, gameOptions.topScore);
         const record = gameOptions.topScore

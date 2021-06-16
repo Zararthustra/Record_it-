@@ -1,29 +1,28 @@
 module.exports = (sequelize, Sequelize) => {
+
   const Record = sequelize.define("record", {
+    
     record: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     user_id: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     user_name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: false
     },
     game_id: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     game_name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: false
     }
   });
-
-  //Record.associate = models => {
-  //  Record.belongsTo(models.User, {
-  //    foreignKey: {
-  //      allowNull: false
-  //    }
-  //  });
-  //}
 
   return Record;
 };

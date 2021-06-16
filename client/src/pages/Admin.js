@@ -6,6 +6,8 @@ import '../App.css';
 
 const Admin = () => {
 
+    //______________________________Variables__________________________________
+
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState('');
@@ -13,7 +15,7 @@ const Admin = () => {
     const [userObject, setUserObject] = useState([]);
     const [newName, setNewName] = useState('')
 
-    /* ------------------------------------------------------------------------------------------- */
+    //______________________________Functions__________________________________
 
     const addUser = () => {
         Axios.post('http://localhost:3001/create', {
@@ -47,7 +49,7 @@ const Admin = () => {
         });
     };
 
-    /* ------------------------------------------------------------------------------------------- */
+    //_______________________________Return___________________________________
 
     return (
         <div className="App">

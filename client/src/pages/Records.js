@@ -4,22 +4,22 @@ import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import '../App.css';
 
-//Find a way to instant load the record table (currently need to refresh page...!)
 
 const Records = () => {
 
-    /*  Variables--------------------------------------------------------------------------------------------------------------------------------------*/
+    //______________________________Variables__________________________________
     
     let history = useHistory();
     const [usersList, setUsersList] = useState([]);
     let sortDirection = false;
 
-    /*  Functions--------------------------------------------------------------------------------------------------------------------------------------*/
+    //______________________________Functions__________________________________
     
     const goHome = () => {
         history.push('/Home')
     }
 
+    // Fill the table dynamically with getRecords
     function loadTableData(tableData) {
         const tableBody = document.getElementById('tableBody');
         let dataHtml = "";
@@ -29,13 +29,15 @@ const Records = () => {
         }
         tableBody.innerHTML = dataHtml;
     }
-
+    
     const getRecords = () => {
         Axios.get('http://localhost:3001/apiroutes/records').then((response) => {
             setUsersList(response.data);
             loadTableData(response.data);
         })
     }
+
+    //_______________________________Return___________________________________
 
     return (
         <div className="records">

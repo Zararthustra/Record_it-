@@ -3,8 +3,8 @@ const db = require("./app/models");
 const cors = require('cors');
 const app = express()
 const routes = require('./app/routes/routes')
-let currentUser = null
-/* Setup ------------------------------------------------------------------------------------ */
+
+//______________________________SetUp__________________________________
 
 db.sequelize.sync();
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* Users Methods ------------------------------------------------------------------------------------------- */
+//______________________________USER Methods___________________________
 
 //POST create user
 app.post('/create', (req, res) => {
@@ -42,10 +42,7 @@ app.post('/login', (req, res) => {
         }
     })
         .then((checkedUser) => {
-            //send checked user object to front
             res.send(checkedUser)
-            currentUser = checkedUser
-            //console.log(currentUser[0].dataValues);
         })
 })
 
@@ -55,9 +52,8 @@ app.get("/users/:id", (req, res) => {
         where: {
             id: req.params.id
         }
-    }).then(users => res.json(users));
+    }).then(user => res.json(user));
 });
-
 
 //UPDATE
 app.put('/users/update', (req, res) => {
@@ -73,10 +69,6 @@ app.put('/users/update', (req, res) => {
 app.delete('/delete/:id', (req, res) => {
     const id = req.params.id
     db.user.destroy({
-        where: {
-            id: id
-        }
+        where: { id: id }
     })
 });
-
-/* ------------------------------------------------------------------------------------------- */
