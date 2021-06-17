@@ -30,11 +30,10 @@ const Records = () => {
         tableBody.innerHTML = dataHtml;
     }
     
-    const getRecords = () => {
-        Axios.get('http://localhost:3001/apiroutes/records').then((response) => {
+    const getRecords = async () => {
+        const response = await Axios.get('http://localhost:3001/apiroutes/records')
             setUsersList(response.data);
             loadTableData(response.data);
-        })
     }
 
     //_______________________________Return___________________________________
@@ -54,7 +53,6 @@ const Records = () => {
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-
                 </tbody>
             </table>
             
