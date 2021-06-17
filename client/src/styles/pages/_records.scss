@@ -1,0 +1,26 @@
+.allrecords {
+    @include verticalCenter;
+    flex-direction: column;
+}
+
+.allgametables {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    flex-direction: row;
+    margin: 2em;
+}
+
+.gametable {
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 10px 10px 15px;
+}
+.gametable header {
+    margin: 1em;
+    text-align: center;
+}
+.recordtable {
+    text-align: center;
+}
