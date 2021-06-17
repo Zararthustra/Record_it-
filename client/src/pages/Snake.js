@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { IonPhaser } from '@ion-phaser/react'
 import snakegame from '../phaser/snakeCode'
 import snakestart from '../phaser/snakeStart'
-import '../App.css';
 
 
 class Game extends Component {

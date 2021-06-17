@@ -2,7 +2,6 @@ import React from 'react';
 import Axios from 'axios';
 import { useState } from "react";
 import Navigation from '../components/Navigation';
-import '../App.css';
 
 const Admin = () => {
 
