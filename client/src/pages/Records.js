@@ -3,7 +3,7 @@ import Axios from 'axios'
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-import '../App.css';
+
 
 const Records = () => {
 
@@ -15,6 +15,7 @@ const Records = () => {
 
     return (
         <div className="records">
+            <Navigation />
             <h1>Records</h1>
             <button onClick={goHome}>Back to Home</button>
         </div>

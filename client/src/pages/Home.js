@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import '../App.css';
+import Navigation from '../components/Navigation';
+
 
 const Home = () => {
 
@@ -25,6 +26,7 @@ const Home = () => {
 
   return (
     <div className="Home">
+      <Navigation />
       <h1>Welcome {username}</h1>
       <div className="routes">
         <button onClick={goProfile}>Go to Profile</button>

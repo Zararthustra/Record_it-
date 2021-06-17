@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-import '../App.css';
+
 
 const Signup = () => {
 
@@ -58,23 +58,27 @@ const Signup = () => {
     /* ------------------------------------------------------------------------------------------- */
 
     return (
-        <div className="App">
+        <div className="singUp">
             <Navigation />
-            <div className="add">
+            <div className="signUpContent">
                 <h1>SIGNUP</h1>
-                <label>Name </label>
-                <input type="text" onChange={(event) => {
-                    setName(event.target.value)
-                }}
-                />
-                <label>Password </label>
-                <input type="text" onChange={(event) => {
-                    setPassword(event.target.value)
-                }}
-                />
+                <div id="name">
+                    <label>Name </label>
+                    <input type="text" onChange={(event) => {
+                        setName(event.target.value)
+                    }}
+                    />
+                </div>
+                <div id="password">
+                    <label>Password </label>
+                    <input type="text" onChange={(event) => {
+                        setPassword(event.target.value)
+                    }}
+                    />
+                </div>
                 <button onClick={addUser}>Create account</button>
             </div>
-            <div className="users">
+            {/* <div className="users">
                 <button onClick={getUsers}>Show users</button>
                 {usersList.map((value, key) => {
                     return <div className="user">
@@ -99,8 +103,8 @@ const Signup = () => {
                         </div>
                     </div>
                 })}
-            </div>
-            <div className="users">
+            </div> */}
+            {/* <div className="users">
                 <label>Find User by id</label>
                 <input type="text" onChange={(event) => {
                     setUser(event.target.value)
@@ -114,7 +118,7 @@ const Signup = () => {
                         <p>Password: {value.password}</p>
                     </div>
                 })}
-            </div>
+            </div> */}
         </div>
     );
 }

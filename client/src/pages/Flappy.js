@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import Phaser from 'phaser'
 import { IonPhaser } from '@ion-phaser/react'
 import game1 from '../phaser/game1'
-import '../App.css';
-
 /******************************************* PHASER ******************************************************/
 
 class Game extends Component {

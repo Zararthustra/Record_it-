@@ -3,7 +3,7 @@ import Axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import { useState } from "react";
 import Navigation from '../components/Navigation';
-import '../App.css';
+
 
 const Login = () => {
     let history = useHistory();
@@ -46,21 +46,25 @@ const Login = () => {
     /* ------------------------------------------------------------------------------------------- */
 
     return (
-        <div className="App">
+        <div className="login">
             <Navigation />
-            <div className="add">
+            <div className="loginContent">
                 <h1>LOGIN</h1>
                 <h1>{loginStatus}</h1>
-                <label>Name </label>
-                <input type="text" onChange={(event) => {
-                    setName(event.target.value)
-                }}
-                />
-                <label>Password </label>
-                <input type="text" onChange={(event) => {
-                    setPassword(event.target.value)
-                }}
-                />
+                <div id="name">
+                    <label>Name </label>
+                    <input type="text" onChange={(event) => {
+                        setName(event.target.value)
+                    }}
+                    />
+                </div>
+                <div id="password">
+                    <label>Password </label>
+                    <input type="password" onChange={(event) => {
+                        setPassword(event.target.value)
+                    }}
+                    />
+                </div>
                 <button onClick={login}>Log in</button>
             </div>
         </div>

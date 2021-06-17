@@ -10,8 +10,6 @@ import Records from './pages/Records';
 import Profile from './pages/Profile';
 import Games from './pages/Games';
 import Flappy from './pages/Flappy';
-import './App.css';
-
 
 function App() {
   return (
