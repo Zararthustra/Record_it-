@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import Phaser from 'phaser'
-import { IonPhaser } from '@ion-phaser/react'
-import flappy from '../phaser/flappyCode'
-import flappystart from '../phaser/flappyStart'
-import '../App.css';
+import React, { Component } from 'react';
+import Phaser from 'phaser';
+import { IonPhaser } from '@ion-phaser/react';
+import flappy from '../phaser/flappyCode';
+import flappystart from '../phaser/flappyStart';
 
 
 class Game extends Component {

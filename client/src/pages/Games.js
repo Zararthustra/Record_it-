@@ -1,7 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import '../App.css';
+import Navigation from '../components/Navigation';
+
 
 
 const Games = () => {
@@ -57,11 +58,31 @@ const Games = () => {
     //_______________________________Return___________________________________
 
     return (
-        <div className="profile">
-            <h1>Games</h1>
+        <div className="games">
+            <Navigation />
             <button onClick={goHome}>Back to Home</button>
-            <button onClick={goFlappy}>Play Flappy Holbie</button>
-            <button onClick={goSnake}>Play Snake</button>
+            <div className="gamesContent">
+                <div className="jeu1">
+                    <h3 id="g1">Img</h3>
+                    <p id="desc1">Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
+                    <button id="b1" onClick={goFlappy}>Play Flappy Holbie</button>
+                </div>
+                <div className="jeu2">
+                    <h3>Img</h3>
+                    <p>Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
+                    <button id="b1" onClick={goFlappy}>Play Flappy Holbie</button> 
+                </div>
+                <div className="jeu1">
+                    <h3 id="g1">Img</h3>
+                    <p id="desc1">Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
+                    <button id="b1" onClick={goSnake}>Play Snake</button>
+                </div>
+                <div className="jeu2">
+                    <h3>Img</h3>
+                    <p>Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
+                    <button onClick={goFlappy}>Play Flappy Holbie</button>
+                </div>
+            </div>
         </div>
     )
 }
