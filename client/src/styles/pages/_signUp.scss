@@ -1,0 +1,12 @@
+.signUpContent {
+    @include verticalCenter;
+    flex-direction: column;
+    margin-top: 7rem;
+
+    #name {
+        display: grid;
+    }
+    #password {
+        display: grid;
+    }
+}

@@ -1,0 +1,67 @@
+$b64: "https://image.flaticon.com/icons/png/128/109/109617.png";
+
+.games {
+    h1 {
+        @include verticalCenter;
+    }
+}
+
+.gamesContent {
+    display: grid;
+
+    .jeu1 {
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-rows: 100px;
+        
+        button {
+            font-size: 13px;
+        }        
+        p {
+            @include verticalCenter;
+            background-color: #e9ecef8e;
+            box-shadow: 2px 2px #6c757d3d;
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 10px;
+            height: 3.5rem;
+            padding: 0.4rem;
+            margin: auto
+        }
+        h3 {
+            @include verticalCenter;
+            margin: 1.5rem;
+            background-color: #ced4da91;
+            border-radius: 5px;
+            box-shadow: 2px 2px #6c757d3d;
+        }
+    }
+
+    .jeu2 {
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-rows: 100px;
+        grid-template-areas:
+            "h1 p1 l1";
+
+        button {
+            font-size: 13px;
+        }
+
+        p {
+            @include verticalCenter;
+            background-color: #e9ecef8e;
+            box-shadow: 2px 2px #6c757d3d;
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 10px;
+            height: 3.5rem;
+            padding: 0.4rem;
+            margin: auto
+        }
+        h3 {
+            @include verticalCenter;
+            margin: 1.5rem;
+            background-color: #ced4da91;
+            border-radius: 5px;
+        }
+    } 
+}

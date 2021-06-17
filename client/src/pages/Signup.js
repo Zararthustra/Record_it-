@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { useState } from "react";
 import Navigation from '../components/Navigation';
-import '../App.css';
+
 
 
 const Signup = () => {
@@ -32,11 +32,68 @@ const Signup = () => {
     //_______________________________Return___________________________________
 
     return (
-        <div className="App">
+        <div className="singUp">
             <Navigation />
-            <div className="add">
+            <div className="signUpContent">
                 <h1>SIGNUP</h1>
-                <div>{signUpStatus}</div>
+                <div id="name">
+                    <label>Name </label>
+                    <input type="text" onChange={(event) => {
+                        setName(event.target.value)
+                    }}
+                    />
+                </div>
+                <div id="password">
+                    <label>Password </label>
+                    <input type="text" onChange={(event) => {
+                        setPassword(event.target.value)
+                    }}
+                    />
+                </div>
+                <button onClick={addUser}>Create account</button>
+            </div>
+            {/* <div className="users">
+                <button onClick={getUsers}>Show users</button>
+                {usersList.map((value, key) => {
+                    return <div className="user">
+                        <h2>id:</h2>
+                        <p>{value.id}</p>
+                        <h2>Name:</h2>
+                        <p>{value.name}</p>
+                        <h2>Password:</h2>
+                        <p>{value.password}</p>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="update name..."
+                                onChange={(event) => {
+                                    setNewName(event.target.value)
+                                }} />
+                            <button onClick={() => {
+                                updateUser(value.id)
+                            }}>
+                                Update</button>
+                            <button onClick={() => { deleteUser(value.id) }}>Delete</button>
+                        </div>
+                    </div>
+                })}
+            </div> */}
+            {/* <div className="users">
+                <label>Find User by id</label>
+                <input type="text" onChange={(event) => {
+                    setUser(event.target.value)
+                }}
+                />
+                <button onClick={getOne}>Get user by id</button>
+                {userObject.map((value) => {
+                    return <div className="user">
+                        <p>id :{value.id}</p>
+                        <p>Name: {value.name}</p>
+                        <p>Password: {value.password}</p>
+                    </div>
+                })}
+            </div> */}
+                {/* <div>{signUpStatus}</div>
                 <label>Name </label>
                 <input type="text" onChange={(event) => {
                     setName(event.target.value)
@@ -48,7 +105,7 @@ const Signup = () => {
                 }}
                 />
                 <button onClick={addUser}>Create account</button>
-            </div>
+            </div> */}
         </div>
     );
 }

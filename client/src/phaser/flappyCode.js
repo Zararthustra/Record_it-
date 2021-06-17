@@ -124,7 +124,7 @@ class flappy extends Phaser.Scene {
         this.pipeGroup.getChildren().forEach(function (pipe) {
             if (pipe.getBounds().right < 0) {
                 this.pipePool.push(pipe);
-                if (this.pipePool.length == 2) {
+                if (this.pipePool.length === 2) {
                     this.placePipes(true);
                 }
             }

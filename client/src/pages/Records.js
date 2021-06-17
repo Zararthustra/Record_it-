@@ -2,7 +2,8 @@ import React from 'react';
 import Axios from 'axios'
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
-import '../App.css';
+import Navigation from '../components/Navigation';
+
 
 
 const Records = () => {
@@ -40,6 +41,7 @@ const Records = () => {
 
     return (
         <div className="records">
+            <Navigation />
             <h1>Records</h1>
             <button onClick={getRecords}>Load Records</button>
             <button onClick={goHome}>Back to Home</button>
@@ -61,6 +63,7 @@ const Records = () => {
 }
 
 export default Records;
+
 //{usersList.map((value) => {
 //    console.log(usersList);
 //    return <div className="record">
