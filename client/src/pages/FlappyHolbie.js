@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import Phaser from 'phaser'
-import { IonPhaser } from '@ion-phaser/react'
-import game1 from '../phaser/game1'
-/******************************************* PHASER ******************************************************/
+import React, { Component } from 'react';
+import Phaser from 'phaser';
+import { IonPhaser } from '@ion-phaser/react';
+import flappy from '../phaser/flappyCode';
+import flappystart from '../phaser/flappyStart';
+
 
 class Game extends Component {
     state = {
@@ -19,7 +20,7 @@ class Game extends Component {
                     debug: false
                 }
             },
-            scene: game1
+            scene: [ flappystart, flappy ]
         }
     }
 

@@ -3,9 +3,15 @@ import { useHistory } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
 
+
 const Home = () => {
 
+    //______________________________Variables__________________________________
+
+  const username = localStorage.getItem("username")
   let history = useHistory();
+
+    //______________________________Functions__________________________________
 
   const goProfile = () => {
     history.push('/Profile')
@@ -17,12 +23,7 @@ const Home = () => {
     history.push('/Games')
   }
 
-  //Get user info
-
-  //  get user info stored in localStorage when login
-  //const userid = localStorage.getItem("userid")
-  const username = localStorage.getItem("username")
-
+    //_______________________________Return___________________________________
 
   return (
     <div className="Home">
@@ -38,22 +39,3 @@ const Home = () => {
 };
 
 export default Home;
-
-//  get user object in db with its id:
-
-//import Axios from 'axios';
-//import { useState } from "react";
-
-//  const [userObject, setUserObject] = useState([]);
-//  Axios.get(`http://localhost:3001/users/${userid}`).then((response) => {
-//    setUserObject(response.data)
-//    console.log(userObject[0]);
-//  });
-
-//{userObject.map((value) => {
-//  return <div className="user">
-//    <p>id :{value.id}</p>
-//    <p>Name: {value.name}</p>
-//    <p>Password: {value.password}</p>
-//  </div>
-//})}

@@ -1,8 +1,9 @@
-import Axios from 'axios'
+import Axios from 'axios';
 import Phaser from "phaser";
 import pipebot from './assets/images/pipebot.png';
 import pipetop from './assets/images/pipetop.png';
 import holbie from './assets/images/holbie.png';
+
 
 const gameOptions = {
 
@@ -16,7 +17,7 @@ const gameOptions = {
     birdFlapPower: 300,
 
     // minimum pipe height, in pixels. Affects hole position
-    minPipeHeight: 50,
+    minPipeHeight: 30,
 
     // distance range from next pipe, in pixels
     pipeDistance: [220, 280],
@@ -24,18 +25,37 @@ const gameOptions = {
     // hole range between pipes, in pixels
     pipeHole: [210, 230],
 
-    // local storage object name
-    localStorageName: 'bestFlappyScore'
+    //highscore variable
+    topScore: 0,
 };
-class game1 extends Phaser.Scene {
+
+// Check for previous record
+function getRecord() {
+    Axios.post('http://localhost:3001/apiroutes/getRecord', {
+        user_id: localStorage.getItem("userid"),
+        game_id: localStorage.getItem("gameid"),
+    }).then((response) => {
+        if (response.data[0]) gameOptions.topScore = response.data[0].record
+    })
+}
+
+class flappy extends Phaser.Scene {
+
     constructor() {
-        super('game1');
+        super('flappy');
+        getRecord()
     }
+
+    //_______________________________Preload___________________________________
+
     preload() {
         this.load.image('bird', holbie);
         this.load.image('pipebot', pipebot);
         this.load.image('pipetop', pipetop);
     }
+
+    //_______________________________Create___________________________________
+
     create() {
         this.pipeGroup = this.physics.add.group();
         this.pipePool = [];
@@ -49,14 +69,15 @@ class game1 extends Phaser.Scene {
         this.bird.body.gravity.y = gameOptions.birdGravity;
         this.input.on('pointerdown', this.flap, this);
         this.score = 0;
-        this.topScore = localStorage.getItem(gameOptions.localStorageName) == null ? 0 : localStorage.getItem(gameOptions.localStorageName);
         this.scoreText = this.add.text(10, 10, '');
         this.updateScore(this.score);
     }
+
     updateScore(inc) {
         this.score += inc;
-        this.scoreText.text = 'Score: ' + this.score + '\nBest: ' + this.topScore;
+        this.scoreText.text = 'Score: ' + this.score + '\nBest: ' + gameOptions.topScore;
     }
+
     placePipes(addScore) {
         let rightmost = this.getRightmostPipe();
         let pipeHoleHeight = Phaser.Math.Between(gameOptions.pipeHole[0], gameOptions.pipeHole[1]);
@@ -72,9 +93,11 @@ class game1 extends Phaser.Scene {
             this.updateScore(1);
         }
     }
+
     flap() {
         this.bird.body.velocity.y = -gameOptions.birdFlapPower;
     }
+
     getRightmostPipe() {
         let rightmostPipe = 0;
         this.pipeGroup.getChildren().forEach(function (pipe) {
@@ -82,6 +105,9 @@ class game1 extends Phaser.Scene {
         });
         return rightmostPipe;
     }
+
+    //_______________________________Update___________________________________
+
     update() {
         if (this.bird.angle < 20) {
             this.bird.angle += 0.6
@@ -104,19 +130,23 @@ class game1 extends Phaser.Scene {
             }
         }, this)
     }
-    die() {
-        localStorage.setItem(gameOptions.localStorageName, Math.max(this.score, this.topScore));
-        localStorage.setItem('test', 32);
-        this.scene.start('game1');
 
-        // POST record in database
+    die() {
+        gameOptions.topScore = Math.max(this.score, gameOptions.topScore);
+        const record = gameOptions.topScore
+        // POST/PUT record in database
         Axios.put('http://localhost:3001/apiroutes/addRecord', {
-            record: this.topScore,
-            user_id: localStorage.getItem("userid")
+            record: record,
+            user_id: localStorage.getItem("userid"),
+            user_name: localStorage.getItem("username"),
+            game_id: localStorage.getItem("gameid"),
+            game_name: localStorage.getItem("gamename")
         }).then(() => {
             console.log("Insertion success");
         })
+
+        this.scene.start('flappystart');
     }
 }
 
-export default game1;
+export default flappy;
