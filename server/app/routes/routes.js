@@ -41,6 +41,35 @@ router.put("/addGame", (req, res) => {
   })
 });
 
+// Get TOP3 records of one game
+router.post("/topGameRecords", (req, res) => {
+  db.record.findAll({
+    limit: 3,
+    order: [
+      ['record', 'DESC']
+    ],
+    where: {
+      game_id: req.body.game_id,
+    }
+  }).then((record) => {
+    res.json(record);
+  });
+})
+
+// Get all records of one game
+router.post("/gameRecords", (req, res) => {
+  db.record.findAll({
+    order: [
+      ['record', 'DESC']
+    ],
+    where: {
+      game_id: req.body.game_id,
+    }
+  }).then((record) => {
+    res.json(record);
+  });
+})
+
 // Get all records of all games of user
 router.post("/getRecords", (req, res) => {
   db.record.findAll({

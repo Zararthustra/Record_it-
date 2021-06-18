@@ -63,24 +63,14 @@ const Games = () => {
             <button onClick={goHome}>Back to Home</button>
             <div className="gamesContent">
                 <div className="jeu1">
-                    <h3 id="g1">Img</h3>
-                    <p id="desc1">Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
+                    <h3 id="g1">Flappy Img</h3>
+                    <p id="desc1">Similar to the famous Flappy bird...</p>
                     <button id="b1" onClick={goFlappy}>Play Flappy Holbie</button>
                 </div>
                 <div className="jeu2">
-                    <h3>Img</h3>
-                    <p>Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
-                    <button id="b1" onClick={goFlappy}>Play Flappy Holbie</button> 
-                </div>
-                <div className="jeu1">
-                    <h3 id="g1">Img</h3>
-                    <p id="desc1">Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
-                    <button id="b1" onClick={goSnake}>Play Snake</button>
-                </div>
-                <div className="jeu2">
-                    <h3>Img</h3>
-                    <p>Un certain nombre de villes sont célèbres pour leur taille spectaculaire.</p>
-                    <button onClick={goFlappy}>Play Flappy Holbie</button>
+                    <h3>Snake Img</h3>
+                    <p>Similar to the famous 3310 snake...</p>
+                    <button id="b1" onClick={goSnake}>Play Snake</button> 
                 </div>
             </div>
         </div>

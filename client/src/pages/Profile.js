@@ -8,10 +8,6 @@ import  { AiFillStar } from 'react-icons/ai';
 
 const Profile = () => {
 
-    //get user info in local storage
-    const userFlappyRecord = localStorage.getItem("bestFlappyScore");
-    const userName = localStorage.getItem("username");
-
     let history = useHistory();
     
     const userName = localStorage.getItem("username")
@@ -43,7 +39,7 @@ const Profile = () => {
                     <h6>{userName} Profile</h6>
                     <h7>Password</h7>
                     <h7>Games records:</h7>
-                    <h7>Flappy Holbie: {userFlappyRecord}</h7>
+                    <h7>Flappy Holbie: flappyrecord</h7>
                 </div>
                 <div className="performances">
                     <h4 id="Global">
