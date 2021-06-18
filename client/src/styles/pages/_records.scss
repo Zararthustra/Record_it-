@@ -14,16 +14,14 @@
 .gametable h2 {
     color: var(--special-primary);
 }
-.red {
-    color:red;
-}
+
 /*
 TABLE
 */
 .gametable header {
     margin-bottom: 2em;
     text-align   : center;
-    color: var(--text-primary);
+    color        : var(--text-primary);
 
 }
 
@@ -120,6 +118,7 @@ Button
 
 .allrecords a:hover::before,
 .allrecords a:hover::after {
+    cursor : pointer;
     opacity: 1;
 }
 
@@ -153,7 +152,8 @@ Button
 }
 
 .allrecords a:hover span {
-    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    color : rgba(255, 255, 255, 1);
 }
 
 .allrecords a span::before {

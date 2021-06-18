@@ -1,10 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 
 const Navigation = () => {
   return (
-    <body>
+    <>
         <nav class="navbar">
           <ul class="navbar-nav">
 
@@ -38,12 +37,6 @@ const Navigation = () => {
             </li>
 
             <li class="nav-item">
-              <a href="/Home" class="nav-link">
-                  <span class="link-text">Home</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
               <a href="/Games" class="nav-link">
                   <span class="link-text">Games</span>
               </a>
@@ -62,19 +55,13 @@ const Navigation = () => {
             </li>
 
             <li class="nav-item">
-              <a href="/" class="nav-link">
-                <span class="link-text">Login</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="/Signup" class="nav-link">
-                <span class="link-text">Sign Up</span>
+              <a href="/Home" class="nav-link">
+                  <span class="link-text">Home</span>
               </a>
             </li>
           </ul>
         </nav>
-    </body>
+    </>
   );
 };
 

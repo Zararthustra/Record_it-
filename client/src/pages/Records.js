@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import Navigation from '../components/Navigation';
-import $ from 'jquery';
 
 
 class Records extends Component {
@@ -93,13 +92,13 @@ class Records extends Component {
                 this.setState({ showMe: true });
             }
         }
-        
+
         if (this.state.showMe === true) {
             return (
                 <>
                     <Navigation />
                     <div className="allrecords">
-                        <a onClick={switchState}><span>All records</span></a>
+                        <a href="" onClick={switchState}><span>All records</span></a>
                         <h1>TOP 3</h1>
                         <div className="allgametables">
                             <div className="gametable">

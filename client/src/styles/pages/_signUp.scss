@@ -1,12 +1,19 @@
-.signUpContent {
+.signup {
     @include verticalCenter;
     flex-direction: column;
-    margin-top: 7rem;
+    gap           : 2em;
 
     #name {
-        display: grid;
+        text-align: center;
+        display   : grid;
     }
+
     #password {
-        display: grid;
+        text-align: center;
+        display   : grid;
     }
+}
+
+h1 .letter {
+    padding: 0;
 }

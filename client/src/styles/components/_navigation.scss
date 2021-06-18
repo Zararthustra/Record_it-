@@ -16,7 +16,7 @@
 }
 
 .nav-item {
-    width: 100%;
+    width       : 100%;
     padding-left: 0.3em;
 }
 
@@ -24,9 +24,9 @@
     display        : flex;
     height         : 4rem;
     color          : var(--text-primary);
-    text-align: center;
-    align-items: center;
-    letter-spacing: 0.3ch;
+    text-align     : center;
+    align-items    : center;
+    letter-spacing : 0.3ch;
     text-decoration: none;
     justify-content: center;
     filter         : grayscale(100%) opacity(0.7);
@@ -39,7 +39,7 @@
     color     : var(--text-secondary);
 }
 
-.nav-item:nth-child(6) {
+.nav-item:last-child {
     margin-top: auto;
 }
 

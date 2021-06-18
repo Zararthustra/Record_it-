@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import $ from 'jquery';
 
@@ -9,26 +8,15 @@ const Home = () => {
   //______________________________Variables__________________________________
 
   const username = localStorage.getItem("username")
-  let history = useHistory();
 
   //______________________________Functions__________________________________
 
-  const goProfile = () => {
-    history.push('/Profile')
-  }
-  const goRecords = () => {
-    history.push('/Records')
-  }
-  const goGames = () => {
-    history.push('/Games')
-  }
-
-  //replace a letter to change its color
+  //replace a letter ("i" by "!") to change its color
   $(document).ready(function () {
-    console.log("ready!");
     const text = $("#phrase").html().replace(/i/, " <h1 class='letter'> !</h1>");
     $("#phrase").html(text)
   });
+
   //_______________________________Return___________________________________
 
   return (
@@ -36,7 +24,7 @@ const Home = () => {
       <Navigation />
       <div className="Home">
         <h1 id="phrase">RECORD  i T</h1>
-        <h2>{username}</h2>
+        <h2 className="username">{username}</h2>
 
         <div className="global">
           <div className="myglobalscore">
@@ -85,6 +73,46 @@ const Home = () => {
                   </td>
                   <td>
                     56 pts
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    dragonkiller
+                  </td>
+                  <td>
+                    44 pts
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    bgdu38
+                  </td>
+                  <td>
+                    26 pts
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Samy45
+                  </td>
+                  <td>
+                    56 pts
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    dragonkiller
+                  </td>
+                  <td>
+                    44 pts
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    bgdu38
+                  </td>
+                  <td>
+                    26 pts
                   </td>
                 </tr>
               </tbody>
