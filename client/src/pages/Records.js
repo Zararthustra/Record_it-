@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
-import { useState } from "react";
-import { useHistory } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-
+import $ from 'jquery';
 
 
 class Records extends Component {
@@ -95,13 +93,13 @@ class Records extends Component {
                 this.setState({ showMe: true });
             }
         }
-
+        
         if (this.state.showMe === true) {
             return (
                 <>
                     <Navigation />
                     <div className="allrecords">
-                        <button onClick={switchState}>All records</button>
+                        <a onClick={switchState}><span>All records</span></a>
                         <h1>TOP 3</h1>
                         <div className="allgametables">
                             <div className="gametable">
@@ -165,7 +163,7 @@ class Records extends Component {
                 <>
                     <Navigation />
                     <div className="allrecords">
-                        <button onClick={switchState}>Top 3 records</button>
+                        <a onClick={switchState}><span>Top3</span></a>
                         <h1>All records</h1>
                         <div className="allgametables">
                             <div className="gametable">
@@ -199,7 +197,7 @@ class Records extends Component {
                                 <table className="recordtable">
                                     <thead>
                                         <tr>
-                                            <th className="hey">Record</th>
+                                            <th>Record</th>
                                             <th>User</th>
                                             <th>Date</th>
                                         </tr>

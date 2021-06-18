@@ -2,3 +2,30 @@
     @include verticalCenter;
     flex-direction: column;
 }
+
+#phrase {
+    margin-top    : 3em;
+}
+
+.Home h2 {
+    margin: 1em;
+    color: var(--special-primary);
+}
+
+.letter {
+    color: var(--special-primary);
+    padding-left: 0.5em;
+}
+
+h1 {
+    display       : flex;
+    letter-spacing: 0.3ch;
+    flex-direction: row;
+}
+.global {
+    display: flex;
+    gap: 10em;
+}
+header {
+    text-align: center;
+}

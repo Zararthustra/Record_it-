@@ -12,9 +12,16 @@
   font-family       : 'Open Sans';
   --text-primary    : #b6b6b6;
   --text-secondary  : #ececec;
+  --special-primary  : #FFBA08;
+  --special-secondary  : #e85d04;
   --bg-primary      : #370617;
   --bg-secondary    : #03071E;
   --transition-speed: 600ms;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 /*
