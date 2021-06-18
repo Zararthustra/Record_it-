@@ -98,64 +98,66 @@ class Records extends Component {
 
         if (this.state.showMe === true) {
             return (
-                <div className="allrecords">
+                <>
                     <Navigation />
-                    <button onClick={switchState}>All records</button>
-                    <h1>TOP 3</h1>
-                    <div className="allgametables">
-                        <div className="gametable">
-                            <header><h2>Flappy Holbie</h2></header>
-                            <table className="recordtable">
-                                <thead>
-                                    <tr>
-                                        <th>Record</th>
-                                        <th>User</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            {topFlappyRecords}
-                                        </td>
-                                        <td>
-                                            {topFlappyUsers}
-                                        </td>
-                                        <td>
-                                            {topFlappyDate}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div className="allrecords">
+                        <button onClick={switchState}>All records</button>
+                        <h1>TOP 3</h1>
+                        <div className="allgametables">
+                            <div className="gametable">
+                                <header><h2>Flappy Holbie</h2></header>
+                                <table className="recordtable">
+                                    <thead>
+                                        <tr>
+                                            <th>Record</th>
+                                            <th>User</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {topFlappyRecords}
+                                            </td>
+                                            <td>
+                                                {topFlappyUsers}
+                                            </td>
+                                            <td>
+                                                {topFlappyDate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                        <div className="gametable">
-                            <header><h2>Snake</h2></header>
-                            <table className="recordtable">
-                                <thead>
-                                    <tr>
-                                        <th>Record</th>
-                                        <th>User</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            {topSnakeRecords}
-                                        </td>
-                                        <td>
-                                            {topSnakeUsers}
-                                        </td>
-                                        <td>
-                                            {topSnakeDate}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div className="gametable">
+                                <header><h2>Snake</h2></header>
+                                <table className="recordtable">
+                                    <thead>
+                                        <tr>
+                                            <th>Record</th>
+                                            <th>User</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {topSnakeRecords}
+                                            </td>
+                                            <td>
+                                                {topSnakeUsers}
+                                            </td>
+                                            <td>
+                                                {topSnakeDate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </>
             )
         }
         else if (this.state.showMe === false) {

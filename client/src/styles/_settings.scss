@@ -12,8 +12,8 @@
   font-family       : 'Open Sans';
   --text-primary    : #b6b6b6;
   --text-secondary  : #ececec;
-  --bg-primary      : #23232e;
-  --bg-secondary    : #141418;
+  --bg-primary      : #370617;
+  --bg-secondary    : #03071E;
   --transition-speed: 600ms;
 }
 
@@ -21,6 +21,7 @@
 Scrollbar
 */
 body::-webkit-scrollbar {
+
   width: 0.25rem;
 }
 

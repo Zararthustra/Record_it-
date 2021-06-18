@@ -6,12 +6,12 @@ import Navigation from '../components/Navigation';
 
 const Home = () => {
 
-    //______________________________Variables__________________________________
+  //______________________________Variables__________________________________
 
   const username = localStorage.getItem("username")
   let history = useHistory();
 
-    //______________________________Functions__________________________________
+  //______________________________Functions__________________________________
 
   const goProfile = () => {
     history.push('/Profile')
@@ -23,18 +23,20 @@ const Home = () => {
     history.push('/Games')
   }
 
-    //_______________________________Return___________________________________
+  //_______________________________Return___________________________________
 
   return (
-    <div className="Home">
+    <>
       <Navigation />
-      <h1>Welcome {username}</h1>
-      <div className="routes">
-        <button onClick={goProfile}>Go to Profile</button>
-        <button onClick={goRecords}>Go to Records</button>
-        <button onClick={goGames}>Go to Games</button>
+      <div className="Home">
+        <h1>Welcome {username}</h1>
+        <div className="routes">
+          <button onClick={goProfile}>Go to Profile</button>
+          <button onClick={goRecords}>Go to Records</button>
+          <button onClick={goGames}>Go to Games</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

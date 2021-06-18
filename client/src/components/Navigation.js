@@ -5,12 +5,11 @@ import { NavLink } from 'react-router-dom';
 const Navigation = () => {
   return (
     <>
-      <body>
         <nav class="navbar">
           <ul class="navbar-nav">
 
             <li class="logo">
-              <a href="#" class="nav-link">
+              <a href="/Home" class="nav-link">
                 <span class="link-text logo-text">Record !t</span>
                 <svg
                   aria-hidden="true"
@@ -75,7 +74,6 @@ const Navigation = () => {
             </li>
           </ul>
         </nav>
-      </body>
     </>
   );
 };
