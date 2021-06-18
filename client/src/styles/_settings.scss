@@ -3,53 +3,75 @@
 ******/
 
 @mixin verticalCenter {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  align-items: center;
+  align-items    : center;
 }
 
-body {
-    background-color: #6c757dad;
-  }
-  
-  p, h2 {
-    margin: 0;
-  }
-  
-  label {
-    margin: 0.3em;
-    font-size: 1.2rem;
-  }
+:root {
+  font-family       : 'Open Sans';
+  --text-primary    : #b6b6b6;
+  --text-secondary  : #ececec;
+  --bg-primary      : #23232e;
+  --bg-secondary    : #141418;
+  --transition-speed: 600ms;
+}
 
-  /******
+/*
+Scrollbar
+*/
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
+
+p,
+h2 {
+  margin: 0;
+}
+
+label {
+  margin   : 0.3em;
+  font-size: 1.2rem;
+}
+
+/******
     Buttons
   ******/
-  
-  input {
-    width: 20rem;
-    height: 2rem;
-    font-size: 15px;
-    padding: 1em;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.24);
-  }
-  input:hover {
-    background-color: rgba(214, 214, 214, 0.904);
-  }
 
-  button {
-    margin: 2em;
-    padding: 1em;
-    border-radius: 5px;
-    box-shadow: 3px 3px rgba(0, 0, 0, 0.274);
-  }
+input {
+  width     : 20rem;
+  height    : 2rem;
+  font-size : 15px;
+  padding   : 1em;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.24);
+}
 
-  .button:active {
-    transform: translateY(4px);
-  }
-  
-  .phaser {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+input:hover {
+  background-color: rgba(214, 214, 214, 0.904);
+}
+
+button {
+  margin       : 2em;
+  padding      : 1em;
+  border-radius: 5px;
+  box-shadow   : 3px 3px rgba(0, 0, 0, 0.274);
+}
+
+.button:active {
+  transform: translateY(4px);
+}
+
+.phaser {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+}
