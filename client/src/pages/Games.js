@@ -13,10 +13,6 @@ const Games = () => {
 
     //______________________________Functions__________________________________
 
-    const goHome = () => {
-        history.push('/Home')
-    }
-
     // SetLocalStorage of game info (create row if not exist)
     const goFlappy = () => {
         const id = 1
@@ -54,26 +50,28 @@ const Games = () => {
         if (response.data[0]) localStorage.setItem("record", JSON.stringify(response.data));
         else localStorage.setItem("record", 0);
     })
-    
+
     //_______________________________Return___________________________________
 
     return (
-        <div className="games">
+        <>
             <Navigation />
-            <button onClick={goHome}>Back to Home</button>
-            <div className="gamesContent">
-                <div className="jeu1">
-                    <h3 id="g1">Flappy Img</h3>
-                    <p id="desc1">Similar to the famous Flappy bird...</p>
-                    <button id="b1" onClick={goFlappy}>Play Flappy Holbie</button>
+            <div className="games">
+                <div className="game">
+                    <div className="holbie img"></div>
+                    <h2>Flappy Holbie</h2>
+                    <p>Similar to the famous Flappy bird game, you need to get through pipe holes as much as possible with simple clicks to make your holbie fly !</p>
+                    <a href="" onClick={goFlappy}><span>Play</span></a>
                 </div>
-                <div className="jeu2">
-                    <h3>Snake Img</h3>
-                    <p>Similar to the famous 3310 snake...</p>
-                    <button id="b1" onClick={goSnake}>Play Snake</button> 
+                <div className="game">
+                    <div className="snake img"></div>
+                    <h2>Snake</h2>
+                    <p>Similar to the famous Nokia 3310 snake game, the goal is to get as much as food as possible while trying to not eating your tail that grows as you get food.</p>
+                    <p>Tips: Be careful, the snake speeds up every 5 food...</p>
+                    <a href="" onClick={goSnake}><span>Play</span></a>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

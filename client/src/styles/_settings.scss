@@ -9,12 +9,19 @@
 }
 
 :root {
-  font-family       : 'Open Sans';
-  --text-primary    : #b6b6b6;
-  --text-secondary  : #ececec;
-  --bg-primary      : #370617;
-  --bg-secondary    : #03071E;
-  --transition-speed: 600ms;
+  font-family        : 'Open Sans';
+  --text-primary     : #b6b6b6;
+  --text-secondary   : #ececec;
+  --special-primary  : #FFBA08;
+  --special-secondary: #e85d04;
+  --bg-primary       : #370617;
+  --bg-secondary     : #03071E;
+  --transition-speed : 600ms;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color           : var(--text-primary);
 }
 
 /*
@@ -26,11 +33,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: #1e1e24;
+  background: var(--bg-secondary);
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: var(--special-primary);
 }
 
 p,

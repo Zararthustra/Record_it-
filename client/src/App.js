@@ -6,6 +6,7 @@ import {
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Logout from './pages/Logout';
 import SignUp from './pages/Signup';
 import Records from './pages/Records';
 import Profile from './pages/Profile';
@@ -20,6 +21,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Login} />
+            <Route path="/Logout" exact component={Logout} />
             <Route path="/Home" component={Home} />
             <Route path="/SignUp" component={SignUp} />
             <Route path="/Profile" component={Profile} />

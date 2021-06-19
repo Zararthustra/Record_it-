@@ -24,9 +24,15 @@ app.post('/create', (req, res) => {
     const name = req.body.name;
     const password = req.body.password;
 
-    db.user.create({
-        name: name,
-        password: password
+    db.user.findOrCreate({
+        where: {
+            name: name,
+            password: password
+        },
+        defaults: {
+            name: name,
+            password: password
+        }
     }).then(submitedUsers => res.send(submitedUsers))
 })
 

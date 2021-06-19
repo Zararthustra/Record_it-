@@ -2,3 +2,41 @@
     @include verticalCenter;
     flex-direction: column;
 }
+
+#phrase {
+    margin-top: 3em;
+}
+
+.username {
+    color  : var(--special-secondary);
+    padding: 2em;
+}
+
+.Home .letter {
+    color       : var(--special-primary);
+    padding-left: 0.5em;
+}
+
+h1 {
+    display       : flex;
+    letter-spacing: 0.3ch;
+    flex-direction: row;
+}
+
+.global {
+    margin        : 1em;
+    display       : flex;
+    flex-wrap     : wrap;
+    gap           : 3em;
+    flex-direction: column;
+    align-items   : center;
+}
+
+/*
+TABLE
+*/
+header {
+    margin    : 1em;
+    color     : var(--special-primary);
+    text-align: center;
+}

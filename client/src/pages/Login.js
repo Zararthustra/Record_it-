@@ -2,8 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Axios from 'axios'
-import Navigation from '../components/Navigation';
-
+import $ from 'jquery';
 
 
 const Login = () => {
@@ -18,9 +17,16 @@ const Login = () => {
 
     //______________________________Functions__________________________________
 
+    const goSignup = () => {
+        history.push('/Signup')
+    }
+    const goLogin = () => {
+        setLoginStatus()
+    }
     const redirect = () => {
         history.push('/Home')
     }
+
 
     // Check user info,
     // setLocalStorage if success, otherwise throw error
@@ -35,26 +41,48 @@ const Login = () => {
                 localStorage.setItem("username", response.data[0].name)
                 localStorage.setItem("password", response.data[0].password)
                 setLoginStatus(
-                    <div>
+                    <div className="login">
+                        <div class="emoji  emoji--yay">
+                            <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__mouth"></div>
+                            </div>
+                        </div>
                         <h1>Welcome back {name} !</h1>
-                        <button onClick={redirect}>Go to homepage</button>
+                        <button onClick={redirect}>Come in !</button>
                     </div>)
             } else {
                 setLoginStatus(
-                    <div>
-                        <h1>No user named "{name}" or wrong password !</h1>
+                    <div className="login">
+                        <div class="emoji  emoji--wow">
+                            <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__eyes"></div>
+                                <div class="emoji__mouth"></div>
+                            </div>
+                        </div>
+                        <h1>No user named '{name}' or wrong password !</h1>
+                        <button onClick={goLogin}>Try again</button>
+                        <button onClick={goSignup}>Signup</button>
                     </div>)
             }
         })
     }
 
+    //replace a letter ("i" by "!") to change its color
+    if (!loginStatus) {
+        $(document).ready(function () {
+            const text = $("#phrase").html().replace(/I/, " <h1 class='letter'> !</h1>");
+            $("#phrase").html(text)
+        });
+    }
+
     //_______________________________Return___________________________________
 
-    return (
-        <div className="login">
-            <Navigation />
-            <div className="loginContent">
-                <h1>LOGIN</h1>
+    if (!loginStatus) {
+        return (
+            <div className="login">
+                <h1 id="phrase">LOGIN</h1>
                 <h1>{loginStatus}</h1>
                 <div id="name">
                     <label>Name </label>
@@ -70,10 +98,15 @@ const Login = () => {
                     }}
                     />
                 </div>
-                <button onClick={login}>Log in</button>
+                <div className="buttons">
+                    <button onClick={login}>Log in</button>
+                    <button onClick={goSignup}>Sign Up</button>
+                </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (<div>{loginStatus}</div>)
+    }
 }
 
 export default Login;

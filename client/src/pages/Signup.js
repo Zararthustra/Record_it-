@@ -1,113 +1,105 @@
 import React from 'react';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import { useState } from "react";
-import Navigation from '../components/Navigation';
+import $ from 'jquery';
 
 
 
 const Signup = () => {
-    
+
     //______________________________Variables__________________________________
 
+    let history = useHistory();
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [signUpStatus, setSignUpStatus] = useState('')
 
     //______________________________Functions__________________________________
 
+    const goLogin = () => {
+        history.push('/')
+    }
+    const goHome = () => {
+        history.push('/Home')
+    }
+
     const addUser = () => {
         Axios.post('http://localhost:3001/create', {
             name: name,
             password: password
-        }).then(() => {
-            console.log("Insertion success")
-            setSignUpStatus(
-                <div>
-                    <h1>Account created !</h1>
-                    <a href="http://localhost:3000/">Login here</a>
-                </div>)
+        }).then((res) => {
+            if (res.data[1]) {
+                setSignUpStatus(
+                    <div className="signup">
+                        <div class="emoji  emoji--yay">
+                            <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__mouth"></div>
+                            </div>
+                        </div>
+                        <h1>Account created successfully!</h1>
+                        <button onClick={goHome}>Let me in !</button>
+                    </div>)
+            } else {
+                setSignUpStatus(
+                    <div className="signup">
+                        <div class="emoji  emoji--wow">
+                            <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__eyes"></div>
+                                <div class="emoji__mouth"></div>
+                            </div>
+                        </div>
+                        <h1>This account already exists !</h1>
+                        <button onClick={goLogin}>Login here</button>
+
+                    </div>
+                )
+            }
         })
     }
 
-    //_______________________________Return___________________________________
+    //replace a letter ("i" by "!") to change its color
+    if (!signUpStatus) {
+        $(document).ready(function () {
+            const text = $("#phrase").html().replace(/I/, " <h1 class='letter'> !</h1>");
+            $("#phrase").html(text)
+        });
+    }
 
-    return (
-        <div className="singUp">
-            <Navigation />
-            <div className="signUpContent">
-                <h1>SIGNUP</h1>
-                <div id="name">
-                    <label>Name </label>
-                    <input type="text" onChange={(event) => {
-                        setName(event.target.value)
-                    }}
-                    />
-                </div>
-                <div id="password">
-                    <label>Password </label>
-                    <input type="text" onChange={(event) => {
-                        setPassword(event.target.value)
-                    }}
-                    />
-                </div>
-                <button onClick={addUser}>Create account</button>
-            </div>
-            {/* <div className="users">
-                <button onClick={getUsers}>Show users</button>
-                {usersList.map((value, key) => {
-                    return <div className="user">
-                        <h2>id:</h2>
-                        <p>{value.id}</p>
-                        <h2>Name:</h2>
-                        <p>{value.name}</p>
-                        <h2>Password:</h2>
-                        <p>{value.password}</p>
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="update name..."
-                                onChange={(event) => {
-                                    setNewName(event.target.value)
-                                }} />
-                            <button onClick={() => {
-                                updateUser(value.id)
-                            }}>
-                                Update</button>
-                            <button onClick={() => { deleteUser(value.id) }}>Delete</button>
-                        </div>
+    //_______________________________Return___________________________________
+    if (!signUpStatus) {
+        return (
+            <>
+                <div className="signup">
+                    <h1 id="phrase">SIGNUP</h1>
+                    <h1>{signUpStatus}</h1>
+                    <div id="name">
+                        <label>Name </label>
+                        <input type="text" onChange={(event) => {
+                            setName(event.target.value)
+                        }}
+                        />
                     </div>
-                })}
-            </div> */}
-            {/* <div className="users">
-                <label>Find User by id</label>
-                <input type="text" onChange={(event) => {
-                    setUser(event.target.value)
-                }}
-                />
-                <button onClick={getOne}>Get user by id</button>
-                {userObject.map((value) => {
-                    return <div className="user">
-                        <p>id :{value.id}</p>
-                        <p>Name: {value.name}</p>
-                        <p>Password: {value.password}</p>
+                    <div id="password">
+                        <label>Password </label>
+                        <input type="text" onChange={(event) => {
+                            setPassword(event.target.value)
+                        }}
+                        />
                     </div>
-                })}
-            </div> */}
-                {/* <div>{signUpStatus}</div>
-                <label>Name </label>
-                <input type="text" onChange={(event) => {
-                    setName(event.target.value)
-                }}
-                />
-                <label>Password </label>
-                <input type="text" onChange={(event) => {
-                    setPassword(event.target.value)
-                }}
-                />
-                <button onClick={addUser}>Create account</button>
-            </div> */}
-        </div>
-    );
+                    <div className="buttons">
+                        <button onClick={addUser}>Create account</button>
+                        <button onClick={goLogin}>Login page</button>
+                    </div>
+                </div>
+
+            </>
+        );
+    } else {
+        return (<div>{signUpStatus}</div>)
+    }
 }
 
 export default Signup;
