@@ -20,6 +20,9 @@ const Login = () => {
     const goSignup = () => {
         history.push('/Signup')
     }
+    const goLogin = () => {
+        setLoginStatus()
+    }
     const redirect = () => {
         history.push('/Home')
     }
@@ -39,49 +42,71 @@ const Login = () => {
                 localStorage.setItem("password", response.data[0].password)
                 setLoginStatus(
                     <div className="login">
+                        <div class="emoji  emoji--yay">
+                            <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__mouth"></div>
+                            </div>
+                        </div>
                         <h1>Welcome back {name} !</h1>
-                        <button onClick={redirect}>Go to homepage</button>
+                        <button onClick={redirect}>Come in !</button>
                     </div>)
             } else {
                 setLoginStatus(
                     <div className="login">
-                        <h1>No user named "{name}" or wrong password !</h1>
+                        <div class="emoji  emoji--wow">
+                            <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__eyes"></div>
+                                <div class="emoji__mouth"></div>
+                            </div>
+                        </div>
+                        <h1>No user named '{name}' or wrong password !</h1>
+                        <button onClick={goLogin}>Try again</button>
+                        <button onClick={goSignup}>Signup</button>
                     </div>)
             }
         })
     }
 
     //replace a letter ("i" by "!") to change its color
-    $(document).ready(function () {
-        const text = $("#phrase").html().replace(/I/, " <h1 class='letter'> !</h1>");
-        $("#phrase").html(text)
-    });
+    if (!loginStatus) {
+        $(document).ready(function () {
+            const text = $("#phrase").html().replace(/I/, " <h1 class='letter'> !</h1>");
+            $("#phrase").html(text)
+        });
+    }
+
     //_______________________________Return___________________________________
 
-    return (
-        <div className="login">
-            <h1 id="phrase">LOGIN</h1>
-            <h1>{loginStatus}</h1>
-            <div id="name">
-                <label>Name </label>
-                <input type="text" onChange={(event) => {
-                    setName(event.target.value)
-                }}
-                />
+    if (!loginStatus) {
+        return (
+            <div className="login">
+                <h1 id="phrase">LOGIN</h1>
+                <h1>{loginStatus}</h1>
+                <div id="name">
+                    <label>Name </label>
+                    <input type="text" onChange={(event) => {
+                        setName(event.target.value)
+                    }}
+                    />
+                </div>
+                <div id="password">
+                    <label>Password </label>
+                    <input type="password" onChange={(event) => {
+                        setPassword(event.target.value)
+                    }}
+                    />
+                </div>
+                <div className="buttons">
+                    <button onClick={login}>Log in</button>
+                    <button onClick={goSignup}>Sign Up</button>
+                </div>
             </div>
-            <div id="password">
-                <label>Password </label>
-                <input type="password" onChange={(event) => {
-                    setPassword(event.target.value)
-                }}
-                />
-            </div>
-            <div className="buttons">
-                <button onClick={login}>Log in</button>
-                <button onClick={goSignup}>Sign Up</button>
-            </div>
-        </div>
-    );
+        );
+    } else {
+        return (<div>{loginStatus}</div>)
+    }
 }
 
 export default Login;

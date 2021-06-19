@@ -93,6 +93,8 @@ class Records extends Component {
             }
         }
 
+        //_______________________________Return___________________________________
+
         if (this.state.showMe === true) {
             return (
                 <>
@@ -221,13 +223,6 @@ class Records extends Component {
                 </>
             )
         }
-
-        //_______________________________Return___________________________________
-        return (
-            <div className="records">
-                <h1>Records</h1>
-            </div>
-        )
     }
 }
 

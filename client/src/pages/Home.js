@@ -20,12 +20,11 @@ const Home = () => {
   //_______________________________Return___________________________________
 
   return (
-    <body>
+    <>
       <Navigation />
       <div className="Home">
         <h1 id="phrase">RECORD  i T</h1>
         <h2 className="username">{username}</h2>
-
         <div className="global">
           <div className="myglobalscore">
             <header><h2>My global score</h2></header>
@@ -120,7 +119,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </body>
+    </>
   );
 };
 
