@@ -67,7 +67,7 @@ const Games = () => {
                 <div className="game">
                     <div className="snake img"></div>
                     <h2>Snake</h2>
-                    <p>Similar to the famous Nokia 3310 snake game, the goal is to get as much as food as possible while trying to not eating your tail that grows as you get food.</p>
+                    <p>Similar to the famous Nokia 3310 snake game, the goal is to get as much food as possible while trying to not eating your tail that grows as you get fed.</p>
                     <p className="devicered">Smartphone/Tablet</p>
                     <a href="" onClick={goSnake}><span>Play</span></a>
                 </div>

@@ -9,6 +9,45 @@ const cors = require('cors')
 router.use(express.json());
 router.use(cors());
 
+//______________________________GLOBAL Methods___________________________
+
+// Add or update a new global score
+router.put("/putGlobal", (req, res) => {
+  db.global.findOrCreate({
+    where: {
+      user_id: req.body.user_id
+    },
+    defaults: {
+      global: req.body.global,
+      user_id: req.body.user_id,
+      user_name: req.body.user_name
+    }
+  }).then(() => {
+    db.global.update({
+      global: req.body.global
+    }, {
+      where: {
+        global: {
+          [Op.ne]: req.body.global
+        },
+        user_id: req.body.user_id
+      }
+    }
+    )
+  })
+});
+
+// GET all Global scores
+router.get("/globals", (req, res) => {
+  db.global.findAll({
+    order: [
+      ['global', 'DESC']
+    ]
+  }).then(function (users) {
+    res.json(users);
+  });
+});
+
 //______________________________USER Methods___________________________
 
 // GET all Users

@@ -3,9 +3,10 @@ import React, { Component } from 'react'
 import { IonPhaser } from '@ion-phaser/react'
 import snakegame from '../phaser/snakeCode'
 import snakestart from '../phaser/snakeStart'
+import Game from '../components/Game';
 
 
-class Game extends Component {
+class PhaserGame extends Component {
     state = {
         initialize: true,
         game: {
@@ -13,20 +14,18 @@ class Game extends Component {
             height: 480,
             type: Phaser.AUTO,
             backgroundColor: '#fff',
-            scene: [ snakestart, snakegame ]
+            scene: [snakestart, snakegame]
         }
     }
 
     render() {
 
         const { initialize, game } = this.state
-        
+
         return (
             <div>
                 <div className="phaser">
-                    <h1>
-                        <a href="http://localhost:3000/Home">GO BACK HOME</a>
-                    </h1>
+                    <Game />
                     <IonPhaser game={game} initialize={initialize} />
                 </div>
             </div>
@@ -34,4 +33,4 @@ class Game extends Component {
     }
 }
 
-export default Game;
+export default PhaserGame;

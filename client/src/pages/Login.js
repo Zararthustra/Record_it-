@@ -49,7 +49,7 @@ const Login = () => {
                             </div>
                         </div>
                         <h1>Welcome back {name} !</h1>
-                        <button onClick={redirect}>Come in !</button>
+                        <button onClick={redirect} className="raise">Come in !</button>
                     </div>)
             } else {
                 setLoginStatus(
@@ -63,8 +63,8 @@ const Login = () => {
                         </div>
                         <h1>No user named '{name}' or wrong password !</h1>
                         <div className="buttons">
-                            <button onClick={goLogin}>Try again</button>
-                            <button onClick={goSignup}>Signup</button>
+                            <button onClick={goLogin} className="raise">Try again</button>
+                            <button onClick={goSignup} className="raise">Signup</button>
                         </div>
                     </div>)
             }
@@ -101,8 +101,8 @@ const Login = () => {
                     />
                 </div>
                 <div className="buttons">
-                    <button onClick={login}>Log in</button>
-                    <button onClick={goSignup}>Sign Up</button>
+                    <button onClick={login} className="raise">Log in</button>
+                    <button onClick={goSignup} className="raise">Sign Up</button>
                 </div>
             </div>
         );

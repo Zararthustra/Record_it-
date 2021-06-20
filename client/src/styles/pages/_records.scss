@@ -26,12 +26,17 @@ TABLE
     margin-bottom: 2em;
     text-align   : center;
     color        : var(--text-primary);
+}
 
+.myrow {
+    color: var(--special-secondary);
+    font-weight: bolder;
 }
 
 table {
     width: 100%;
     color: var(--text-secondary);
+    text-align: center;
 }
 
 /*

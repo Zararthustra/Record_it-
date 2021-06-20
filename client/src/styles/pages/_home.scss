@@ -5,18 +5,36 @@
     align-items    : center;
     justify-content: center;
 }
-
+.Home .letter {
+    color       : var(--special-primary);
+    padding-left: 0.5em;
+}
 #phrase {
     margin-top: 3em;
 }
 
-.username {
-    color  : var(--special-secondary);
-    padding: 2em;
+.globaltitle {
+    color  : var(--special-primary);
+    margin-top: 3em;
+    text-transform: uppercase;
+}
+
+.globalinfo {
+    display: flex;
+    gap: 1em;
+    color: var(--text-secondary);
+    margin-bottom: 3em;
+    font-style: italic;
+}
+
+h1 {
+    display       : flex;
+    letter-spacing: 0.3ch;
+    flex-direction: row;
 }
 
 /*
-TABLES
+Global
 */
 .global {
     display        : flex;
@@ -40,6 +58,12 @@ TABLES
     }
 }
 
+.globalscore {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 .myglobalscore h1 {
     justify-content: center;
     color          : var(--special-secondary);
@@ -50,22 +74,22 @@ TABLES
     align-items: center;
 }
 
-.top p {}
-
 .ptop {
     display       : flex;
     flex-direction: column;
 }
 
-.Home .letter {
-    color       : var(--special-primary);
-    padding-left: 0.5em;
+th {
+    font-size: 1.5em;
 }
 
-h1 {
-    display       : flex;
-    letter-spacing: 0.3ch;
-    flex-direction: row;
+.globalrow {
+    margin: 1em;
+}
+.myglobalrow {
+    color: var(--special-secondary);
+    margin: 1em;
+    font-weight: bolder;
 }
 
 header {

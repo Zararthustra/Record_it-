@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import Axios from 'axios';
 import $ from 'jquery';
 
-let globalPerso = 0
+
 class Home extends Component {
 
   //______________________________Constructor__________________________________
@@ -12,12 +12,15 @@ class Home extends Component {
     super(props);
 
     this.state = {
+      globalPerso: 0,
+      globals: [],
       topFlappyRecords: [],
       topSnakeRecords: [],
       flappyRecords: [],
       snakeRecords: [],
       showMe: true,
       username: localStorage.getItem("username"),
+      userid: localStorage.getItem("userid"),
       flappy1: "",
       flappy2: "",
       flappy3: "",
@@ -30,6 +33,8 @@ class Home extends Component {
   //______________________________Functions__________________________________
 
   async componentDidMount() {
+
+    //______________________________GET TOPS__________________________________
 
     const getFlappyTop =
       await Axios.post('http://localhost:3001/apiroutes/topGameRecords', {
@@ -60,8 +65,33 @@ class Home extends Component {
     const top3Snake = getSnakeTop.data[2]
     const snake3 = top3Snake.user_name === this.state.username ? 5 : 0
     this.setState({ snake3: snake3 })
-  }
 
+    //Sum up global score
+    const s = this.state
+    const globalPerso =
+      s.flappy1
+      + s.flappy2
+      + s.flappy3
+      + s.snake1
+      + s.snake2
+      + s.snake3
+    this.setState({ globalPerso: globalPerso })
+
+    //______________________________PUT/GET GLOBAL__________________________________
+
+    const getGlobals =
+      await Axios.get('http://localhost:3001/apiroutes/globals')
+    this.setState({ globals: getGlobals.data })
+    console.log(this.state.globals, "\n ^= Globals");
+
+    const putGlobal =
+      await Axios.put('http://localhost:3001/apiroutes/putGlobal', {
+        global: this.state.globalPerso,
+        user_id: this.state.userid,
+        user_name: this.state.username
+      }).then(res => console.log(res, "puuuuuut"))
+
+  }
   //_______________________________Render___________________________________
 
   render() {
@@ -70,39 +100,44 @@ class Home extends Component {
       const text = $("#phrase").html().replace(/i/, " <h1 class='letter'> !</h1>");
       $("#phrase").html(text)
     });
-
-    //Sum up global score
-    const s = this.state
-    globalPerso =
-      s.flappy1
-      + s.flappy2
-      + s.flappy3
-      + s.snake1
-      + s.snake2
-      + s.snake3
-
+    
+    const globals = this.state.globals.map((global) => {
+      if (global.user_name === this.state.username) {
+        return <div key={global.id} className="myglobalrow">{global.global}</div>
+      } else {
+        return <div key={global.id} className="globalrow">{global.global}</div>
+      }
+  })
+    const usersGlobals = this.state.globals.map((userGlobal) => {
+      if (userGlobal.user_name === this.state.username) {
+        return <div key={userGlobal.id} className="myglobalrow">{userGlobal.user_name}</div>
+      } else {
+        return <div key={userGlobal.id} className="globalrow">{userGlobal.user_name}</div>
+      }
+    })
 
     return (
       <>
         <Navigation />
         <div className="Home">
           <h1 id="phrase">RECORD  iT</h1>
-          <h2 className="username">{this.state.username}</h2>
+          <h2 className="globaltitle">Global Scores</h2>
+          <div className="globalinfo">
+            <p>Top1 = 10 pts</p>
+            <p>Top2 = 7 pts</p>
+            <p>Top3 = 5 pts</p>
+          </div>
           <div className="global">
 
             <div className="myglobalscore">
               <header>
                 <h2>My global score</h2>
               </header>
-              <h1>{globalPerso ? globalPerso : 0}</h1>
-              <p>Scale:</p>
-              <p>Top1 = 10 pts</p>
-              <p>Top2 = 7 pts</p>
-              <p>Top3 = 5 pts</p>
+              <h1>{this.state.globalPerso ? this.state.globalPerso : 0}</h1>
             </div>
 
             <div className="globalscore">
-              <header><h2>Top global score</h2></header>
+              <header><h2>Top global scores</h2></header>
               <table>
                 <thead>
                   <tr>
@@ -113,50 +148,10 @@ class Home extends Component {
                 <tbody>
                   <tr>
                     <td>
-                      Samy45
+                      {usersGlobals}
                     </td>
                     <td>
-                      56 pts
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      dragonkiller
-                    </td>
-                    <td>
-                      44 pts
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      bgdu38
-                    </td>
-                    <td>
-                      26 pts
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Samy45
-                    </td>
-                    <td>
-                      56 pts
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      dragonkiller
-                    </td>
-                    <td>
-                      44 pts
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      bgdu38
-                    </td>
-                    <td>
-                      26 pts
+                      {globals}
                     </td>
                   </tr>
                 </tbody>
