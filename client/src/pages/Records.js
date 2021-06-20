@@ -61,14 +61,14 @@ class Records extends Component {
         const topFlappyRecords = this.state.topFlappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div>})
         const topFlappyUsers = this.state.topFlappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div>})
         const topFlappyDate = this.state.topFlappyRecords.map((record) => {
-            const cleanDate = new Date(record.createdAt)
+            const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>}
         )
         // ALL FLAPPY
         const flappyRecords = this.state.flappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div>})
         const flappyUsers = this.state.flappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div>})
         const flappyDate = this.state.flappyRecords.map((record) => {
-            const cleanDate = new Date(record.createdAt)
+            const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>}
         )
 
@@ -76,14 +76,14 @@ class Records extends Component {
         const topSnakeRecords = this.state.topSnakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div>})
         const topSnakeUsers = this.state.topSnakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div>})
         const topSnakeDate = this.state.topSnakeRecords.map((record) => {
-            const cleanDate = new Date(record.createdAt)
+            const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>}
         )
         // ALL SNAKE
         const snakeRecords = this.state.snakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div>})
         const snakeUsers = this.state.snakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div>})
         const snakeDate = this.state.snakeRecords.map((record) => {
-            const cleanDate = new Date(record.createdAt)
+            const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>}
         )
 

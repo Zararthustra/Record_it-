@@ -26,6 +26,7 @@ function getRecord() {
         game_id: localStorage.getItem("gameid"),
     }).then((response) => {
         if (response.data[0]) Record = response.data[0].record
+        else Record = localStorage.getItem("snakerecord") ? localStorage.getItem("snakerecord") : 0
     })
 }
 
@@ -196,7 +197,7 @@ class snakegame extends Phaser.Scene {
 
                     food.eat();
 
-                    //  For every 5 items of food eaten we'll increase the snake speed a little
+                    //  every 5 food (from 20), increase the snake speed
                     if (this.speed > 20 && food.total % 5 === 0) {
                         this.speed -= 5;
                     }
