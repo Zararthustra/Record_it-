@@ -62,8 +62,10 @@ const Login = () => {
                             </div>
                         </div>
                         <h1>No user named '{name}' or wrong password !</h1>
-                        <button onClick={goLogin}>Try again</button>
-                        <button onClick={goSignup}>Signup</button>
+                        <div className="buttons">
+                            <button onClick={goLogin}>Try again</button>
+                            <button onClick={goSignup}>Signup</button>
+                        </div>
                     </div>)
             }
         })

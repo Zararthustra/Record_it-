@@ -36,10 +36,6 @@
     color     : var(--text-secondary);
 }
 
-.nav-item:last-child {
-    margin-top: auto;
-}
-
 .link-text {
     display    : none;
     margin-left: 1rem;
@@ -100,10 +96,19 @@
         height: 5rem;
         justify-content: center;
         display: block;
+        z-index: 2;
     }
 
     .logo {
-        display: none;
+        font-weight   : bold;
+        text-transform: uppercase;
+        margin-bottom : 0;
+        text-align    : center;
+        color         : var(--text-secondary);
+        background    : none;
+        font-size     : 1.5rem;
+        letter-spacing: 0.3ch;
+        width         : 100%;
     }
 
     .navbar-nav {

@@ -1,8 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Logout = () => {
+    
     //clear local user info
     localStorage.clear();
+    
+    let history = useHistory();
+    const goLogin = () => {
+        history.push('/')
+    }
 
     return (
         <div className="logout">
@@ -14,6 +21,7 @@ const Logout = () => {
                     <div class="emoji__mouth"></div>
                 </div>
             </div>
+            <button onClick={goLogin}>Login</button>
         </div>
     )
 }

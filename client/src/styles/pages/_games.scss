@@ -6,8 +6,13 @@
     text-align: center;
 }
 
+p {
+    max-width: 35ch;
+}
+
 h2 {
-    color: var(--special-primary);
+    color : var(--special-primary);
+    margin: 0.5em;
 }
 
 .game {
@@ -17,11 +22,13 @@ h2 {
     flex-wrap     : wrap;
     gap           : 1em;
     width         : 45ch;
+    margin        : 3em 0 3em 0;
 }
 
 .img {
-    width : 10em;
-    height: 10em;
+    width        : 10em;
+    height       : 10em;
+    margin-bottom: 1em;
 }
 
 .holbie {
@@ -36,6 +43,14 @@ h2 {
     background-position: center;
     background-repeat  : no-repeat;
     background-size    : contain;
+}
+
+.devicered {
+    color: rgba(255, 0, 0, 0.678);
+}
+
+.devicegreen {
+    color: rgba(7, 223, 0, 0.479);
 }
 
 /*

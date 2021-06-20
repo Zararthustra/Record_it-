@@ -1,6 +1,9 @@
 .Home {
     @include verticalCenter;
-    flex-direction: column;
+    flex-direction : column;
+    flex-wrap      : wrap;
+    align-items    : center;
+    justify-content: center;
 }
 
 #phrase {
@@ -10,6 +13,48 @@
 .username {
     color  : var(--special-secondary);
     padding: 2em;
+}
+
+/*
+TABLES
+*/
+.global {
+    display        : flex;
+    justify-content: space-around;
+    flex-wrap      : wrap;
+    width          : 70vw;
+    margin-bottom  : 5em;
+}
+
+.myglobalscore {
+    display       : flex;
+    align-items   : center;
+    text-align    : center;
+    flex-direction: column;
+    color         : var(--text-secondary);
+    gap           : 1em;
+
+    div {
+
+        gap: 3em;
+    }
+}
+
+.myglobalscore h1 {
+    justify-content: center;
+    color          : var(--special-secondary);
+}
+
+.top {
+    display    : flex;
+    align-items: center;
+}
+
+.top p {}
+
+.ptop {
+    display       : flex;
+    flex-direction: column;
 }
 
 .Home .letter {
@@ -23,19 +68,8 @@ h1 {
     flex-direction: row;
 }
 
-.global {
-    margin        : 1em;
-    display       : flex;
-    flex-wrap     : wrap;
-    gap           : 3em;
-    flex-direction: column;
-    align-items   : center;
-}
-
-/*
-TABLE
-*/
 header {
+    top       : 0;
     margin    : 1em;
     color     : var(--special-primary);
     text-align: center;

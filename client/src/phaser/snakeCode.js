@@ -6,11 +6,12 @@ import grass from './assets/images/grass.png'
 import Phaser from "phaser";
 
 
-    //______________________________Variables__________________________________
+//______________________________Variables__________________________________
 
 let snake;
 let food;
 let cursors;
+let Record;
 
 let UP = 0;
 let DOWN = 1;
@@ -18,10 +19,21 @@ let LEFT = 2;
 let RIGHT = 3;
 
 
+// Check for previous record
+function getRecord() {
+    Axios.post('http://localhost:3001/apiroutes/getRecord', {
+        user_id: localStorage.getItem("userid"),
+        game_id: localStorage.getItem("gameid"),
+    }).then((response) => {
+        if (response.data[0]) Record = response.data[0].record
+    })
+}
+
 class snakegame extends Phaser.Scene {
 
     constructor() {
         super('snakegame');
+        getRecord()
     }
 
     //_______________________________Preload___________________________________
@@ -38,6 +50,8 @@ class snakegame extends Phaser.Scene {
     create() {
 
         this.add.image(320, 260, 'grass').setScale(1);
+        this.scoreText = this.add.text(10, 10, "h", { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', fontSize: '30px', color: '#000' });
+
         //Food object
         let Food = new Phaser.Class({
 
@@ -59,41 +73,42 @@ class snakegame extends Phaser.Scene {
 
             eat: function () {
                 this.total++;
+                
             }
-
+            
         });
-
+        
         //Snake object
         let Snake = new Phaser.Class({
-
+            
             initialize:
+            
+            function Snake(scene, x, y) {
+                this.headPosition = new Phaser.Geom.Point(x, y);
+                
+                this.body = scene.add.group();
 
-                function Snake(scene, x, y) {
-                    this.headPosition = new Phaser.Geom.Point(x, y);
-
-                    this.body = scene.add.group();
-
-                    this.head = this.body.create(x * 16, y * 16, 'head').setScale(0.15).setDepth(1);
+                this.head = this.body.create(x * 16, y * 16, 'head').setScale(0.15).setDepth(1);
                     this.head.setOrigin(0);
-
+                    
                     this.alive = true;
-
+                    
                     this.speed = 100;
-
+                    
                     this.moveTime = 0;
-
+                    
                     this.tail = new Phaser.Geom.Point(x, y);
-
+                    
                     this.heading = RIGHT;
                     this.direction = RIGHT;
                 },
-
-            update: function (time) {
-                if (time >= this.moveTime) {
-                    return this.move(time);
-                }
-            },
-
+                
+                update: function (time) {
+                    if (time >= this.moveTime) {
+                        return this.move(time);
+                    }
+                },
+                
             faceLeft: function () {
                 if (this.direction === UP || this.direction === DOWN) {
                     this.heading = LEFT;
@@ -219,8 +234,11 @@ class snakegame extends Phaser.Scene {
     //_______________________________Update___________________________________
 
     update(time, delta) {
+        this.scoreText.text = 'Score: ' + food.total + '\nRecord: ' + Record
+
         if (!snake.alive) {
             const record = food.total;
+            localStorage.setItem("snakerecord", record)
 
             // POST/PUT record in database
             Axios.put('http://localhost:3001/apiroutes/addRecord', {
@@ -232,6 +250,7 @@ class snakegame extends Phaser.Scene {
             }).then(() => {
                 console.log("Insertion success");
             })
+
             this.scene.start('snakestart');
             return;
         }

@@ -2,4 +2,5 @@
     margin-top: 10em;
     @include verticalCenter;
     gap: 3em;
+    flex-direction: column;
 }

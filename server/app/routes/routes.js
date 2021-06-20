@@ -18,11 +18,11 @@ router.get("/users", (req, res) => {
   });
 });
 
-//______________________________RECORD Methods___________________________
+//______________________________GAMES Methods___________________________
 
-// GET all Records of all users
-router.get("/records", (req, res) => {
-  db.record.findAll().then((users) => {
+// GET all Game object
+router.get("/games", (req, res) => {
+  db.game.findAll().then(function (users) {
     res.json(users);
   });
 });
@@ -36,10 +36,20 @@ router.put("/addGame", (req, res) => {
     },
     defaults: {
       id: req.body.id,
-      name: req.body.name
+      name: req.body.name,
     }
   })
 });
+
+//______________________________RECORD Methods___________________________
+
+// GET all Records of all users
+router.get("/records", (req, res) => {
+  db.record.findAll().then((users) => {
+    res.json(users);
+  });
+});
+
 
 // Get TOP3 records of one game
 router.post("/topGameRecords", (req, res) => {
