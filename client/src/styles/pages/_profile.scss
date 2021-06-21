@@ -1,88 +1,22 @@
-.details {
-    border: 1px solid rgba(0, 0, 0, 0.226);
-    border-radius: 10px;
-    margin: 1rem;
-    margin-top: 5rem;
-    padding: 1rem;
-    width: 200px;
-    height: 120px;
-    padding: 0.5rem;
-    display: grid;
-    background-color: #adb5bd9b;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.226);
-}
+.profile {
+    height: 100%;
+    font-family: 'Open Sans';
 
-.performances {
-    background-color: #adb5bd9b;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.226);
-    border: 1px solid rgba(0, 0, 0, 0.226);
-    border-radius: 25px;
-    margin-top: 5rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    height: 300px;
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: 250px 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-        "a a a a"
-        "e f g h"
-        "i j k l";
-
-    .star {
-        color: rgba(255, 255, 0, 0.623);
-    }    
-    h4 {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-    }
-
-    h5 {
-        font-family: 'Courier New', Courier, monospace;
-        border: 1px solid rgba(0, 0, 0, 0.226);
-        width: 150px;
-        height: 3rem;
-        border-radius: 5px;
+    .details {
+        width: 50%;
+        margin: auto;
         display: flex;
-        justify-content: center;
         align-items: center;
-        margin: 0.2rem;
-        padding: 0.5rem;
-        background-color: #ced4da8f;
-    }
-    p {
-        border: 1px solid rgba(0, 0, 0, 0.226);
-        border-radius: 5px;
-        margin: 0.2rem;
-        background-color: #ced4da8f;
-    }
-    #Global_score {
-        grid-area: a;
-    }
-    #Games_played {
-        grid-area: e;
-    }
-    #g1 {
-        grid-area: f;
-    }
-    #g2 {
-        grid-area: g;
-    }
-    #g3 {
-        grid-area: h;
-    }
-    #d1 {
-        grid-area: j;
-        @include verticalCenter;
-    }
-    #d2 {
-        grid-area: k;
-        @include verticalCenter;
-    }
-    #d3 {
-        grid-area: l;
-        @include verticalCenter;
+        flex-direction: column;
+        margin-top: 5%;
+        margin-left: 27.5%;
+
+        h2, h4 {
+            margin: 1rem;
+            color: rgba(255, 255, 255, 0.746);
+        }
+        .star {
+            color: rgba(255, 255, 0, 0.726);
+        }
     }
 }

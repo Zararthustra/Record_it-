@@ -1,85 +1,71 @@
-import React from 'react';
 import Axios from 'axios'
-import { useState } from "react";
-import { useHistory } from 'react-router-dom';
-import Navigation from '../components/Navigation';
+// import Navigation from '../components/Navigation';
 import  { AiFillStar } from 'react-icons/ai';
+import React, { Component } from 'react';
+import Modal from '../components/Modal';
 
 
-const Profile = () => {
+class Profile extends Component {
 
-    let history = useHistory();
-    
-    const userName = localStorage.getItem("username")
-    const [recordObject, setRecordObject] = useState([]);
-    
-    let noRecord = recordObject.length === 0 ? "No record yet, click below to load" : "";
+    constructor(props) {
+        super(props);
 
-    //______________________________Functions__________________________________
-
-    const goHome = () => {
-        history.push('/Home')
+        this.state = {
+            globalScore: [],
+            userName: '',
+            user_id: null,
+            open: false,
+            showMe: true
+        }
     }
+    
+    async componentDidMount() {
 
-    const getRecords = () => {
-        Axios.post('http://localhost:3001/apiroutes/getRecords', {
-            user_id: localStorage.getItem("userid"),
-        }).then((response) => {
-            setRecordObject(response.data);
-        })
-    }
+        const userName = localStorage.getItem('username');
+        this.setState({ userName: userName })
 
+        const globalScore = await Axios.post('http://localhost:3001/apiroutes/getRecord', {
+            user_id: 1,
+            game_id: 1
+        })    
+        this.setState({ globalScore: globalScore.data });
+    };
+    
     //______________________________Return__________________________________
+    
+    render () {
 
-    return (
-        <div className="profile">
-            <Navigation/>
-            <div className="profileContent">
-                <div className="details">
-                    <h6>{userName} Profile</h6>
-                    <h7>Password</h7>
-                    <h7>Games records:</h7>
-                    <h7>Flappy Holbie: flappyrecord</h7>
-                </div>
-                <div className="performances">
-                    <h4 id="Global">
-                        Global Score :
-                    </h4>
-                    <h4 id="score">10 995 <AiFillStar className="star"/>
-                        <AiFillStar className="star"/>  
-                        <AiFillStar className="star"/></h4>
-                    <h4 id="Games_played">Games played :</h4>
-                    <h5 id="g1">Flappy</h5>
-                    <p id="d1">**************</p>
-                    <h5 id="g2">Bird</h5>
-                    <p id="d2">**************</p>
-                    <h5 id="g3">Flappy</h5>
-                    <p id="d3">**************</p>
-                </div>
-            </div>
-            {/* <h1>{userName} Profile</h1>
+    
+        //______________________________Functions__________________________________
+    
+        const globalScore = this.state.globalScore.record;
+        const userName = this.state.userName;
 
-            <div>
-                <header>
-                    <h2>Games records:</h2>
-                </header>
-                {noRecord}
-                {recordObject.map((value) => {
-                    const cleanDate = new Date(value.createdAt)
-                    return <div className="record">
-                        <h2>Game:</h2>
-                        <p>{value.game_name}</p>
-                        <h2>Record:</h2>
-                        <p>{value.record}</p>
-                        <h2>Date:</h2>
-                        <p>{cleanDate.toDateString()}</p>
+        return (
+            <>
+                <div className="profile">
+                    {/* <Navigation/> */}
+                    <div className="profileContent">
+                        <section className="details">
+                            <h2>{userName}</h2>
+                            <h4>Global score: {globalScore} <AiFillStar className="star"/><AiFillStar className="star"/><AiFillStar className="star"/></h4>
+                        </section>
+                        <section className="modifications">
+                            <ul>
+                                <li>
+                                    <button onClick={() => this.setState({ open: true })}>Change password </button>
+                                    <Modal open={this.state.open} onClose={() => this.setState({ open: false })} />
+                                </li>
+                                <li>
+                                    <button>Change Username</button>
+                                </li>
+                            </ul>
+                        </section>
                     </div>
-                })}
-            </div>
-            <button onClick={getRecords}>Load Records</button>
-            <button onClick={goHome}>Back to Home</button> */}
-        </div>
-    )
+                </div>
+            </>
+        )
+    }
 }
 
 export default Profile;
