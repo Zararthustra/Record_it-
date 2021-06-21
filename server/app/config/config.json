@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "siDieuleveut23",
-    "database": "sequelize_test",
+    "password": "viveleschips",
+    "database": "sequelize_db",
     "host": "localhost",
     "dialect": "mysql"
   },
