@@ -9,6 +9,45 @@ const cors = require('cors')
 router.use(express.json());
 router.use(cors());
 
+//______________________________GLOBAL Methods___________________________
+
+// Add or update a new global score
+router.put("/putGlobal", (req, res) => {
+  db.global.findOrCreate({
+    where: {
+      user_id: req.body.user_id
+    },
+    defaults: {
+      global: req.body.global,
+      user_id: req.body.user_id,
+      user_name: req.body.user_name
+    }
+  }).then(() => {
+    db.global.update({
+      global: req.body.global
+    }, {
+      where: {
+        global: {
+          [Op.ne]: req.body.global
+        },
+        user_id: req.body.user_id
+      }
+    }
+    )
+  })
+});
+
+// GET all Global scores
+router.get("/globals", (req, res) => {
+  db.global.findAll({
+    order: [
+      ['global', 'DESC']
+    ]
+  }).then(function (users) {
+    res.json(users);
+  });
+});
+
 //______________________________USER Methods___________________________
 
 // GET all Users
@@ -18,11 +57,11 @@ router.get("/users", (req, res) => {
   });
 });
 
-//______________________________RECORD Methods___________________________
+//______________________________GAMES Methods___________________________
 
-// GET all Records of all users
-router.get("/records", (req, res) => {
-  db.record.findAll().then((users) => {
+// GET all Game object
+router.get("/games", (req, res) => {
+  db.game.findAll().then(function (users) {
     res.json(users);
   });
 });
@@ -36,10 +75,20 @@ router.put("/addGame", (req, res) => {
     },
     defaults: {
       id: req.body.id,
-      name: req.body.name
+      name: req.body.name,
     }
   })
 });
+
+//______________________________RECORD Methods___________________________
+
+// GET all Records of all users
+router.get("/records", (req, res) => {
+  db.record.findAll().then((users) => {
+    res.json(users);
+  });
+});
+
 
 // Get TOP3 records of one game
 router.post("/topGameRecords", (req, res) => {

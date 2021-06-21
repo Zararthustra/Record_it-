@@ -61,13 +61,14 @@ const Games = () => {
                     <div className="holbie img"></div>
                     <h2>Flappy Holbie</h2>
                     <p>Similar to the famous Flappy bird game, you need to get through pipe holes as much as possible with simple clicks to make your holbie fly !</p>
+                    <p className="devicegreen">Smartphone/Tablet</p>
                     <a href="" onClick={goFlappy}><span>Play</span></a>
                 </div>
                 <div className="game">
                     <div className="snake img"></div>
                     <h2>Snake</h2>
-                    <p>Similar to the famous Nokia 3310 snake game, the goal is to get as much as food as possible while trying to not eating your tail that grows as you get food.</p>
-                    <p>Tips: Be careful, the snake speeds up every 5 food...</p>
+                    <p>Similar to the famous Nokia 3310 snake game, the goal is to get as much food as possible while trying to not eating your tail that grows as you get fed.</p>
+                    <p className="devicered">Smartphone/Tablet</p>
                     <a href="" onClick={goSnake}><span>Play</span></a>
                 </div>
             </div>

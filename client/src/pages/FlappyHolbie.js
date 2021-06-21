@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import Phaser from 'phaser';
 import { IonPhaser } from '@ion-phaser/react';
 import flappy from '../phaser/flappyCode';
+import Game from '../components/Game';
 import flappystart from '../phaser/flappyStart';
 
 
-class Game extends Component {
+class PhaserGame extends Component {
     state = {
         initialize: true,
         game: {
@@ -20,7 +21,7 @@ class Game extends Component {
                     debug: false
                 }
             },
-            scene: [ flappystart, flappy ]
+            scene: [flappystart, flappy]
         }
     }
 
@@ -30,9 +31,7 @@ class Game extends Component {
         return (
             <div>
                 <div className="phaser">
-                    <h1>
-                        <a href="http://localhost:3000/Home">GO BACK HOME</a>
-                    </h1>
+                    <Game />
                     <IonPhaser game={game} initialize={initialize} />
                 </div>
             </div>
@@ -40,4 +39,4 @@ class Game extends Component {
     }
 }
 
-export default Game;
+export default PhaserGame;

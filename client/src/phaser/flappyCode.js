@@ -75,7 +75,7 @@ class flappy extends Phaser.Scene {
 
     updateScore(inc) {
         this.score += inc;
-        this.scoreText.text = 'Score: ' + this.score + '\nBest: ' + gameOptions.topScore;
+        this.scoreText.text = 'Score: ' + this.score + '\nRecord: ' + gameOptions.topScore;
     }
 
     placePipes(addScore) {
@@ -144,7 +144,7 @@ class flappy extends Phaser.Scene {
         }).then(() => {
             console.log("Insertion success");
         })
-
+        
         this.scene.start('flappystart');
     }
 }

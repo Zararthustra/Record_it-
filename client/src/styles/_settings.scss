@@ -50,10 +50,6 @@ label {
   font-size: 1.2rem;
 }
 
-/******
-    Buttons
-  ******/
-
 input {
   width     : 20rem;
   height    : 2rem;
@@ -66,20 +62,45 @@ input:hover {
   background-color: rgba(214, 214, 214, 0.904);
 }
 
-button {
-  margin       : 2em;
-  padding      : 1em;
-  border-radius: 5px;
-  box-shadow   : 3px 3px rgba(0, 0, 0, 0.274);
-}
-
-.button:active {
-  transform: translateY(4px);
-}
-
 .phaser {
   display        : flex;
   flex-direction : column;
   justify-content: center;
   align-items    : center;
+}
+
+.gamenav {
+  display: flex;
+  margin : 1em;
+  gap    : 2em;
+}
+
+
+/******
+    Buttons
+  ******/
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--special-secondary);
+  transform : translateY(-0.25em);
+}
+
+button {
+  color     : var(--text-secondary);
+  transition: 0.25s;
+
+  &:hover,
+  &:focus {
+    border-color: var(--special-secondary);
+  }
+}
+
+button {
+  background : none;
+  border     : 2px solid var(--special-primary);
+  font       : inherit;
+  line-height: 1;
+  margin     : 0.5em;
+  padding    : 1em 2em;
 }

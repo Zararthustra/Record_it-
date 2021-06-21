@@ -20,9 +20,6 @@ const Signup = () => {
     const goLogin = () => {
         history.push('/')
     }
-    const goHome = () => {
-        history.push('/Home')
-    }
 
     const addUser = () => {
         Axios.post('http://localhost:3001/create', {
@@ -39,7 +36,7 @@ const Signup = () => {
                             </div>
                         </div>
                         <h1>Account created successfully!</h1>
-                        <button onClick={goHome}>Let me in !</button>
+                        <button onClick={goLogin}>Login</button>
                     </div>)
             } else {
                 setSignUpStatus(

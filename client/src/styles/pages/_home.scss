@@ -1,20 +1,30 @@
 .Home {
     @include verticalCenter;
-    flex-direction: column;
+    flex-direction : column;
+    flex-wrap      : wrap;
+    align-items    : center;
+    justify-content: center;
 }
-
+.Home .letter {
+    color       : var(--special-primary);
+    padding-left: 0.5em;
+}
 #phrase {
     margin-top: 3em;
 }
 
-.username {
-    color  : var(--special-secondary);
-    padding: 2em;
+.globaltitle {
+    color  : var(--special-primary);
+    margin-top: 3em;
+    text-transform: uppercase;
 }
 
-.Home .letter {
-    color       : var(--special-primary);
-    padding-left: 0.5em;
+.globalinfo {
+    display: flex;
+    gap: 1em;
+    color: var(--text-secondary);
+    margin-bottom: 3em;
+    font-style: italic;
 }
 
 h1 {
@@ -23,19 +33,67 @@ h1 {
     flex-direction: row;
 }
 
+/*
+Global
+*/
 .global {
-    margin        : 1em;
-    display       : flex;
-    flex-wrap     : wrap;
-    gap           : 3em;
-    flex-direction: column;
-    align-items   : center;
+    display        : flex;
+    justify-content: space-around;
+    flex-wrap      : wrap;
+    width          : 70vw;
+    margin-bottom  : 5em;
 }
 
-/*
-TABLE
-*/
+.myglobalscore {
+    display       : flex;
+    align-items   : center;
+    text-align    : center;
+    flex-direction: column;
+    color         : var(--text-secondary);
+    gap           : 1em;
+
+    div {
+
+        gap: 3em;
+    }
+}
+
+.globalscore {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.myglobalscore h1 {
+    justify-content: center;
+    color          : var(--special-secondary);
+}
+
+.top {
+    display    : flex;
+    align-items: center;
+}
+
+.ptop {
+    display       : flex;
+    flex-direction: column;
+}
+
+th {
+    font-size: 1.5em;
+}
+
+.globalrow {
+    margin: 1em;
+}
+.myglobalrow {
+    color: var(--special-secondary);
+    margin: 1em;
+    font-weight: bolder;
+}
+
 header {
+    top       : 0;
     margin    : 1em;
     color     : var(--special-primary);
     text-align: center;
