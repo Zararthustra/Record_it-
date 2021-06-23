@@ -26,27 +26,27 @@ class Records extends Component {
         //TOP3 records
         //FLAPPY
         const topFlappyRecords =
-            await Axios.post('http://localhost:3001/apiroutes/topGameRecords', {
+            await Axios.post('/apiroutes/topGameRecords', {
                 game_id: 1 //flappy game_id
             })
         this.setState({ topFlappyRecords: topFlappyRecords.data });        
 
         //SNAKE
         const topSnakeRecords =
-            await Axios.post('http://localhost:3001/apiroutes/topGameRecords', {
+            await Axios.post('/apiroutes/topGameRecords', {
                 game_id: 2 //snake game_id
             })
         this.setState({ topSnakeRecords: topSnakeRecords.data });
 
         //All records
         //FLAPPY
-        const flappyRecords = await Axios.post('http://localhost:3001/apiroutes/gameRecords', {
+        const flappyRecords = await Axios.post('/apiroutes/gameRecords', {
             game_id: 1 //flappy game_id
         })
         this.setState({ flappyRecords: flappyRecords.data });
 
         //SNAKE
-        const snakeRecords = await Axios.post('http://localhost:3001/apiroutes/gameRecords', {
+        const snakeRecords = await Axios.post('/apiroutes/gameRecords', {
             game_id: 2 //snake game_id
         })
         this.setState({ snakeRecords: snakeRecords.data });
@@ -105,7 +105,7 @@ class Records extends Component {
                     <Navigation />
                     <div className="allrecords">
                         <a onClick={switchState}><span>All records</span></a>
-                        <h1>TOP 3</h1>
+                        <h1>TOP 5</h1>
                         <div className="allgametables">
                             <div className="gametable">
                                 <header><h2>Flappy Holbie</h2></header>

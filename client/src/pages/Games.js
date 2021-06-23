@@ -20,7 +20,7 @@ const Games = () => {
         localStorage.setItem("gameid", id)
         localStorage.setItem("gamename", name)
 
-        Axios.put('http://localhost:3001/apiroutes/addGame', {
+        Axios.put('/apiroutes/addGame', {
             name: name,
             id: id
         })
@@ -35,7 +35,7 @@ const Games = () => {
         localStorage.setItem("gameid", id)
         localStorage.setItem("gamename", name)
 
-        Axios.put('http://localhost:3001/apiroutes/addGame', {
+        Axios.put('/apiroutes/addGame', {
             name: name,
             id: id
         })
@@ -44,7 +44,7 @@ const Games = () => {
     }
 
     // Load all personnal records into localstorage
-    Axios.post('http://localhost:3001/apiroutes/getRecords', {
+    Axios.post('/apiroutes/getRecords', {
         user_id: localStorage.getItem("userid"),
     }).then((response) => {
         if (response.data[0]) localStorage.setItem("record", JSON.stringify(response.data));

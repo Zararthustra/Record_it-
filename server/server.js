@@ -4,7 +4,6 @@ const cors = require('cors');
 const app = express()
 const routes = require('./app/routes/routes')
 
-//______________________________SetUp__________________________________
 
 db.sequelize.sync();
 
@@ -16,65 +15,3 @@ app.use("/apiroutes", routes);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-//______________________________USER Methods___________________________
-
-//POST create user
-app.post('/create', (req, res) => {
-    const name = req.body.name;
-    const password = req.body.password;
-
-    db.user.findOrCreate({
-        where: {
-            name: name,
-            password: password
-        },
-        defaults: {
-            name: name,
-            password: password
-        }
-    }).then(submitedUsers => res.send(submitedUsers))
-})
-
-//POST check login
-app.post('/login', (req, res) => {
-    const name = req.body.name;
-    const password = req.body.password;
-
-    db.user.findAll({
-        where: {
-            name: name,
-            password: password
-        }
-    })
-        .then((checkedUser) => {
-            res.send(checkedUser)
-        })
-})
-
-//GET ONE
-app.get("/users/:id", (req, res) => {
-    db.user.findAll({
-        where: {
-            id: req.params.id
-        }
-    }).then(user => res.json(user));
-});
-
-//UPDATE
-app.put('/users/update', (req, res) => {
-    db.user.update(
-        {
-            name: req.body.name
-        },
-        { where: { id: req.body.id } }
-    )
-});
-
-//DELETE
-app.delete('/delete/:id', (req, res) => {
-    const id = req.params.id
-    db.user.destroy({
-        where: { id: id }
-    })
-});

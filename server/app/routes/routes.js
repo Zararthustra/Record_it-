@@ -27,10 +27,10 @@ router.put("/putGlobal", (req, res) => {
       global: req.body.global
     }, {
       where: {
+        user_id: req.body.user_id,
         global: {
           [Op.ne]: req.body.global
-        },
-        user_id: req.body.user_id
+        }
       }
     }
     )
@@ -55,6 +55,66 @@ router.get("/users", (req, res) => {
   db.user.findAll().then(function (users) {
     res.json(users);
   });
+});
+
+//POST create user
+router.post('/create', (req, res) => {
+  const name = req.body.name;
+  const password = req.body.password;
+
+  db.user.findOrCreate({
+      where: {
+          name: name,
+          password: password
+      },
+      defaults: {
+          name: name,
+          password: password
+      }
+  }).then(submitedUsers => res.send(submitedUsers))
+})
+
+//POST check login
+router.post('/login', (req, res) => {
+  const name = req.body.name;
+  const password = req.body.password;
+
+  db.user.findAll({
+      where: {
+          name: name,
+          password: password
+      }
+  })
+      .then((checkedUser) => {
+          res.send(checkedUser)
+      })
+})
+
+//GET ONE
+router.get("/users/:id", (req, res) => {
+  db.user.findAll({
+      where: {
+          id: req.params.id
+      }
+  }).then(user => res.json(user));
+});
+
+//UPDATE
+router.put('/users/update', (req, res) => {
+  db.user.update(
+      {
+          name: req.body.name
+      },
+      { where: { id: req.body.id } }
+  )
+});
+
+//DELETE
+router.delete('/delete/:id', (req, res) => {
+  const id = req.params.id
+  db.user.destroy({
+      where: { id: id }
+  })
 });
 
 //______________________________GAMES Methods___________________________
@@ -93,7 +153,7 @@ router.get("/records", (req, res) => {
 // Get TOP3 records of one game
 router.post("/topGameRecords", (req, res) => {
   db.record.findAll({
-    limit: 3,
+    limit: 5,
     order: [
       ['record', 'DESC']
     ],
