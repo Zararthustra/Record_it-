@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "root",
+    "username": "arthur",
     "password": "viveleschips",
-    "database": "sequelize_db",
+    "database": "recordit_db",
     "host": "localhost",
     "dialect": "mysql"
   },
