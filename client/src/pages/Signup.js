@@ -22,7 +22,7 @@ const Signup = () => {
     }
 
     const addUser = () => {
-        Axios.post('/apiroutes/create/', {
+        Axios.post('http://localhost:3001/apiroutes/create/', {
             name: name,
             password: password
         }).then((res) => {

@@ -31,7 +31,7 @@ const gameOptions = {
 
 // Check for previous record
 function getRecord() {
-    Axios.post('/apiroutes/getRecord', {
+    Axios.post('http://localhost:3001/apiroutes/getRecord', {
         user_id: localStorage.getItem("userid"),
         game_id: localStorage.getItem("gameid"),
     }).then((response) => {
@@ -135,7 +135,7 @@ class flappy extends Phaser.Scene {
         gameOptions.topScore = Math.max(this.score, gameOptions.topScore);
         const record = gameOptions.topScore
         // POST/PUT record in database
-        Axios.put('/apiroutes/addRecord', {
+        Axios.put('http://localhost:3001/apiroutes/addRecord', {
             record: record,
             user_id: localStorage.getItem("userid"),
             user_name: localStorage.getItem("username"),

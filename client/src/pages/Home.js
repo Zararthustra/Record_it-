@@ -37,7 +37,7 @@ class Home extends Component {
     //______________________________GET TOPS__________________________________
 
     const getFlappyTop =
-      await Axios.post('/apiroutes/topGameRecords', {
+      await Axios.post('http://localhost:3001/apiroutes/topGameRecords', {
         game_id: 1 //flappy game_id
       })
     //get user's top 1, 2, 3 of flappy
@@ -52,7 +52,7 @@ class Home extends Component {
     this.setState({ flappy3: flappy3 })
 
     const getSnakeTop =
-      await Axios.post('/apiroutes/topGameRecords', {
+      await Axios.post('http://localhost:3001/apiroutes/topGameRecords', {
         game_id: 2 //snake game_id
       })
     //get user's top 1, 2, 3 of flappy
@@ -62,7 +62,7 @@ class Home extends Component {
     const top2Snake = getSnakeTop.data[1]
     const snake2 = top2Snake.user_name === this.state.username ? 7 : 0
     this.setState({ snake2: snake2 })
-    const top3Snake = getSnakeTop.data[2]
+    const top3Snake = getSnakeTop.data[2] ? getSnakeTop.data[2] : 0
     const snake3 = top3Snake.user_name === this.state.username ? 5 : 0
     this.setState({ snake3: snake3 })
 
@@ -80,12 +80,12 @@ class Home extends Component {
     //______________________________PUT/GET GLOBAL__________________________________
 
     const getGlobals =
-      await Axios.get('/apiroutes/globals')
+      await Axios.get('http://localhost:3001/apiroutes/globals')
     this.setState({ globals: getGlobals.data })
     console.log(this.state.globals, "\n ^= Globals");
 
     const putGlobal =
-      await Axios.put('/apiroutes/putGlobal', {
+      await Axios.put('http://localhost:3001/apiroutes/putGlobal', {
         global: this.state.globalPerso,
         user_id: this.state.userid,
         user_name: this.state.username

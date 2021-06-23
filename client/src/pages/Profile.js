@@ -2,8 +2,9 @@ import Axios from 'axios'
 // import Navigation from '../components/Navigation';
 import { AiFillStar } from 'react-icons/ai';
 import React, { Component } from 'react';
-import Modal from '../components/Modal';
+import UserModal from '../components/Modal';
 import gsap from 'gsap';
+import Navigation from '../components/Navigation';
 
 
 class Profile extends Component {
@@ -12,189 +13,91 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            globalScore: [],
-            userName: '',
-            user_id: null,
             open: false,
-            showMe: true
+            userRecords: [],
+            myGlobal: 0,
+            username: localStorage.getItem("username"),
+            userid: localStorage.getItem("userid"),
         }
     }
+    //______________________________Functions__________________________________
 
     async componentDidMount() {
 
-        const userName = localStorage.getItem('username');
-        this.setState({ userName: userName })
+        //______________________________GET SCORES__________________________________
 
-        const globalScore = await Axios.post('/apiroutes/getRecord', {
-            user_id: 1,
-            game_id: 1
+        const userGlobal =
+            Axios.get('http://localhost:3001/apiroutes/userGlobal', {
+                user_id: this.state.userid
+            })
+        this.setState({ myGlobal: userGlobal.global })
+
+        const userRecords = await Axios.post('http://localhost:3001/apiroutes/getRecords', {
+            user_id: this.state.userid
         })
-        this.setState({ globalScore: globalScore.data });
-    };
+        this.setState({ allRecords: userRecords.data })
+    }
 
     //______________________________Return__________________________________
 
     render() {
-        let confettiAmount = 100,
-            confettiColors = [
-                '#7d32f5',
-                '#f6e434',
-                '#63fdf1',
-                '#e672da',
-                '#295dfe',
-                '#6e57ff'
-            ],
-            random = (min, max) => {
-                return Math.floor(Math.random() * (max - min + 1) + min);
-            },
-            createConfetti = to => {
-                let elem = document.createElement('i'),
-                    set = Math.random() < 0.5 ? -1 : 1;
-                elem.style.setProperty('--x', random(-360, 360) + 'px');
-                elem.style.setProperty('--y', random(-200, 200) + 'px');
-                elem.style.setProperty('--r', random(0, 360) + 'deg');
-                elem.style.setProperty('--s', random(.6, 1));
-                elem.style.setProperty('--b', confettiColors[random(0, 5)]);
-                to.appendChild(elem);
-            };
-
-        document.querySelectorAll('.button').forEach(button => {
-
-            let complete = false,
-                timeline = gsap.timeline({
-                    paused: true,
-                    ease: 'none',
-                    onComplete() {
-                        complete = true;
-                        button.classList.add('complete');
-                        for (let i = 0; i < confettiAmount; i++) {
-                            createConfetti(button);
-                        }
-                        setTimeout(() => {
-                            button.classList.add('confetti');
-                            setTimeout(() => button.querySelectorAll('i').forEach(i => i.remove()), 600);
-                        }, 300);
-                        // Reset
-                        setTimeout(() => {
-                            button.classList.remove('complete', 'confetti');
-                            complete = false;
-                        }, 2000);
-                    }
-                }),
-                up = 0;
-
-            timeline.to(button, {
-                keyframes: [{
-                    '--weight-y': -6,
-                    '--arm-rotate-s-x': 90,
-                    duration: .3
-                }, {
-                    '--weight-y': -10,
-                    '--arm-rotate-s-x': 45,
-                    '--arm-rotate-s': 130,
-                    duration: .2
-                }, {
-                    '--weight-y': -12,
-                    '--arm-rotate-s': 130,
-                    '--arm-rotate-s-x': 0,
-                    duration: .1
-                }, {
-                    '--weight-y': -20,
-                    '--person-y': -4,
-                    '--arm-rotate': 100,
-                    '--arm-rotate-s': 90,
-                    '--leg-y': 0,
-                    '--leg-rotate': 20,
-                    '--leg-rotate-s': -20,
-                    duration: .2
-                }, {
-                    '--weight-y': -25,
-                    '--arm-rotate': 150,
-                    '--arm-rotate-s': 30,
-                    duration: .2
-                }]
-            });
-
-            button.addEventListener('click', e => {
-
-                up = 1;
-
-                const rippleDiv = document.createElement('div');
-
-                rippleDiv.className = 'ripple';
-
-                const boundingClientRect = button.getBoundingClientRect();
-
-                button.style.setProperty('--ripple-x', e.clientX - boundingClientRect.left);
-                button.style.setProperty('--ripple-y', e.clientY - boundingClientRect.top);
-
-                button.querySelector('.inner').appendChild(rippleDiv);
-
-                setTimeout(() => rippleDiv.remove(), 500);
-
-            });
-
-            setInterval(() => {
-
-                up = up > 0 ? up - .1 : 0;
-
-                let progress = timeline.progress(),
-                    direction = up > 0 ? 1 : -1.5;
-
-                if (!complete) {
-                    timeline.progress(progress + .01 * direction);
-                }
-
-            }, 1000 / 60);
-
-        });
 
         //______________________________Functions__________________________________
 
-        const globalScore = this.state.globalScore.record;
-        const userName = this.state.userName;
+        // TOP FLAPPY
+        const games = this.state.userRecords.map((record) => { return <div>{record.game_name}</div> })
+        console.log(games);
+        const records = this.state.userRecords.map((record) => { return <div>{record.record}</div> })
+        console.log(records);
+        const dates = this.state.userRecords.map((record) => {
+            const cleanDate = new Date(record.updatedAt)
+            return <div>{cleanDate.toDateString()}</div>
+        })
+        console.log(dates);
+        console.log(this.state.myGlobal, 'heho');
 
         return (
             <>
                 <div className="profile">
-                    {/* <Navigation/> */}
+                    <Navigation />
                     <div className="profileContent">
-
-
-                        <button class="button">
-                            <div class="inner">
-                                <div class="icon">
-                                    <div class="person">
-                                        <div class="arm"></div>
-                                        <div class="arm right"></div>
-                                        <div class="leg"></div>
-                                        <div class="leg right"></div>
-                                    </div>
-                                    <div class="weight"></div>
-                                </div>
-                                <div class="text">
-                                    <span>Smash to submit</span>
-                                    <span>Yaay! Submitted.</span>
-                                </div>
-                            </div>
-                        </button>
-                        
-
-                        <section className="details">
-                            <h2>{userName}</h2>
-                            <h4>Global score: {globalScore} <AiFillStar className="star" /><AiFillStar className="star" /><AiFillStar className="star" /></h4>
+                        <section className="name">
+                            <h1>{this.state.username}</h1>
                         </section>
                         <section className="modifications">
-                            <ul>
-                                <li>
-                                    <button onClick={() => this.setState({ open: true })}>Change password </button>
-                                    <Modal open={this.state.open} onClose={() => this.setState({ open: false })} />
-                                </li>
-                                <li>
-                                    <button>Change Username</button>
-                                </li>
-                            </ul>
+                            <button onClick={() => this.setState({ open: true })}>Change Username and Password </button>
+                            <UserModal open={this.state.open} onClose={() => this.setState({ open: false })} />
                         </section>
+                        <section className="score">
+                            <h2>{this.state.myGlobal ? this.state.myGlobal : 0} <AiFillStar className="star" /></h2>
+                        </section>
+
+                        <div className="tablediv">
+                            <header><h2>My records</h2></header>
+                            <table className="myrecords">
+                                <thead>
+                                    <tr>
+                                        <th>Game</th>
+                                        <th>Record</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {games}
+                                        </td>
+                                        <td>
+                                            {records}
+                                        </td>
+                                        <td>
+                                            {dates}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </>

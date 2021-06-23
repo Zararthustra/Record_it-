@@ -1,27 +1,52 @@
 .profile {
-    @include verticalCenter;
+    z-index: 9000;
+}
+
+.profileContent {
     margin-top : 5em;
-    height     : 100%;
+    margin-bottom: 5rem;
+    overflow-x: hidden;
+    height     : 90vh;
     font-family: 'Open Sans';
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "d";
 
-    .details {
-        width         : 50%;
-        margin        : auto;
-        display       : flex;
-        align-items   : center;
-        flex-direction: column;
-        margin-top    : 5%;
-        margin-left   : 27.5%;
+    .name {
 
-        h2,
-        h4 {
-            margin: 1rem;
-            color : rgba(255, 255, 255, 0.746);
+        margin: 1rem;
+        color : rgba(255, 255, 255, 0.746);        
+        display: flex;
+        justify-content: center;
+
+        h1 {
+            font-family: 'Cursive';
+            font-size: 4rem;
+            background-color: #42071c81;
+            border-radius: 25px;
+            box-shadow: 10px 10px 10px 10px #2a0411;
+            padding: 1rem;
+            width: 400px;
+            @include verticalCenter;
         }
-
+    }
+    .score {
+        @include verticalCenter;
+        margin-right: 3rem;
+        
         .star {
             color: rgba(255, 255, 0, 0.726);
         }
+    }
+
+    .modifications {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
     }
 }
 
@@ -29,6 +54,8 @@
 SMASH BUTTON
 */
 .button {
+    width: 200px;
+    grid-area: c;
     --color                    : #F6F8FF;
     --background               : #171827;
     --background-hover         : #0D0F18;

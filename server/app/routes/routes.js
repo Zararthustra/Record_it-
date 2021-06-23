@@ -37,22 +37,16 @@ router.put("/putGlobal", (req, res) => {
   })
 });
 
-
-
-// Update New UserName
-router.put("/updateUserName", (req, res) => {
-  db.user.update({
-    name: req.body.name
-  }, {
+// GET all Global scores
+router.get("/userGlobal", (req, res) => {
+  db.global.findAll({
     where: {
-      name: {
-        [Op.ne]: req.body.name
-      },
-      id: req.body.id
+      user_id: req.body.user_id
     }
-  })
+  }).then(userGlobal => {
+    res.json(userGlobal);
+  });
 });
-
 
 // GET all Global scores
 router.get("/globals", (req, res) => {
@@ -72,6 +66,47 @@ router.get("/users", (req, res) => {
   db.user.findAll().then(function (users) {
     res.json(users);
   });
+});
+
+// Update New UserName and Password
+router.put("/updateDetails", (req, res) => {
+  db.user.update({
+    name: req.body.name,
+    password: req.body.password
+  }, {
+    where: {
+      name: {
+        [Op.ne]: req.body.name
+      },
+      password: {
+        [Op.ne]: req.body.password
+      },
+      id: req.body.id
+    }
+  })
+
+
+  // db.record.update({
+  //   user_name: req.body.name,
+  // }, {
+  //   where: {
+  //     user_name: {
+  //       [Op.ne]: req.body.name
+  //     },
+  //     user_id: req.body.id
+  //   }
+  // })
+
+  // db.global.update({
+  //   user_name: req.body.name,
+  // }, {
+  //   where: {
+  //     user_name: {
+  //       [Op.ne]: req.body.name
+  //     },
+  //     user_id: req.body.id
+  //   }
+  // })
 });
 
 //POST create user
