@@ -17,7 +17,7 @@ const Admin = () => {
     //______________________________Functions__________________________________
 
     const addUser = () => {
-        Axios.post('http://localhost:3001/create', {
+        Axios.post('/apiroutes/create/', {
             name: name,
             password: password
         }).then(() => {
@@ -26,24 +26,24 @@ const Admin = () => {
     }
 
     const getUsers = () => {
-        Axios.get('http://localhost:3001/apiroutes/users').then((response) => {
+        Axios.get('/apiroutes/users/').then((response) => {
             setUsersList(response.data);
         });
     };
 
     const updateUser = (id) => {
-        Axios.put('http://localhost:3001/users/update', {
+        Axios.put('/apiroutes/users/update/', {
             name: newName,
             id: id
         });
     }
 
     const deleteUser = (id) => {
-        Axios.delete(`http://localhost:3001/delete/${id}`);
+        Axios.delete(`/apiroutes/delete/${id}/`);
     }
 
     const getOne = () => {
-        Axios.get(`http://localhost:3001/users/${user}`).then((response) => {
+        Axios.get(`/apiroutes/users/${user}/`).then((response) => {
             setUserObject(response.data)
         });
     };
@@ -55,7 +55,7 @@ const Admin = () => {
             <Navigation />
             <div className="add">
                 <h1>Admin</h1>
-                <a href="http://localhost:3000/Home">HOME</a>
+                <a href="/Home">HOME</a>
                 <label>Name </label>
                 <input type="text" onChange={(event) => {
                     setName(event.target.value)
