@@ -21,7 +21,7 @@ let RIGHT = 3;
 
 // Check for previous record
 function getRecord() {
-    Axios.post('http://localhost:3001/apiroutes/getRecord', {
+    Axios.post('/apiroutes/getRecord', {
         user_id: localStorage.getItem("userid"),
         game_id: localStorage.getItem("gameid"),
     }).then((response) => {
@@ -242,7 +242,7 @@ class snakegame extends Phaser.Scene {
             localStorage.setItem("snakerecord", record)
 
             // POST/PUT record in database
-            Axios.put('http://localhost:3001/apiroutes/addRecord', {
+            Axios.put('/apiroutes/addRecord', {
                 record: record,
                 user_id: localStorage.getItem("userid"),
                 user_name: localStorage.getItem("username"),

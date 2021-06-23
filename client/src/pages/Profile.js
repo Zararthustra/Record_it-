@@ -25,7 +25,7 @@ class Profile extends Component {
         const userName = localStorage.getItem('username');
         this.setState({ userName: userName })
 
-        const globalScore = await Axios.post('http://localhost:3001/apiroutes/getRecord', {
+        const globalScore = await Axios.post('/apiroutes/getRecord', {
             user_id: 1,
             game_id: 1
         })
