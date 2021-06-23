@@ -26,7 +26,6 @@ const Signup = () => {
     }
 
     const addUser = () => {
-<<<<<<< HEAD
 
         if (name === '') {
             setPassword('')
@@ -37,33 +36,6 @@ const Signup = () => {
                             <div class="emoji__eyebrows"></div>
                             <div class="emoji__eyes"></div>
                             <div class="emoji__mouth"></div>
-=======
-        Axios.post('http://localhost:3001/apiroutes/create/', {
-            name: name,
-            password: password
-        }).then((res) => {
-            if (res.data[1]) {
-                setSignUpStatus(
-                    <div className="signup">
-                        <div class="emoji  emoji--yay">
-                            <div class="emoji__face">
-                                <div class="emoji__eyebrows"></div>
-                                <div class="emoji__mouth"></div>
-                            </div>
-                        </div>
-                        <h1>Account created successfully!</h1>
-                        <button onClick={goLogin}>Login</button>
-                    </div>)
-            } else {
-                setSignUpStatus(
-                    <div className="signup">
-                        <div class="emoji  emoji--wow">
-                            <div class="emoji__face">
-                                <div class="emoji__eyebrows"></div>
-                                <div class="emoji__eyes"></div>
-                                <div class="emoji__mouth"></div>
-                            </div>
->>>>>>> 8ff866088287e986f713556f28ac2ad160f8c627
                         </div>
                     </div>
                     <h1>Name cannot be empty !</h1>
