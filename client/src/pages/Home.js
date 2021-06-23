@@ -71,7 +71,11 @@ class Home extends Component {
     const snake2 = top2Snake.user_name === this.state.username ? 10 : 0
     this.setState({ snake2: snake2 })
     const top3Snake = getSnakeTop.data[2] ? getSnakeTop.data[2] : 0
+<<<<<<< HEAD
     const snake3 = top3Snake.user_name === this.state.username ? 7 : 0
+=======
+    const snake3 = top3Snake.user_name === this.state.username ? 5 : 0
+>>>>>>> 8ff866088287e986f713556f28ac2ad160f8c627
     this.setState({ snake3: snake3 })
     const top4Snake = getSnakeTop.data[3] ? getSnakeTop.data[3] : 0
     const snake4 = top4Snake.user_name === this.state.username ? 5 : 0

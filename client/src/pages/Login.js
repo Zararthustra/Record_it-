@@ -31,7 +31,11 @@ const Login = () => {
     // Check user info,
     // setLocalStorage if success, otherwise throw error
     const login = () => {
+<<<<<<< HEAD
         Axios.post('/apiroutes/login', {
+=======
+        Axios.post('http://localhost:3001/apiroutes/login/', {
+>>>>>>> 8ff866088287e986f713556f28ac2ad160f8c627
             name: name,
             password: password
         }).then((response) => {

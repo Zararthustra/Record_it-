@@ -15,7 +15,7 @@ class Records extends Component {
             flappyRecords: [],
             snakeRecords: [],
             showMe: true,
-            username: localStorage.getItem("username")
+            username: localStorage.getItem("username"),
         }
     }
 
