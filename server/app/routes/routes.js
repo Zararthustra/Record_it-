@@ -37,6 +37,23 @@ router.put("/putGlobal", (req, res) => {
   })
 });
 
+
+
+// Update New UserName
+router.put("/updateUserName", (req, res) => {
+  db.user.update({
+    name: req.body.name
+  }, {
+    where: {
+      name: {
+        [Op.ne]: req.body.name
+      },
+      id: req.body.id
+    }
+  })
+});
+
+
 // GET all Global scores
 router.get("/globals", (req, res) => {
   db.global.findAll({
