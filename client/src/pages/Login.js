@@ -16,7 +16,7 @@ const Login = () => {
     const [loginStatus, setLoginStatus] = useState('')
 
     //______________________________Functions__________________________________
-    const dev = true
+    const dev = false
     const localHost = dev ? 'http://localhost:3001/' : '/'
 
     const goSignup = () => {

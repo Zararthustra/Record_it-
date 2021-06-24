@@ -4,7 +4,7 @@ import pipebot from './assets/images/pipebot.png';
 import pipetop from './assets/images/pipetop.png';
 import holbie from './assets/images/holbie.png';
 
-const dev = true
+const dev = false
 const localHost = dev ? 'http://localhost:3001/' : '/'
 
 const gameOptions = {

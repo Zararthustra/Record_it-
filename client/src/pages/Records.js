@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Axios from 'axios';
 import Navigation from '../components/Navigation';
 
-const dev = true
+const dev = false
 const localHost = dev ? 'http://localhost:3001/' : '/'
 class Records extends Component {
 

@@ -11,7 +11,7 @@ const Games = () => {
 
     let history = useHistory();
     
-    const dev = true
+    const dev = false
     const localHost = dev ? 'http://localhost:3001/' : '/'
 
     //______________________________Functions__________________________________
