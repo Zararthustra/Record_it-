@@ -16,6 +16,8 @@ const Login = () => {
     const [loginStatus, setLoginStatus] = useState('')
 
     //______________________________Functions__________________________________
+    const dev = true
+    const localHost = dev ? 'http://localhost:3001/' : '/'
 
     const goSignup = () => {
         history.push('/Signup')
@@ -31,7 +33,7 @@ const Login = () => {
     // Check user info,
     // setLocalStorage if success, otherwise throw error
     const login = () => {
-        Axios.post('/apiroutes/login', {
+        Axios.post(`${localHost}apiroutes/login`, {
             name: name,
             password: password
         }).then((response) => {
@@ -48,7 +50,7 @@ const Login = () => {
                                 <div class="emoji__mouth"></div>
                             </div>
                         </div>
-                        <h1>Welcome back {name} !</h1>
+                        <h2>Welcome back {name} !</h2>
                         <button onClick={redirect} className="raise">Come in !</button>
                     </div>)
             } else {
@@ -61,7 +63,7 @@ const Login = () => {
                                 <div class="emoji__mouth"></div>
                             </div>
                         </div>
-                        <h1>No user named '{name}' or wrong password !</h1>
+                        <h2>No user named '{name}' or wrong password !</h2>
                         <div className="buttons">
                             <button onClick={goLogin} className="raise">Try again</button>
                             <button onClick={goSignup} className="raise">Signup</button>
@@ -101,8 +103,8 @@ const Login = () => {
                     />
                 </div>
                 <div className="buttons">
-                    <button onClick={login} className="raise">Log in</button>
-                    <button onClick={goSignup} className="raise">Sign Up</button>
+                    <button onClick={login} className="raise">Login</button>
+                    <button onClick={goSignup} className="raise">Signup</button>
                 </div>
             </div>
         );

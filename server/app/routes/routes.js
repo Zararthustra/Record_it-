@@ -75,8 +75,7 @@ router.post('/create', (req, res) => {
 
   db.user.findOrCreate({
     where: {
-      name: name,
-      password: password
+      name: name
     },
     defaults: {
       name: name,

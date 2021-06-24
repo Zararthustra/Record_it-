@@ -2,22 +2,30 @@
     @include verticalCenter;
     flex-direction: column;
     gap           : 2em;
-
+    text-align: center;
     #name {
-        text-align: center;
-        display   : grid;
+        display: flex;
+        flex-direction: column;
     }
-
     #password {
-        text-align: center;
-        display   : grid;
+        display: flex;
+        flex-direction: column;
     }
+}
+
+
+.signup h2 {
+    margin: 1em;
 }
 
 h1 .letter {
     padding: 0;
 }
 
+
+/*
+EMOJI
+*/
 $emoji-base-color : #FFDA6A;
 $emoji-like-color : #548DFF;
 $emoji-love-color : #F55064;

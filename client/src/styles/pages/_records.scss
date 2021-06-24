@@ -9,6 +9,7 @@
     gap            : 2em;
     flex-direction : row;
     margin         : 2em;
+    width          : 90vw;
 }
 
 .allrecords h1 {
@@ -29,13 +30,13 @@ TABLE
 }
 
 .myrow {
-    color: var(--special-secondary);
+    color      : var(--special-secondary);
     font-weight: bolder;
 }
 
 table {
-    width: 100%;
-    color: var(--text-secondary);
+    width     : 100%;
+    color     : var(--text-secondary);
     text-align: center;
 }
 
@@ -50,7 +51,7 @@ td {
 .allgametables {
     margin-top   : 5em;
     border-radius: 5px;
-    flex-wrap: wrap;
+    flex-wrap    : wrap;
 }
 
 .gametable {
@@ -71,8 +72,8 @@ td {
         display       : flex;
         flex-direction: column;
         flex-grow     : 1;
-        padding-bottom       : 3em;
-        margin-bottom: 5em;
+        padding-bottom: 3em;
+        margin-bottom : 5em;
     }
 }
 

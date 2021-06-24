@@ -3,7 +3,8 @@ import Navigation from '../components/Navigation';
 import Axios from 'axios';
 import $ from 'jquery';
 
-
+const dev = true
+const localHost = dev ? 'http://localhost:3001/' : '/'
 class Home extends Component {
 
   //______________________________Constructor__________________________________
@@ -39,7 +40,7 @@ class Home extends Component {
     //______________________________GET TOPS__________________________________
 
     const getFlappyTop =
-      await Axios.post('/apiroutes/topGameRecords', {
+      await Axios.post(`${localHost}apiroutes/topGameRecords`, {
         game_id: 1 //flappy game_id
       })
     //get user's top 1, 2, 3 of flappy
@@ -60,7 +61,7 @@ class Home extends Component {
     this.setState({ flappy5: flappy5 })
 
     const getSnakeTop =
-      await Axios.post('/apiroutes/topGameRecords', {
+      await Axios.post(`${localHost}apiroutes/topGameRecords`, {
         game_id: 2 //snake game_id
       })
     //get user's top 1, 2, 3 of flappy
@@ -96,14 +97,14 @@ class Home extends Component {
 
     this.setState({ globalPerso: globalPerso })
     //______________________________PUT/GET GLOBAL__________________________________
-    Axios.put('/apiroutes/putGlobal', {
+    Axios.put(`${localHost}apiroutes/putGlobal`, {
       global: this.state.globalPerso,
       user_id: this.state.userid,
       user_name: this.state.username
     })
 
     const getGlobals =
-      await Axios.get('/apiroutes/globals')
+      await Axios.get(`${localHost}apiroutes/globals`)
     this.setState({ globals: getGlobals.data })
 
   }
@@ -140,7 +141,7 @@ class Home extends Component {
           <h1 id="phrase">RECORD  iT</h1>
           <div className="best">
             <h1>Actual best player:</h1>
-              <h1 className="bestplayer">{this.state.globals[0] ? this.state.globals[0].user_name : ''}</h1>
+            <h1 className="bestplayer">{this.state.globals[0] ? this.state.globals[0].user_name : ''}</h1>
           </div>
 
           <div className="globalinfo">

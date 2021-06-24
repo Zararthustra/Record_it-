@@ -16,7 +16,7 @@
 }
 
 .nav-item {
-    width       : 100%;
+    width      : 100%;
     padding-top: 1em;
 }
 
@@ -92,31 +92,31 @@
 /* Small screens */
 @media only screen and (max-width: 600px) {
     .navbar {
-        bottom: 0;
-        width : 100vw;
-        height: 5rem;
-        display: flex;
-        z-index: 2;
-        flex-direction: row;
+        bottom         : 0;
+        width          : 100vw;
+        height         : 5rem;
+        display        : flex;
+        z-index        : 2;
+        flex-direction : row;
         justify-content: center;
     }
 
 
     .logo {
-        margin-bottom : -0.7em;
-        color         : var(--text-secondary);
-        background    : none;
+        margin-bottom: -0.7em;
+        color        : var(--text-secondary);
+        background   : none;
     }
 
     .navbar-nav {
         flex-direction: row;
-        display: flex;
-        gap: 0.5em;
+        display       : flex;
+        gap           : 0.5em;
     }
 
 
     .link-text {
-        display    : none;
+        display: none;
     }
 }
 

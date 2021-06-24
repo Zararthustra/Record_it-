@@ -10,6 +10,9 @@ const Games = () => {
     //______________________________Variables__________________________________
 
     let history = useHistory();
+    
+    const dev = true
+    const localHost = dev ? 'http://localhost:3001/' : '/'
 
     //______________________________Functions__________________________________
 
@@ -20,7 +23,7 @@ const Games = () => {
         localStorage.setItem("gameid", id)
         localStorage.setItem("gamename", name)
 
-        Axios.put('/apiroutes/addGame', {
+        Axios.put(`${localHost}apiroutes/addGame`, {
             name: name,
             id: id
         })
@@ -35,7 +38,7 @@ const Games = () => {
         localStorage.setItem("gameid", id)
         localStorage.setItem("gamename", name)
 
-        Axios.put('/apiroutes/addGame', {
+        Axios.put(`${localHost}apiroutes/addGame`, {
             name: name,
             id: id
         })
@@ -44,7 +47,7 @@ const Games = () => {
     }
 
     // Load all personnal records into localstorage
-    Axios.post('/apiroutes/getRecords', {
+    Axios.post(`${localHost}apiroutes/getRecords`, {
         user_id: localStorage.getItem("userid"),
     }).then((response) => {
         if (response.data[0]) localStorage.setItem("record", JSON.stringify(response.data));
