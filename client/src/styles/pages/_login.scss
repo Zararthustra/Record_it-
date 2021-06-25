@@ -2,17 +2,21 @@
     @include verticalCenter;
     flex-direction: column;
     gap           : 2em;
-
+    text-align: center;
     #name {
-        text-align: center;
-        display   : grid;
+        display: flex;
+        flex-direction: column;
     }
-
     #password {
-        text-align: center;
-        display   : grid;
+        display: flex;
+        flex-direction: column;
     }
 }
+
+.login h2 {
+    margin: 1em;
+}
+
 .letter {
     color: var(--special-primary);
 }

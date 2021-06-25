@@ -10,6 +10,9 @@ const Signup = () => {
 
     //______________________________Variables__________________________________
 
+    const dev = false
+    const localHost = dev ? 'http://localhost:3001/' : '/'
+
     let history = useHistory();
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -20,41 +23,99 @@ const Signup = () => {
     const goLogin = () => {
         history.push('/')
     }
+    const goSignup = () => {
+        history.push('/Signup')
+        setSignUpStatus()
+    }
 
     const addUser = () => {
-        Axios.post('/apiroutes/create/', {
-            name: name,
-            password: password
-        }).then((res) => {
-            if (res.data[1]) {
-                setSignUpStatus(
-                    <div className="signup">
-                        <div class="emoji  emoji--yay">
-                            <div class="emoji__face">
-                                <div class="emoji__eyebrows"></div>
-                                <div class="emoji__mouth"></div>
-                            </div>
-                        </div>
-                        <h1>Account created successfully!</h1>
-                        <button onClick={goLogin}>Login</button>
-                    </div>)
-            } else {
-                setSignUpStatus(
-                    <div className="signup">
-                        <div class="emoji  emoji--wow">
-                            <div class="emoji__face">
-                                <div class="emoji__eyebrows"></div>
-                                <div class="emoji__eyes"></div>
-                                <div class="emoji__mouth"></div>
-                            </div>
-                        </div>
-                        <h1>This account already exists !</h1>
-                        <button onClick={goLogin}>Login here</button>
 
+        if (name === '') {
+            setPassword('')
+            setSignUpStatus(
+                <div className="signup">
+                    <div class="emoji  emoji--wow">
+                        <div class="emoji__face">
+                            <div class="emoji__eyebrows"></div>
+                            <div class="emoji__eyes"></div>
+                            <div class="emoji__mouth"></div>
+                        </div>
                     </div>
-                )
-            }
-        })
+                    <h2>Name cannot be empty !</h2>
+                    <button onClick={goSignup}>Try again</button>
+                </div>
+            )
+
+        } else if (name.length > 10) {
+
+            setName('')
+            setSignUpStatus(
+                <div className="signup">
+                    <div class="emoji  emoji--wow">
+                        <div class="emoji__face">
+                            <div class="emoji__eyebrows"></div>
+                            <div class="emoji__eyes"></div>
+                            <div class="emoji__mouth"></div>
+                        </div>
+                    </div>
+                    <h2>{name} is too long, respect 10 characters maximum please !</h2>
+                    <button onClick={goSignup}>Try again</button>
+                </div>
+            )
+
+        } else if (password === '') {
+
+            setName('')
+            setSignUpStatus(
+                <div className="signup">
+                    <div class="emoji  emoji--wow">
+                        <div class="emoji__face">
+                            <div class="emoji__eyebrows"></div>
+                            <div class="emoji__eyes"></div>
+                            <div class="emoji__mouth"></div>
+                        </div>
+                    </div>
+                    <h2>Password cannot be empty !</h2>
+                    <button onClick={goSignup}>Try again</button>
+                </div>
+            )
+
+        } else {
+
+            Axios.post(`${localHost}apiroutes/create`, {
+                name: name,
+                password: password
+            }).then((res) => {
+                if (res.data[1]) {
+                    setSignUpStatus(
+                        <div className="signup">
+                            <div class="emoji  emoji--yay">
+                                <div class="emoji__face">
+                                    <div class="emoji__eyebrows"></div>
+                                    <div class="emoji__mouth"></div>
+                                </div>
+                            </div>
+                            <h2>Account created successfully!</h2>
+                            <button onClick={goLogin}>Login</button>
+                        </div>)
+                } else {
+                    setSignUpStatus(
+                        <div className="signup">
+                            <div class="emoji  emoji--wow">
+                                <div class="emoji__face">
+                                    <div class="emoji__eyebrows"></div>
+                                    <div class="emoji__eyes"></div>
+                                    <div class="emoji__mouth"></div>
+                                </div>
+                            </div>
+                            <h2>{name} already exists !</h2>
+                            <button onClick={goLogin}>Login here</button>
+
+                        </div>
+                    )
+                }
+            })
+        }
     }
 
     //replace a letter ("i" by "!") to change its color

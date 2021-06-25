@@ -1,6 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Record it",
+  "name": "Record it",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "description": "Pick a game and record it !",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,7 +22,5 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "display": "standalone"
 }

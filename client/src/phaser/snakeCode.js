@@ -8,6 +8,9 @@ import Phaser from "phaser";
 
 //______________________________Variables__________________________________
 
+const dev = false
+const localHost = dev ? 'http://localhost:3001/' : '/'
+
 let snake;
 let food;
 let cursors;
@@ -21,7 +24,7 @@ let RIGHT = 3;
 
 // Check for previous record
 function getRecord() {
-    Axios.post('/apiroutes/getRecord', {
+    Axios.post(`${localHost}apiroutes/getRecord`, {
         user_id: localStorage.getItem("userid"),
         game_id: localStorage.getItem("gameid"),
     }).then((response) => {
@@ -242,7 +245,7 @@ class snakegame extends Phaser.Scene {
             localStorage.setItem("snakerecord", record)
 
             // POST/PUT record in database
-            Axios.put('/apiroutes/addRecord', {
+            Axios.put(`${localHost}apiroutes/addRecord`, {
                 record: record,
                 user_id: localStorage.getItem("userid"),
                 user_name: localStorage.getItem("username"),

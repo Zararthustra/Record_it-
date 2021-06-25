@@ -27,14 +27,25 @@ router.put("/putGlobal", (req, res) => {
       global: req.body.global
     }, {
       where: {
+        user_id: req.body.user_id,
         global: {
           [Op.ne]: req.body.global
-        },
-        user_id: req.body.user_id
+        }
       }
     }
     )
   })
+});
+
+// GET all Global scores
+router.get("/userGlobal", (req, res) => {
+  db.global.findAll({
+    where: {
+      user_id: req.body.user_id
+    }
+  }).then(userGlobal => {
+    res.json(userGlobal);
+  });
 });
 
 // GET all Global scores
@@ -63,14 +74,13 @@ router.post('/create', (req, res) => {
   const password = req.body.password;
 
   db.user.findOrCreate({
-      where: {
-          name: name,
-          password: password
-      },
-      defaults: {
-          name: name,
-          password: password
-      }
+    where: {
+      name: name
+    },
+    defaults: {
+      name: name,
+      password: password
+    }
   }).then(submitedUsers => res.json(submitedUsers))
 })
 
@@ -80,32 +90,32 @@ router.post('/login', (req, res) => {
   const password = req.body.password;
 
   db.user.findAll({
-      where: {
-          name: name,
-          password: password
-      }
+    where: {
+      name: name,
+      password: password
+    }
   })
-      .then((checkedUser) => {
-          res.json(checkedUser)
-      })
+    .then((checkedUser) => {
+      res.json(checkedUser)
+    })
 })
 
 //GET ONE
 router.get("/users/:id", (req, res) => {
   db.user.findAll({
-      where: {
-          id: req.params.id
-      }
+    where: {
+      id: req.params.id
+    }
   }).then(user => res.json(user));
 });
 
 //UPDATE
 router.put('/users/update', (req, res) => {
   db.user.update(
-      {
-          name: req.body.name
-      },
-      { where: { id: req.body.id } }
+    {
+      name: req.body.name
+    },
+    { where: { id: req.body.id } }
   )
 });
 
@@ -113,7 +123,7 @@ router.put('/users/update', (req, res) => {
 router.delete('/delete/:id', (req, res) => {
   const id = req.params.id
   db.user.destroy({
-      where: { id: id }
+    where: { id: id }
   })
 });
 
@@ -153,7 +163,7 @@ router.get("/records", (req, res) => {
 // Get TOP3 records of one game
 router.post("/topGameRecords", (req, res) => {
   db.record.findAll({
-    limit: 3,
+    limit: 5,
     order: [
       ['record', 'DESC']
     ],

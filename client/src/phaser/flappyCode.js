@@ -4,6 +4,8 @@ import pipebot from './assets/images/pipebot.png';
 import pipetop from './assets/images/pipetop.png';
 import holbie from './assets/images/holbie.png';
 
+const dev = false
+const localHost = dev ? 'http://localhost:3001/' : '/'
 
 const gameOptions = {
 
@@ -31,7 +33,7 @@ const gameOptions = {
 
 // Check for previous record
 function getRecord() {
-    Axios.post('/apiroutes/getRecord', {
+    Axios.post(`${localHost}apiroutes/getRecord`, {
         user_id: localStorage.getItem("userid"),
         game_id: localStorage.getItem("gameid"),
     }).then((response) => {
@@ -135,7 +137,7 @@ class flappy extends Phaser.Scene {
         gameOptions.topScore = Math.max(this.score, gameOptions.topScore);
         const record = gameOptions.topScore
         // POST/PUT record in database
-        Axios.put('/apiroutes/addRecord', {
+        Axios.put(`${localHost}apiroutes/addRecord`, {
             record: record,
             user_id: localStorage.getItem("userid"),
             user_name: localStorage.getItem("username"),

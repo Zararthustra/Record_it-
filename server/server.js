@@ -4,7 +4,6 @@ const cors = require('cors');
 const app = express()
 const routes = require('./app/routes/routes')
 
-//______________________________SetUp__________________________________
 
 db.sequelize.sync();
 
