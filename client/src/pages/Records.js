@@ -13,8 +13,10 @@ class Records extends Component {
         this.state = {
             topFlappyRecords: [],
             topSnakeRecords: [],
+            topWhackRecords: [],
             flappyRecords: [],
             snakeRecords: [],
+            whackRecords: [],
             showMe: true,
             username: localStorage.getItem("username"),
         }
@@ -24,6 +26,7 @@ class Records extends Component {
     //________________________________DB Call_________________________________
 
     async componentDidMount() {
+
         //TOP3 records
         //FLAPPY
         const topFlappyRecords =
@@ -39,6 +42,14 @@ class Records extends Component {
             })
         this.setState({ topSnakeRecords: topSnakeRecords.data });
 
+        //WHACK
+        const topWhackRecords =
+            await Axios.post(`${localHost}apiroutes/topGameRecords`, {
+                game_id: 3 //snake game_id
+            })
+        this.setState({ topWhackRecords: topWhackRecords.data });
+
+
         //All records
         //FLAPPY
         const flappyRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
@@ -51,6 +62,13 @@ class Records extends Component {
             game_id: 2 //snake game_id
         })
         this.setState({ snakeRecords: snakeRecords.data });
+
+        //WHACK
+        const whackRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
+            game_id: 3 //snake game_id
+        })
+        this.setState({ whackRecords: whackRecords.data });
+
     };
 
     //_______________________________Render___________________________________
@@ -64,16 +82,14 @@ class Records extends Component {
         const topFlappyDate = this.state.topFlappyRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
-        }
-        )
+        })
         // ALL FLAPPY
         const flappyRecords = this.state.flappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
         const flappyUsers = this.state.flappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const flappyDate = this.state.flappyRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
-        }
-        )
+        })
 
         // TOP SNAKE
         const topSnakeRecords = this.state.topSnakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
@@ -81,16 +97,29 @@ class Records extends Component {
         const topSnakeDate = this.state.topSnakeRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
-        }
-        )
+        })
         // ALL SNAKE
         const snakeRecords = this.state.snakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
         const snakeUsers = this.state.snakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const snakeDate = this.state.snakeRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
-        }
-        )
+        })
+
+        // TOP WHACK
+        const topWhackRecords = this.state.topWhackRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
+        const topWhackUsers = this.state.topWhackRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
+        const topWhackDate = this.state.topWhackRecords.map((record) => {
+            const cleanDate = new Date(record.updatedAt)
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+        })
+        // ALL WHACK
+        const whackRecords = this.state.whackRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
+        const whackUsers = this.state.whackRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
+        const whackDate = this.state.whackRecords.map((record) => {
+            const cleanDate = new Date(record.updatedAt)
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+        })
 
         const switchState = () => {
             if (this.state.showMe === true) {
@@ -163,6 +192,33 @@ class Records extends Component {
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div className="gametable">
+                                <header><h2>Whack a Malou</h2></header>
+                                <table className="recordtable">
+                                    <thead>
+                                        <tr>
+                                            <th>Record</th>
+                                            <th>User</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {topWhackRecords}
+                                            </td>
+                                            <td>
+                                                {topWhackUsers}
+                                            </td>
+                                            <td>
+                                                {topWhackDate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
                 </>
@@ -227,6 +283,33 @@ class Records extends Component {
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div className="gametable">
+                                <header><h2>Whack a Malou</h2></header>
+                                <table className="recordtable">
+                                    <thead>
+                                        <tr>
+                                            <th>Record</th>
+                                            <th>User</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {whackRecords}
+                                            </td>
+                                            <td>
+                                                {whackUsers}
+                                            </td>
+                                            <td>
+                                                {whackDate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
                 </>

@@ -12,6 +12,7 @@ import Records from './pages/Records';
 import Games from './pages/Games';
 import FlappyHolbie from './pages/FlappyHolbie';
 import Snake from './pages/Snake';
+import WhackAMalou from './pages/WhackAMalou';
 import ProtectedRoute from "./components/ProtectedRoute";
 
 
@@ -28,6 +29,7 @@ function App() {
           <ProtectedRoute path="/Games" component={Games} />
           <ProtectedRoute path="/Flappy" component={FlappyHolbie} />
           <ProtectedRoute path="/Snake" component={Snake} />
+          <ProtectedRoute path="/WhackAMalou" component={WhackAMalou} />
         </Switch>
       </BrowserRouter>
     </>

@@ -31,7 +31,12 @@ class Home extends Component {
       snake2: "",
       snake3: "",
       snake4: "",
-      snake5: ""
+      snake5: "",
+      whack1: "",
+      whack2: "",
+      whack3: "",
+      whack4: "",
+      whack5: ""
     }
   }
 
@@ -81,6 +86,27 @@ class Home extends Component {
     const snake5 = top5Snake.user_name === this.state.username ? 3 : 0
     this.setState({ snake5: snake5 })
 
+    const getWhackTop =
+      await Axios.post(`${localHost}apiroutes/topGameRecords`, {
+        game_id: 3 //whackamalou game_id
+      })
+    //get user's top 1, 2, 3 of flappy
+    const top1Whack = getWhackTop.data[0] ? getWhackTop.data[0] : 0
+    const whack1 = top1Whack.user_name === this.state.username ? 15 : 0
+    this.setState({ whack1: whack1 })
+    const top2Whack = getWhackTop.data[1] ? getWhackTop.data[1] : 0
+    const whack2 = top2Whack.user_name === this.state.username ? 10 : 0
+    this.setState({ whack2: whack2 })
+    const top3Whack = getWhackTop.data[2] ? getWhackTop.data[2] : 0
+    const whack3 = top3Whack.user_name === this.state.username ? 7 : 0
+    this.setState({ whack3: whack3 })
+    const top4Whack = getWhackTop.data[3] ? getWhackTop.data[3] : 0
+    const whack4 = top4Whack.user_name === this.state.username ? 5 : 0
+    this.setState({ whack4: whack4 })
+    const top5Whack = getWhackTop.data[4] ? getWhackTop.data[4] : 0
+    const whack5 = top5Whack.user_name === this.state.username ? 3 : 0
+    this.setState({ whack5: whack5 })
+
     //Sum up global score
     const s = this.state
     const globalPerso =
@@ -94,6 +120,11 @@ class Home extends Component {
       + s.snake3
       + s.snake4
       + s.snake5
+      + s.whack1
+      + s.whack2
+      + s.whack3
+      + s.whack4
+      + s.whack5
 
     this.setState({ globalPerso: globalPerso })
     //______________________________PUT/GET GLOBAL__________________________________

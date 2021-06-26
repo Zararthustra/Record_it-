@@ -46,6 +46,21 @@ const Games = () => {
         history.push('/Snake')
     }
 
+    // SetLocalStorage of game info (create row if not exist)
+    const goWhack = () => {
+        const id = 3
+        const name = "WhackAMalou"
+        localStorage.setItem("gameid", id)
+        localStorage.setItem("gamename", name)
+
+        Axios.put(`${localHost}apiroutes/addGame`, {
+            name: name,
+            id: id
+        })
+
+        history.push('/WhackAMalou')
+    }
+
     // Load all personnal records into localstorage
     Axios.post(`${localHost}apiroutes/getRecords`, {
         user_id: localStorage.getItem("userid"),
@@ -60,6 +75,7 @@ const Games = () => {
         <>
             <Navigation />
             <div className="games">
+
                 <div className="game">
                     <div className="holbie img"></div>
                     <h2>Flappy Holbie</h2>
@@ -67,6 +83,7 @@ const Games = () => {
                     <p className="devicegreen">Smartphone/Tablet</p>
                     <a href="" onClick={goFlappy}><span>Play</span></a>
                 </div>
+
                 <div className="game">
                     <div className="snake img"></div>
                     <h2>Snake</h2>
@@ -74,6 +91,15 @@ const Games = () => {
                     <p className="devicered">Smartphone/Tablet</p>
                     <a href="" onClick={goSnake}><span>Play</span></a>
                 </div>
+
+                <div className="game">
+                    <div className="whack img"></div>
+                    <h2>Whack A Malou</h2>
+                    <p>Similar to the famous whack-a-mole funfair game, the goal is to whack as much Malou as possible within 30 seconds</p>
+                    <p className="devicegreen">Smartphone/Tablet</p>
+                    <a href="" onClick={goWhack}><span>Play</span></a>
+                </div>
+
             </div>
         </>
     )
