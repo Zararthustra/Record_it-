@@ -9,11 +9,12 @@ import Login from './pages/Login';
 import Logout from './pages/Logout';
 import SignUp from './pages/Signup';
 import Records from './pages/Records';
+import ProtectedRoute from "./components/ProtectedRoute";
 import Games from './pages/Games';
 import FlappyHolbie from './pages/FlappyHolbie';
 import Snake from './pages/Snake';
 import WhackAMalou from './pages/WhackAMalou';
-import ProtectedRoute from "./components/ProtectedRoute";
+import Brickit from './pages/BrickIt';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <ProtectedRoute path="/Flappy" component={FlappyHolbie} />
           <ProtectedRoute path="/Snake" component={Snake} />
           <ProtectedRoute path="/WhackAMalou" component={WhackAMalou} />
+          <ProtectedRoute path="/Brickit" component={Brickit} />
         </Switch>
       </BrowserRouter>
     </>

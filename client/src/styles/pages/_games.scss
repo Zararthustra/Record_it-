@@ -22,7 +22,7 @@ h2 {
     flex-wrap     : wrap;
     gap           : 1em;
     width         : 45ch;
-    margin        : 3em 0 3em 0;
+    margin-bottom : 3em;
 }
 
 /*
@@ -47,8 +47,16 @@ h2 {
     background-repeat  : no-repeat;
     background-size    : contain;
 }
+
 .whack {
     background         : url('../../phaser/assets/images/mousehead.png');
+    background-position: center;
+    background-repeat  : no-repeat;
+    background-size    : contain;
+}
+
+.brick {
+    background         : url('../../phaser/assets/images/palet_ball.png');
     background-position: center;
     background-repeat  : no-repeat;
     background-size    : contain;

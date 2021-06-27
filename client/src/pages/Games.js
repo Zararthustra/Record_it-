@@ -61,6 +61,20 @@ const Games = () => {
         history.push('/WhackAMalou')
     }
 
+    const goBrick = () => {
+        const id = 4
+        const name = "BrickIt"
+        localStorage.setItem("gameid", id)
+        localStorage.setItem("gamename", name)
+
+        Axios.put(`${localHost}apiroutes/addGame`, {
+            name: name,
+            id: id
+        })
+
+        history.push('/BrickIt')
+    }
+
     // Load all personnal records into localstorage
     Axios.post(`${localHost}apiroutes/getRecords`, {
         user_id: localStorage.getItem("userid"),
@@ -98,6 +112,14 @@ const Games = () => {
                     <p>Similar to the famous whack-a-mole funfair game, the goal is to whack as much Malou as possible within 30 seconds</p>
                     <p className="devicegreen">Smartphone/Tablet</p>
                     <a href="" onClick={goWhack}><span>Play</span></a>
+                </div>
+
+                <div className="game">
+                    <div className="brick img"></div>
+                    <h2>Brick !t</h2>
+                    <p>Similar to the famous brick breaker game, the goal is to break as much brick as possible. You have 3 lives, use it with caution !</p>
+                    <p className="devicegreen">Smartphone/Tablet</p>
+                    <a href="" onClick={goBrick}><span>Play</span></a>
                 </div>
 
             </div>

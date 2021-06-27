@@ -14,9 +14,11 @@ class Records extends Component {
             topFlappyRecords: [],
             topSnakeRecords: [],
             topWhackRecords: [],
+            topBrickRecords: [],
             flappyRecords: [],
             snakeRecords: [],
             whackRecords: [],
+            brickRecords: [],
             showMe: true,
             username: localStorage.getItem("username"),
         }
@@ -28,46 +30,55 @@ class Records extends Component {
     async componentDidMount() {
 
         //TOP3 records
+
         //FLAPPY
         const topFlappyRecords =
             await Axios.post(`${localHost}apiroutes/topGameRecords`, {
                 game_id: 1 //flappy game_id
             })
         this.setState({ topFlappyRecords: topFlappyRecords.data });
-
         //SNAKE
         const topSnakeRecords =
             await Axios.post(`${localHost}apiroutes/topGameRecords`, {
                 game_id: 2 //snake game_id
             })
         this.setState({ topSnakeRecords: topSnakeRecords.data });
-
         //WHACK
         const topWhackRecords =
             await Axios.post(`${localHost}apiroutes/topGameRecords`, {
-                game_id: 3 //snake game_id
+                game_id: 3 //whack game_id
             })
         this.setState({ topWhackRecords: topWhackRecords.data });
+        //BRICK
+        const topBrickRecords =
+            await Axios.post(`${localHost}apiroutes/topGameRecords`, {
+                game_id: 4 //brick game_id
+            })
+        this.setState({ topBrickRecords: topBrickRecords.data });
 
 
         //All records
+
         //FLAPPY
         const flappyRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
             game_id: 1 //flappy game_id
         })
         this.setState({ flappyRecords: flappyRecords.data });
-
         //SNAKE
         const snakeRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
             game_id: 2 //snake game_id
         })
         this.setState({ snakeRecords: snakeRecords.data });
-
         //WHACK
         const whackRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
-            game_id: 3 //snake game_id
+            game_id: 3 //whack game_id
         })
         this.setState({ whackRecords: whackRecords.data });
+        //BRICK
+        const brickRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
+            game_id: 4 //brick game_id
+        })
+        this.setState({ brickRecords: brickRecords.data });
 
     };
 
@@ -121,6 +132,22 @@ class Records extends Component {
             return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
         })
 
+        // TOP BRICK
+        const topBrickRecords = this.state.topBrickRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
+        const topBrickUsers = this.state.topBrickRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
+        const topBrickDate = this.state.topBrickRecords.map((record) => {
+            const cleanDate = new Date(record.updatedAt)
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+        })
+        // ALL BRICK
+        const brickRecords = this.state.brickRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
+        const brickUsers = this.state.brickRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
+        const brickDate = this.state.brickRecords.map((record) => {
+            const cleanDate = new Date(record.updatedAt)
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+        })
+
+        //Swap page from top3 to all records
         const switchState = () => {
             if (this.state.showMe === true) {
                 this.setState({ showMe: false });
@@ -141,6 +168,7 @@ class Records extends Component {
                         <a onClick={switchState}><span>All records</span></a>
                         <h1>TOP 5</h1>
                         <div className="allgametables">
+
                             <div className="gametable">
                                 <header><h2>Flappy Holbie</h2></header>
                                 <table className="recordtable">
@@ -213,6 +241,32 @@ class Records extends Component {
                                             </td>
                                             <td>
                                                 {topWhackDate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div className="gametable">
+                                <header><h2>Brick !t</h2></header>
+                                <table className="recordtable">
+                                    <thead>
+                                        <tr>
+                                            <th>Record</th>
+                                            <th>User</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {topBrickRecords}
+                                            </td>
+                                            <td>
+                                                {topBrickUsers}
+                                            </td>
+                                            <td>
+                                                {topBrickDate}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -304,6 +358,32 @@ class Records extends Component {
                                             </td>
                                             <td>
                                                 {whackDate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div className="gametable">
+                                <header><h2>Brick !t</h2></header>
+                                <table className="recordtable">
+                                    <thead>
+                                        <tr>
+                                            <th>Record</th>
+                                            <th>User</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {brickRecords}
+                                            </td>
+                                            <td>
+                                                {brickUsers}
+                                            </td>
+                                            <td>
+                                                {brickDate}
                                             </td>
                                         </tr>
                                     </tbody>
