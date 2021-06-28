@@ -53,7 +53,7 @@ class Home extends Component {
       await Axios.post(`${localHost}apiroutes/topGameRecords`, {
         game_id: 1 //flappy game_id
       })
-    //get user's top 1, 2, 3 of flappy
+    //get user's top
     const top1Flappy = getFlappyTop.data[0] ? getFlappyTop.data[0] : 0
     const flappy1 = top1Flappy.user_name === this.state.username ? 15 : 0
     this.setState({ flappy1: flappy1 })
@@ -74,7 +74,7 @@ class Home extends Component {
       await Axios.post(`${localHost}apiroutes/topGameRecords`, {
         game_id: 2 //snake game_id
       })
-    //get user's top 1, 2, 3 of flappy
+    //get user's top
     const top1Snake = getSnakeTop.data[0] ? getSnakeTop.data[0] : 0
     const snake1 = top1Snake.user_name === this.state.username ? 15 : 0
     this.setState({ snake1: snake1 })
@@ -95,7 +95,7 @@ class Home extends Component {
       await Axios.post(`${localHost}apiroutes/topGameRecords`, {
         game_id: 3 //whackamalou game_id
       })
-    //get user's top 1, 2, 3 of flappy
+    //get user's top
     const top1Whack = getWhackTop.data[0] ? getWhackTop.data[0] : 0
     const whack1 = top1Whack.user_name === this.state.username ? 15 : 0
     this.setState({ whack1: whack1 })
@@ -116,7 +116,7 @@ class Home extends Component {
       await Axios.post(`${localHost}apiroutes/topGameRecords`, {
         game_id: 4 //Brick game_id
       })
-    //get user's top 1, 2, 3 of flappy
+    //get user's top
     const top1Brick = getBrickTop.data[0] ? getBrickTop.data[0] : 0
     const brick1 = top1Brick.user_name === this.state.username ? 15 : 0
     this.setState({ brick1: brick1 })
@@ -136,26 +136,10 @@ class Home extends Component {
     //Sum up global score
     const s = this.state
     const globalPerso =
-      s.flappy1
-      + s.flappy2
-      + s.flappy3
-      + s.flappy4
-      + s.flappy5
-      + s.snake1
-      + s.snake2
-      + s.snake3
-      + s.snake4
-      + s.snake5
-      + s.whack1
-      + s.whack2
-      + s.whack3
-      + s.whack4
-      + s.whack5
-      + s.brick1
-      + s.brick2
-      + s.brick3
-      + s.brick4
-      + s.brick5
+      s.flappy1 + s.flappy2 + s.flappy3 + s.flappy4 + s.flappy5
+      + s.snake1 + s.snake2 + s.snake3 + s.snake4 + s.snake5
+      + s.whack1 + s.whack2 + s.whack3 + s.whack4 + s.whack5
+      + s.brick1 + s.brick2 + s.brick3 + s.brick4 + s.brick5
 
     this.setState({ globalPerso: globalPerso })
     //______________________________PUT/GET GLOBAL__________________________________
@@ -201,10 +185,7 @@ class Home extends Component {
         <Navigation />
         <div className="Home">
           <h1 id="phrase">RECORD  iT</h1>
-          <div className="best">
-            <h1>Actual best player:</h1>
-            <h1 className="bestplayer">{this.state.globals[0] ? this.state.globals[0].user_name : ''}</h1>
-          </div>
+          <h1 className="bestplayer">{this.state.globals[0] ? this.state.globals[0].user_name : ''}</h1>
 
           <div className="globalinfo">
             <p>Point scale:</p>
@@ -219,20 +200,34 @@ class Home extends Component {
 
             <div className="myglobalscore">
               <header>
-                <h2>My global score</h2>
+                <h2>{this.state.username}</h2>
               </header>
+              <div className="myglobalscores">
+
+                <div>
+                  <h4>Flappy Holbie</h4>
+                  <p>{0 + this.state.flappy1 + this.state.flappy2 + this.state.flappy3 + this.state.flappy4 + this.state.flappy5}</p>
+                </div>
+                <div>
+                  <h4>Snake</h4>
+                  <p>{0 + this.state.snake1 + this.state.snake2 + this.state.snake3 + this.state.snake4 + this.state.snake5}</p>
+                </div>
+                <div>
+                  <h4>Whack A Malou</h4>
+                  <p>{0 + this.state.whack1 + this.state.whack2 + this.state.whack3 + this.state.whack4 + this.state.whack5}</p>
+                </div>
+                <div>
+                  <h4>Brick !t</h4>
+                  <p>{0 + this.state.brick1 + this.state.brick2 + this.state.brick3 + this.state.brick4 + this.state.brick5}</p>
+                </div>
+
+              </div>
               <h1>{this.state.globalPerso ? this.state.globalPerso : 0}</h1>
             </div>
 
             <div className="globalscore">
-              <header><h2>Top global scores</h2></header>
+              <header><h2>World</h2></header>
               <table>
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Global</th>
-                  </tr>
-                </thead>
                 <tbody>
                   <tr>
                     <td>

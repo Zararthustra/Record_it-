@@ -165,8 +165,8 @@ class Records extends Component {
                 <>
                     <Navigation />
                     <div className="allrecords">
-                        <a onClick={switchState}><span>All records</span></a>
                         <h1>TOP 5</h1>
+                        <a onClick={switchState}><span>All records</span></a>
                         <div className="allgametables">
 
                             <div className="gametable">
@@ -175,7 +175,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -201,7 +201,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -227,7 +227,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -253,7 +253,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -283,8 +283,8 @@ class Records extends Component {
                 <>
                     <Navigation />
                     <div className="allrecords">
-                        <a onClick={switchState}><span>Top3</span></a>
                         <h1>All records</h1>
+                        <a onClick={switchState}><span>Top5</span></a>
                         <div className="allgametables">
                             <div className="gametable">
                                 <header><h2>Flappy Holbie</h2></header>
@@ -292,7 +292,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -318,7 +318,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -344,7 +344,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -370,7 +370,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>User</th>
+                                            <th>Player</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>

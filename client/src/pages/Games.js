@@ -10,7 +10,7 @@ const Games = () => {
     //______________________________Variables__________________________________
 
     let history = useHistory();
-    
+
     const dev = false
     const localHost = dev ? 'http://localhost:3001/' : '/'
 
@@ -88,40 +88,42 @@ const Games = () => {
     return (
         <>
             <Navigation />
-            <div className="games">
+            <div className="gamesbody">
+                <div className="games">
 
-                <div className="game">
-                    <div className="holbie img"></div>
-                    <h2>Flappy Holbie</h2>
-                    <p>Similar to the famous Flappy bird game, you need to get through pipe holes as much as possible with simple clicks to make your holbie fly !</p>
-                    <p className="devicegreen">Smartphone/Tablet</p>
-                    <a href="" onClick={goFlappy}><span>Play</span></a>
+                    <div className="game">
+                        <div className="holbie img"></div>
+                        <h2>Flappy Holbie</h2>
+                        <p className="devicegreen">Smartphone/Tablet</p>
+                        <p>Similar to the famous Flappy bird game, you need to get through pipe holes as much as possible with simple clicks to make your holbie fly !</p>
+                        <a href="" onClick={goFlappy}><span>Play</span></a>
+                    </div>
+
+                    <div className="game">
+                        <div className="snake img"></div>
+                        <h2>Snake</h2>
+                        <p className="devicered">Smartphone/Tablet</p>
+                        <p>Similar to the famous Nokia 3310 snake game, the goal is to get as much food as possible while trying to not eating your tail that grows as you get fed.</p>
+                        <a href="" onClick={goSnake}><span>Play</span></a>
+                    </div>
+
+                    <div className="game">
+                        <div className="whack img"></div>
+                        <h2>Whack A Malou</h2>
+                        <p className="devicegreen">Smartphone/Tablet</p>
+                        <p>Similar to the famous whack-a-mole funfair game, the goal is to whack as much Malou as possible within 30 seconds</p>
+                        <a href="" onClick={goWhack}><span>Play</span></a>
+                    </div>
+
+                    <div className="game">
+                        <div className="brick img"></div>
+                        <h2>Brick !t</h2>
+                        <p className="devicegreen">Smartphone/Tablet</p>
+                        <p>Similar to the famous brick breaker game, the goal is to break as much brick as possible. You have 3 lives, use it with caution !</p>
+                        <a href="" onClick={goBrick}><span>Play</span></a>
+                    </div>
+
                 </div>
-
-                <div className="game">
-                    <div className="snake img"></div>
-                    <h2>Snake</h2>
-                    <p>Similar to the famous Nokia 3310 snake game, the goal is to get as much food as possible while trying to not eating your tail that grows as you get fed.</p>
-                    <p className="devicered">Smartphone/Tablet</p>
-                    <a href="" onClick={goSnake}><span>Play</span></a>
-                </div>
-
-                <div className="game">
-                    <div className="whack img"></div>
-                    <h2>Whack A Malou</h2>
-                    <p>Similar to the famous whack-a-mole funfair game, the goal is to whack as much Malou as possible within 30 seconds</p>
-                    <p className="devicegreen">Smartphone/Tablet</p>
-                    <a href="" onClick={goWhack}><span>Play</span></a>
-                </div>
-
-                <div className="game">
-                    <div className="brick img"></div>
-                    <h2>Brick !t</h2>
-                    <p>Similar to the famous brick breaker game, the goal is to break as much brick as possible. You have 3 lives, use it with caution !</p>
-                    <p className="devicegreen">Smartphone/Tablet</p>
-                    <a href="" onClick={goBrick}><span>Play</span></a>
-                </div>
-
             </div>
         </>
     )

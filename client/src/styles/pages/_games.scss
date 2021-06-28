@@ -1,6 +1,12 @@
+.gamesbody {
+    display        : flex;
+    justify-content: center;
+}
+
 .games {
     @include verticalCenter;
     flex-wrap : wrap;
+    width     : 90vw;
     gap       : 4em;
     margin-top: 3em;
     text-align: center;
@@ -24,7 +30,9 @@ h2 {
     width         : 45ch;
     margin-bottom : 3em;
 }
-
+.game p {
+    font-style: italic;
+}
 /*
     Games img
 */

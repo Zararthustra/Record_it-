@@ -10,8 +10,8 @@ class PhaserGame extends Component {
     state = {
         initialize: true,
         game: {
-            width: "100vw",
-            height: "80vh",
+            width: 700,
+            height: 350,
             type: Phaser.AUTO,
             backgroundColor: 0x87ceeb,
             physics: {

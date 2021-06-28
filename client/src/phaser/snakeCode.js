@@ -228,7 +228,7 @@ class snakegame extends Phaser.Scene {
 
         });
 
-        food = new Food(this, 3, 4).setScale(0.15);
+        food = new Food(this, 25, 8).setScale(0.15);
         snake = new Snake(this, 8, 8);
 
         //  Create keyboard controls

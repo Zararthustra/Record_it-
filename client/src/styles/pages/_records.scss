@@ -14,6 +14,9 @@
 
 .allrecords h1 {
     color: var(--text-secondary);
+    border-bottom: var(--special-secondary) solid 3px;
+    padding: 0.2em;
+    margin-top: 1em;
 }
 
 .gametable h2 {
@@ -57,7 +60,7 @@ td {
 .gametable {
     margin       : 1em;
     padding      : 0 3em 3em 3em;
-    border       : black solid 2px;
+    border       : yellow solid 1px;
     border-radius: 10px;
     box-shadow   : 0 0 30px 3px var(--special-primary),
         0 0 30px -4px var(--special-secondary),
@@ -100,7 +103,7 @@ Button
     left           : 0px;
     width          : 100%;
     height         : 100%;
-    background     : linear-gradient(45deg, #fb0094, #00f, #0f0, #ff0, #f00, #fb0094, #00f, #0f0, #ff0, #f00, #fb0094);
+    background     : linear-gradient(45deg, var(--special-secondary), var(--special-primary), var(--special-secondary), var(--special-primary), var(--special-secondary));
     background-size: 400%;
     opacity        : 0;
     border-radius  : 15px;
@@ -116,7 +119,7 @@ Button
     left            : 0px;
     width           : 100%;
     height          : 100%;
-    background-color: linear-gradient(45deg, #fb0094, #00f, #0f0, #ff0, #f00, #fb0094, #00f, #0f0, #ff0, #f00, #fb0094);
+    background-color: linear-gradient(45deg, var(--special-secondary), var(--special-primary), var(--special-secondary), var(--special-primary), var(--special-secondary));
     background-size : 400%;
     opacity         : 0;
     filter          : blur(20px);

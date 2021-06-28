@@ -10,22 +10,22 @@ const localHost = dev ? 'http://localhost:3001/' : '/'
 const gameOptions = {
 
     // bird gravity, will make bird fall if you dont flap
-    birdGravity: 900,
+    birdGravity: 800,
 
     // horizontal bird speed
-    birdSpeed: 150,
+    birdSpeed: 130,
 
     // flap thrust
-    birdFlapPower: 300,
+    birdFlapPower: 250,
 
     // minimum pipe height, in pixels. Affects hole position
-    minPipeHeight: 30,
+    minPipeHeight: 40,
 
     // distance range from next pipe, in pixels
-    pipeDistance: [220, 280],
+    pipeDistance: [170, 190],
 
     // hole range between pipes, in pixels
-    pipeHole: [210, 230],
+    pipeHole: [140, 140],
 
     //highscore variable
     topScore: 0,
@@ -62,12 +62,12 @@ class flappy extends Phaser.Scene {
         this.pipeGroup = this.physics.add.group();
         this.pipePool = [];
         for (let i = 0; i < 5; i++) {
-            this.pipePool.push(this.pipeGroup.create(0, 0, 'pipetop').setScale(1, 1.5));
-            this.pipePool.push(this.pipeGroup.create(0, 0, 'pipebot').setScale(1, 1.5));
+            this.pipePool.push(this.pipeGroup.create(0, 0, 'pipetop').setScale(0.9));
+            this.pipePool.push(this.pipeGroup.create(0, 0, 'pipebot').setScale(0.9));
             this.placePipes(false);
         }
         this.pipeGroup.setVelocityX(-gameOptions.birdSpeed);
-        this.bird = this.physics.add.sprite(80, this.sys.game.canvas.height / 2, 'bird').setScale(0.5);
+        this.bird = this.physics.add.sprite(80, this.sys.game.canvas.height / 2, 'bird').setScale(0.3).setSize(100, 200);
         this.bird.body.gravity.y = gameOptions.birdGravity;
         this.input.on('pointerdown', this.flap, this);
         this.score = 0;

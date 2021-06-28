@@ -17,9 +17,9 @@ class flappystart extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(this.sys.game.canvas.width/3 , this.sys.game.canvas.height/3 - 100, 'Flappy Holbie', { font: '5em Arial black' });
-        this.add.text(this.sys.game.canvas.width/3 , this.sys.game.canvas.height/3 , 'CLICK TO START', { font: '5em Arial black' });
-        this.bird = this.physics.add.sprite(80, this.sys.game.canvas.height / 2, 'bird').setScale(0.5);
+        this.add.text(this.sys.game.canvas.width/4 , this.sys.game.canvas.height/4, 'Flappy Holbie', { font: '5em Arial black' });
+        this.add.text(this.sys.game.canvas.width/4 , this.sys.game.canvas.height/4 + 100 , 'CLICK TO START', { font: '5em Arial black' });
+        this.bird = this.physics.add.sprite(80, this.sys.game.canvas.height / 2, 'bird').setScale(0.3);
         this.input.on('pointerdown', this.clickToStart, this);
     }
 }

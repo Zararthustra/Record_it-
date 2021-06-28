@@ -3,6 +3,7 @@ import Phaser from "phaser";
 import ball from './assets/images/ball.png';
 import palet from './assets/images/palet.png';
 import brickimg from './assets/images/brick.png';
+import deadbrickimg from './assets/images/deadbrick.png';
 import backGround from './assets/images/BG.jfif';
 
 const dev = false
@@ -42,6 +43,19 @@ class brickit extends Phaser.Scene {
 
         if (this.bricks.countActive() === 0) {
             this.resetLevel();
+        }
+
+    }
+
+    hitDeadBrick(ball, brick) {
+
+        brick.disableBody(true, true);
+        Life--
+
+        if (Life === 0) {
+            this.gameOver();
+            Life = 3;
+            Score = 0;
         }
 
     }
@@ -113,6 +127,7 @@ class brickit extends Phaser.Scene {
         this.textures.addBase64('palet', palet);
         this.load.image('backGround', backGround);
         this.textures.addBase64('brick', brickimg)
+        this.textures.addBase64('deadbrick', deadbrickimg)
 
     }
 
@@ -126,11 +141,17 @@ class brickit extends Phaser.Scene {
         // Disable floor
         this.physics.world.setBoundsCollision(true, true, true, false);
 
+        // DEAD BRICK
+        this.deadbricks = this.physics.add.staticGroup({
+            key: 'deadbrick',
+            frameQuantity: 5,
+            gridAlign: { width: 5, height: 1, cellWidth: 64, cellHeight: 32, x: 50, y: 50 }
+        });
         // BRICK
         this.bricks = this.physics.add.staticGroup({
             key: 'brick',
             frameQuantity: 30,
-            gridAlign: { width: 5, height: 6, cellWidth: 64, cellHeight: 32, x: 50, y: 50 }
+            gridAlign: { width: 5, height: 6, cellWidth: 64, cellHeight: 32, x: 50, y: 82 }
         });
 
         // BALL
@@ -147,6 +168,7 @@ class brickit extends Phaser.Scene {
 
         // Colliders
         this.physics.add.collider(this.ball, this.bricks, this.hitBrick, null, this);
+        this.physics.add.collider(this.ball, this.deadbricks, this.hitDeadBrick, null, this);
         this.physics.add.collider(this.ball, this.paddle, this.hitPaddle, null, this);
 
         // Inputs
@@ -176,7 +198,7 @@ class brickit extends Phaser.Scene {
     update() {
 
         //Score text
-        this.scoreText.text = 'Record: ' + Record + ' Score: ' + Score + '         Life: ' + Life
+        this.scoreText.text = 'Record: ' + Record + ' Score: ' + Score + '      Life: ' + Life
 
         if (this.ball.y > 500) {
 

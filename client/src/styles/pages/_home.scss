@@ -26,19 +26,54 @@
 }
 
 .bestplayer {
-    margin          : 1em 0 1em;
-    padding         : 0.3em 1em 0.5em 1em;
-    color           : var(--text-secondary);
-    background-color: var(--special-primary);
-    border-radius   : 10px;
-    box-shadow      : 0 0 30px 3px var(--special-primary),
+    display                : flex;
+    justify-content        : center;
+    align-items            : center;
+    height: 2em;
+    margin                 : 0;
+    color                  : var(--text-secondary);
+    background-color       : var(--special-primary);
+    border-radius : 5px;
+    animation: breathe 0.7s infinite ease-in;
+}
+@keyframes breathe {
+    0% {
+        width: 4.9em;
+        box-shadow             :
+        0 0 30px 3px var(--special-primary),
         0 0 30px -4px var(--special-secondary),
-        0 0 300px -40px var(--bg-secondary)
+        0 0 300px -40px var(--bg-secondary);
+    }
+    50% {
+        width: 5em;
+        box-shadow             :
+        0 0 40px 3px var(--special-primary),
+        0 0 40px -4px var(--special-secondary),
+        0 0 300px -40px var(--bg-secondary);
+    }
+    100% {
+        width: 4.9em;
+        box-shadow             :
+        0 0 30px 3px var(--special-primary),
+        0 0 30px -4px var(--special-secondary),
+        0 0 300px -40px var(--bg-secondary);
+    }
+}
+
+@keyframes rise {
+    0% {
+        top: -10em;
+    }
+
+    100% {
+        top: 2em;
+    }
 }
 
 .globalinfo {
     width          : 80vw;
     gap            : 1em;
+    margin-top: 4em;
     flex-wrap      : wrap;
     display        : flex;
     color          : var(--text-primary);
@@ -74,6 +109,21 @@ Global
     div {
 
         gap: 3em;
+    }
+}
+
+.myglobalscores {
+    padding-bottom: 1em;
+    border-bottom : var(--special-primary) solid 3px;
+
+    div {
+        color          : var(--text-primary);
+        display        : flex;
+        justify-content: space-between;
+    }
+
+    p {
+        color: var(--special-primary);
     }
 }
 
