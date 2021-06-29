@@ -2,7 +2,6 @@ import Axios from 'axios';
 import foodimage from './assets/images/food.png'
 import body from './assets/images/body.png'
 import head from './assets/images/head.png'
-import grass from './assets/images/grass.png'
 import Phaser from "phaser";
 
 
@@ -46,15 +45,13 @@ class snakegame extends Phaser.Scene {
         this.load.image('food', foodimage);
         this.load.image('body', body);
         this.load.image('head', head);
-        this.load.image('grass', grass);
     }
 
     //_______________________________Create___________________________________
 
     create() {
 
-        this.add.image(320, 260, 'grass').setScale(1);
-        this.scoreText = this.add.text(10, 10, "h", { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', fontSize: '30px', color: '#000' });
+        this.scoreText = this.add.text(10, 10, "h", { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', fontSize: '30px', color: 'white' });
 
         //Food object
         let Food = new Phaser.Class({

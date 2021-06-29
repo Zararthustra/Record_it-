@@ -50,14 +50,7 @@ class brickit extends Phaser.Scene {
     hitDeadBrick(ball, brick) {
 
         brick.disableBody(true, true);
-        Life--
-
-        if (Life === 0) {
-            this.gameOver();
-            Life = 3;
-            Score = 0;
-        }
-
+        if (Score >= 10) Score -= 10
     }
 
     resetBall() {
@@ -75,6 +68,10 @@ class brickit extends Phaser.Scene {
         this.bricks.children.each(function (brick) {
 
             brick.enableBody(false, 0, 0, true, true);
+        });
+        this.deadbricks.children.each(function (deadbrick) {
+
+            deadbrick.enableBody(false, 0, 0, true, true);
         });
         if (this.paddle.scaleX > 0.5) {
             this.paddle.scaleX = this.paddle.scaleX - 0.5

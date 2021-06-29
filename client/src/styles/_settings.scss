@@ -79,7 +79,7 @@ input:hover {
 /******
     Buttons
   ******/
-
+/* 1 */
 .raise:hover,
 .raise:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--special-secondary);
@@ -99,6 +99,32 @@ button {
 button {
   background : none;
   border     : 2px solid var(--special-primary);
+  font       : inherit;
+  line-height: 1;
+  margin     : 0.5em;
+  padding    : 1em 2em;
+}
+
+/* 2 */
+.iamnew:hover,
+.iamnew:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--special-primary);
+  transform : translateY(-0.25em);
+}
+
+.iamnew{
+  color     : var(--text-secondary);
+  transition: 0.25s;
+
+  &:hover,
+  &:focus {
+    border-color: var(--special-primary);
+  }
+}
+
+.iamnew{
+  background : none;
+  border     : 2px solid var(--special-secondary);
   font       : inherit;
   line-height: 1;
   margin     : 0.5em;

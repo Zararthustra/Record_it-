@@ -185,7 +185,13 @@ class Home extends Component {
         <Navigation />
         <div className="Home">
           <h1 id="phrase">RECORD  iT</h1>
-          <h1 className="bestplayer">{this.state.globals[0] ? this.state.globals[0].user_name : ''}</h1>
+          <div className="podium">
+            <h1 className="bestplayer first">{this.state.globals[0] ? this.state.globals[0].user_name : ''}</h1>
+            <div className="best23global">
+              <h1 className="bestplayer second">{this.state.globals[1] ? this.state.globals[1].user_name : ''}</h1>
+              <h1 className="bestplayer third">{this.state.globals[2] ? this.state.globals[2].user_name : ''}</h1>
+            </div>
+          </div>
 
           <div className="globalinfo">
             <p>Point scale:</p>

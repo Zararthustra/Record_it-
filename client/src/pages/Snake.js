@@ -13,7 +13,7 @@ class PhaserGame extends Component {
             width: 640,
             height: 480,
             type: Phaser.AUTO,
-            backgroundColor: '#fff',
+            backgroundColor: '#000',
             scene: [snakestart, snakegame]
         }
     }

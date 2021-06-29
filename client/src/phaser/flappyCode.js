@@ -15,6 +15,9 @@ const gameOptions = {
     // horizontal bird speed
     birdSpeed: 130,
 
+    // increase bird speed each 50pts steps
+    speedsteps: [50, 150, 200, 250, 300, 350, 400, 450, 500],
+
     // flap thrust
     birdFlapPower: 250,
 
@@ -78,6 +81,10 @@ class flappy extends Phaser.Scene {
     updateScore(inc) {
         this.score += inc;
         this.scoreText.text = 'Score: ' + this.score + '\nRecord: ' + gameOptions.topScore;
+        if (gameOptions.speedsteps.includes(this.score)) {
+            this.pipeGroup.setVelocityX(- (gameOptions.birdSpeed += 70))
+            console.log(gameOptions.birdSpeed += 70);
+        }
     }
 
     placePipes(addScore) {
@@ -136,6 +143,8 @@ class flappy extends Phaser.Scene {
     die() {
         gameOptions.topScore = Math.max(this.score, gameOptions.topScore);
         const record = gameOptions.topScore
+        //set bird speed to initial value
+        gameOptions.birdSpeed = 130
         // POST/PUT record in database
         Axios.put(`${localHost}apiroutes/addRecord`, {
             record: record,
@@ -146,7 +155,7 @@ class flappy extends Phaser.Scene {
         }).then(() => {
             console.log("Insertion success");
         })
-        
+
         this.scene.start('flappystart');
     }
 }

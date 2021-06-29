@@ -66,7 +66,7 @@ const Login = () => {
                         <h2>No user named '{name}' or wrong password !</h2>
                         <div className="buttons">
                             <button onClick={goLogin} className="raise">Try again</button>
-                            <button onClick={goSignup} className="raise">Signup</button>
+                            <button onClick={goSignup} className="iamnew">Signup</button>
                         </div>
                     </div>)
             }
@@ -103,8 +103,8 @@ const Login = () => {
                     />
                 </div>
                 <div className="buttons">
-                    <button onClick={login} className="raise">Login</button>
-                    <button onClick={goSignup} className="raise">Signup</button>
+                    <button onClick={login} className="raise">Submit</button>
+                    <button onClick={goSignup} className="iamnew">I am new</button>
                 </div>
             </div>
         );

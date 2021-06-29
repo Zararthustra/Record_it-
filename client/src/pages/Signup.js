@@ -96,7 +96,12 @@ const Signup = () => {
                                 </div>
                             </div>
                             <h2>Account created successfully!</h2>
-                            <button onClick={goLogin}>Login</button>
+                            <div className="created">
+                                <p>Your name: </p><h2>{name}</h2>
+                                <p>Your password: </p><h2>{password}</h2>
+                                <p>Please don't forget it !</p>
+                            </div>
+                            <button onClick={goLogin}>Login Page</button>
                         </div>)
                 } else {
                     setSignUpStatus(
@@ -133,6 +138,7 @@ const Signup = () => {
                 <div className="signup">
                     <h1 id="phrase">SIGNUP</h1>
                     <h1>{signUpStatus}</h1>
+                    <label>Create your account: </label>
                     <div id="name">
                         <label>Name </label>
                         <input type="text" onChange={(event) => {
@@ -149,7 +155,7 @@ const Signup = () => {
                     </div>
                     <div className="buttons">
                         <button onClick={addUser}>Create account</button>
-                        <button onClick={goLogin}>Login page</button>
+                        <button onClick={goLogin} className="iamnew">Back to Login</button>
                     </div>
                 </div>
 
