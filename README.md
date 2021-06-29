@@ -18,9 +18,11 @@ A web application that allows us to play several mini games by having a user acc
 
 Go to your `http://localhost:3000`  and then you have access to the client side 
 
+![Capture d’écran de 2021-06-29 16-47-35](https://user-images.githubusercontent.com/61886501/123819918-7289f700-d8fa-11eb-8822-5d50fd65fe49.png)
+
 ## Authors
-Arthur Mayer - [Github](https://github.com/Zararthustra)
-Tarek Kheir - [Github](https://github.com/tarekkheir) 
+* Arthur Mayer - [Github](https://github.com/Zararthustra)
+* Tarek Kheir - [Github](https://github.com/tarekkheir) 
 
 
 ## License
