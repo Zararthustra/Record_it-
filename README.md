@@ -26,4 +26,4 @@ Go to your `http://localhost:3000`  and then you have access to the client side
 
 
 ## License
-Public Domain. No copy write protection.
+Private Domain. Copy write protection.
