@@ -7,7 +7,7 @@ import Phaser from "phaser";
 
 //______________________________Variables__________________________________
 
-const dev = false
+const dev = true
 const localHost = dev ? 'http://localhost:3001/' : '/'
 
 let snake;

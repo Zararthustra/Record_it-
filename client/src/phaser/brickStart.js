@@ -25,13 +25,15 @@ class brickstart extends Phaser.Scene {
     create() {
         this.add.image(175, 250, 'backGround')
         this.physics.add.image(50, 80, 'deadbrick')
-        this.add.text(130, 65, '-10 points', { font: '3em Arial black' })
         this.physics.add.image(50, 160, 'brick')
+        this.physics.add.image(300, 400, 'ballstart').setScale(0.1);
+
+        this.add.text(130, 65, '-10 points', { font: '3em Arial black' })
         this.add.text(130, 145, '+1 point', { font: '3em Arial black' })
 
         this.add.text(175, 250, 'BRICK !T', { font: '3em Arial black' }).setOrigin(0.5);
         this.add.text(175, 300, 'CL!CK TO START', { font: '3em Arial black' }).setOrigin(0.5);
-        this.physics.add.image(300, 400, 'ballstart').setScale(0.1);
+        
         this.input.on('pointerdown', this.clickToStart, this);
     }
 }

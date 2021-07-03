@@ -10,7 +10,7 @@ const Signup = () => {
 
     //______________________________Variables__________________________________
 
-    const dev = false
+    const dev = true
     const localHost = dev ? 'http://localhost:3001/' : '/'
 
     let history = useHistory();
@@ -41,8 +41,8 @@ const Signup = () => {
                             <div class="emoji__mouth"></div>
                         </div>
                     </div>
-                    <h2>Name cannot be empty !</h2>
-                    <button onClick={goSignup}>Try again</button>
+                    <h2>Un pseudo doit être mentionné !</h2>
+                    <button onClick={goSignup}>Réessayer</button>
                 </div>
             )
 
@@ -58,8 +58,8 @@ const Signup = () => {
                             <div class="emoji__mouth"></div>
                         </div>
                     </div>
-                    <h2>{name} is too long, respect 10 characters maximum please !</h2>
-                    <button onClick={goSignup}>Try again</button>
+                    <h2>{name} est trop long, 10 caractères maximum !</h2>
+                    <button onClick={goSignup}>Réessayer</button>
                 </div>
             )
 
@@ -75,8 +75,8 @@ const Signup = () => {
                             <div class="emoji__mouth"></div>
                         </div>
                     </div>
-                    <h2>Password cannot be empty !</h2>
-                    <button onClick={goSignup}>Try again</button>
+                    <h2>Un mot de passe doit être mentionné !</h2>
+                    <button onClick={goSignup}>Réessayer</button>
                 </div>
             )
 
@@ -95,13 +95,12 @@ const Signup = () => {
                                     <div class="emoji__mouth"></div>
                                 </div>
                             </div>
-                            <h2>Account created successfully!</h2>
+                            <h2>Compte créé !</h2>
                             <div className="created">
-                                <p>Your name: </p><h2>{name}</h2>
-                                <p>Your password: </p><h2>{password}</h2>
-                                <p>Please don't forget it !</p>
+                                <p>Pseudo: </p><h2>{name}</h2>
+                                <p>Mot de passe: </p><h2>{password}</h2>
                             </div>
-                            <button onClick={goLogin}>Login Page</button>
+                            <button onClick={goLogin}>Se connecter</button>
                         </div>)
                 } else {
                     setSignUpStatus(
@@ -113,8 +112,8 @@ const Signup = () => {
                                     <div class="emoji__mouth"></div>
                                 </div>
                             </div>
-                            <h2>{name} already exists !</h2>
-                            <button onClick={goLogin}>Login here</button>
+                            <h2>{name} existe déjà !</h2>
+                            <button onClick={goLogin}>Se connecter</button>
 
                         </div>
                     )
@@ -136,26 +135,25 @@ const Signup = () => {
         return (
             <>
                 <div className="signup">
-                    <h1 id="phrase">SIGNUP</h1>
+                    <h1 id="phrase">CREATION</h1>
                     <h1>{signUpStatus}</h1>
-                    <label>Create your account: </label>
                     <div id="name">
-                        <label>Name </label>
+                        <label>Pseudo</label>
                         <input type="text" onChange={(event) => {
                             setName(event.target.value)
                         }}
                         />
                     </div>
                     <div id="password">
-                        <label>Password </label>
-                        <input type="text" onChange={(event) => {
+                        <label>Mot de passe</label>
+                        <input type="password" onChange={(event) => {
                             setPassword(event.target.value)
                         }}
                         />
                     </div>
                     <div className="buttons">
-                        <button onClick={addUser}>Create account</button>
-                        <button onClick={goLogin} className="iamnew">Back to Login</button>
+                        <button onClick={addUser}>Créer mon compte</button>
+                        <button onClick={goLogin} className="iamnew">Se connecter</button>
                     </div>
                 </div>
 

@@ -21,8 +21,8 @@ const Game = () => {
     return (
         <>
             <div className="gamenav">
-                <button onClick={goHome} className="raise">Home</button>
-                <button onClick={goGames} className="raise">Games</button>
+                <button onClick={goHome} className="raise">Accueil</button>
+                <button onClick={goGames} className="raise">Jeux</button>
             </div>
         </>
     );

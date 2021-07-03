@@ -13,7 +13,7 @@ const Logout = () => {
 
     return (
         <div className="logout">
-            <h1>Goodbye...</h1>
+            <h1>Au revoir...</h1>
             <div class="emoji  emoji--sad">
                 <div class="emoji__face">
                     <div class="emoji__eyebrows"></div>
@@ -21,7 +21,7 @@ const Logout = () => {
                     <div class="emoji__mouth"></div>
                 </div>
             </div>
-            <button onClick={goLogin}>Login</button>
+            <button onClick={goLogin}>Se connecter</button>
         </div>
     )
 }

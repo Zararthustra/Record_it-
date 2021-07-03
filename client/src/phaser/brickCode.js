@@ -6,7 +6,7 @@ import brickimg from './assets/images/brick.png';
 import deadbrickimg from './assets/images/deadbrick.png';
 import backGround from './assets/images/BG.jfif';
 
-const dev = false
+const dev = true
 const localHost = dev ? 'http://localhost:3001/' : '/'
 
 let Record = 0;
@@ -195,7 +195,7 @@ class brickit extends Phaser.Scene {
     update() {
 
         //Score text
-        this.scoreText.text = 'Record: ' + Record + ' Score: ' + Score + '      Life: ' + Life
+        this.scoreText.text = 'Record: ' + Record + ' Score: ' + Score + '      Vie: ' + Life
 
         if (this.ball.y > 500) {
 

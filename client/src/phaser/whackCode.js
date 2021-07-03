@@ -7,7 +7,7 @@ import Phaser from "phaser";
 
 //______________________________Variables__________________________________
 
-const dev = false
+const dev = true
 const localHost = dev ? 'http://localhost:3001/' : '/'
 
 let Record = localStorage.getItem("whackrecord") ? localStorage.getItem("whackrecord") : 0
@@ -148,7 +148,7 @@ class whackamalou extends Phaser.Scene {
 
     update() {
         let countDown = 30 - (Math.round(this.time.now / 1000) - startTime)
-        this.scoreText.text = 'Record: ' + Record + '\nScore: ' + Score + '\nTime: ' + countDown
+        this.scoreText.text = 'Record: ' + Record + '\nScore: ' + Score + '\nTemps: ' + countDown
 
         if (!mouse1.active) mouse1 = this.popMouse(1, 1)
         if (!mouse2.active) mouse2 = this.popMouse(1, 2)

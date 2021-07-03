@@ -45,7 +45,7 @@ const Navigation = () => {
                   className="fa-secondary"
                 ></path>
               </svg>
-              <span className="link-text">Games</span>
+              <span className="link-text">Jeux</span>
             </a>
           </li>
 
@@ -81,7 +81,7 @@ const Navigation = () => {
                   className="fa-secondary"
                 ></path>
               </svg>
-              <span className="link-text">Logout</span>
+              <span className="link-text">Déconnexion</span>
             </a>
           </li>
         </ul>

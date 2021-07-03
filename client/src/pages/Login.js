@@ -16,7 +16,7 @@ const Login = () => {
     const [loginStatus, setLoginStatus] = useState('')
 
     //______________________________Functions__________________________________
-    const dev = false
+    const dev = true
     const localHost = dev ? 'http://localhost:3001/' : '/'
 
     const goSignup = () => {
@@ -50,8 +50,8 @@ const Login = () => {
                                 <div class="emoji__mouth"></div>
                             </div>
                         </div>
-                        <h2>Welcome back {name} !</h2>
-                        <button onClick={redirect} className="raise">Come in !</button>
+                        <h2>Ravi de te revoir {name} !</h2>
+                        <button onClick={redirect} className="raise">Entrer</button>
                     </div>)
             } else {
                 setLoginStatus(
@@ -63,10 +63,10 @@ const Login = () => {
                                 <div class="emoji__mouth"></div>
                             </div>
                         </div>
-                        <h2>No user named '{name}' or wrong password !</h2>
+                        <h2>'{name}' inconnu ou mot de passe incorrect !</h2>
                         <div className="buttons">
-                            <button onClick={goLogin} className="raise">Try again</button>
-                            <button onClick={goSignup} className="iamnew">Signup</button>
+                            <button onClick={goLogin} className="raise">Réessayer</button>
+                            <button onClick={goSignup} className="iamnew">S'enregistrer</button>
                         </div>
                     </div>)
             }
@@ -86,25 +86,25 @@ const Login = () => {
     if (!loginStatus) {
         return (
             <div className="login">
-                <h1 id="phrase">LOGIN</h1>
+                <h1 id="phrase">CONNEXION</h1>
                 <h1>{loginStatus}</h1>
                 <div id="name">
-                    <label>Name </label>
+                    <label>Pseudo</label>
                     <input type="text" onChange={(event) => {
                         setName(event.target.value)
                     }}
                     />
                 </div>
                 <div id="password">
-                    <label>Password </label>
+                    <label>Mot de passe</label>
                     <input type="password" onChange={(event) => {
                         setPassword(event.target.value)
                     }}
                     />
                 </div>
                 <div className="buttons">
-                    <button onClick={login} className="raise">Submit</button>
-                    <button onClick={goSignup} className="iamnew">I am new</button>
+                    <button onClick={login} className="raise">Se connecter</button>
+                    <button onClick={goSignup} className="iamnew">S'enregistrer</button>
                 </div>
             </div>
         );

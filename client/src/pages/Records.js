@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Axios from 'axios';
 import Navigation from '../components/Navigation';
 
-const dev = false
+const dev = true
 const localHost = dev ? 'http://localhost:3001/' : '/'
 class Records extends Component {
 
@@ -166,7 +166,7 @@ class Records extends Component {
                     <Navigation />
                     <div className="allrecords">
                         <h1>TOP 5</h1>
-                        <a onClick={switchState}><span>All records</span></a>
+                        <a onClick={switchState}><span>Records</span></a>
                         <div className="allgametables">
 
                             <div className="gametable">
@@ -175,7 +175,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -201,7 +201,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -227,7 +227,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -253,7 +253,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -283,7 +283,7 @@ class Records extends Component {
                 <>
                     <Navigation />
                     <div className="allrecords">
-                        <h1>All records</h1>
+                        <h1>Tous les records</h1>
                         <a onClick={switchState}><span>Top5</span></a>
                         <div className="allgametables">
                             <div className="gametable">
@@ -292,7 +292,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -318,7 +318,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -344,7 +344,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -370,7 +370,7 @@ class Records extends Component {
                                     <thead>
                                         <tr>
                                             <th>Record</th>
-                                            <th>Player</th>
+                                            <th>Joueur</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>

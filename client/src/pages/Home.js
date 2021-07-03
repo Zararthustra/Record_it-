@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import Axios from 'axios';
 import $ from 'jquery';
 
-const dev = false
+const dev = true
 const localHost = dev ? 'http://localhost:3001/' : '/'
 class Home extends Component {
 
@@ -194,7 +194,7 @@ class Home extends Component {
           </div>
 
           <div className="globalinfo">
-            <p>Point scale:</p>
+            <p>Barème:</p>
             <p>Top1 = 15 pts</p>
             <p>Top2 = 10 pts</p>
             <p>Top3 = 7 pts</p>
@@ -232,7 +232,7 @@ class Home extends Component {
             </div>
 
             <div className="globalscore">
-              <header><h2>World</h2></header>
+              <header><h2>Joueurs</h2></header>
               <table>
                 <tbody>
                   <tr>
