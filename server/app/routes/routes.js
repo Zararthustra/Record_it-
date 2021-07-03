@@ -9,6 +9,32 @@ const cors = require('cors')
 router.use(express.json());
 router.use(cors());
 
+//______________________________COMMENT Methods___________________________
+
+// GET all comments
+router.get("/getComments", (req, res) => {
+  db.comment.findAll({
+    order: [
+      ['createdAt', 'DESC']
+    ]
+  }).then(function (comments) {
+    res.json(comments);
+  });
+});
+
+//Add a comment
+router.post('/addComment', (req, res) => {
+  const name = req.body.user_name;
+  const id = req.body.user_id;
+  const comment = req.body.comment;
+
+  db.comment.create({
+    user_name: name,
+    user_id: id,
+    comment: comment
+  }).then(addedComment => res.json(addedComment))
+})
+
 //______________________________GLOBAL Methods___________________________
 
 // Add or update a new global score

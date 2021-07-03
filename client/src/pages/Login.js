@@ -8,6 +8,9 @@ import $ from 'jquery';
 const Login = () => {
 
     //______________________________Variables__________________________________
+    
+    const dev = false
+    const localHost = dev ? 'http://localhost:3001/' : '/'
 
     let history = useHistory();
 
@@ -16,8 +19,6 @@ const Login = () => {
     const [loginStatus, setLoginStatus] = useState('')
 
     //______________________________Functions__________________________________
-    const dev = false
-    const localHost = dev ? 'http://localhost:3001/' : '/'
 
     const goSignup = () => {
         history.push('/Signup')

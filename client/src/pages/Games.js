@@ -4,15 +4,14 @@ import { useHistory } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
 
-
 const Games = () => {
 
     //______________________________Variables__________________________________
 
-    let history = useHistory();
-
     const dev = false
     const localHost = dev ? 'http://localhost:3001/' : '/'
+
+    let history = useHistory();
 
     //______________________________Functions__________________________________
 

@@ -5,6 +5,8 @@ import $ from 'jquery';
 
 const dev = false
 const localHost = dev ? 'http://localhost:3001/' : '/'
+
+
 class Home extends Component {
 
   //______________________________Constructor__________________________________

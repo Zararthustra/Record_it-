@@ -7,16 +7,24 @@
 
     h1 {
         text-align: center;
+        color     : var(--text-secondary);
     }
 }
 
 .links {
     display: flex;
+    gap    : 2em;
 }
 
 .link img {
     width : 5em;
     height: 5em;
+    filter: drop-shadow(0px 0px 20px var(--special-secondary));
+}
+
+.link img:hover {
+    filter    : drop-shadow(0px 0px 10px var(--special-primary));
+    box-shadow: 0px 0px 50px var(--special-primary);
 }
 
 .link {
@@ -26,8 +34,12 @@
     align-items   : center;
 }
 
+.infocom {
+    font-style: italic;
+    text-align: center;
+}
+
 .comments {
-    margin-bottom  : 5em;
     display        : flex;
     flex-direction : column;
     justify-content: center;
@@ -49,11 +61,15 @@
     padding       : 2em;
     display       : flex;
     flex-direction: column;
+    margin-bottom : 5em;
+}
 
-    p {
-        display   : flex;
-        flex-wrap : wrap;
-        text-align: center;
-        max-width : 100ch;
-    }
+.userscomments {
+    max-width: 70vw;
+    word-wrap: break-word;
+}
+
+.error {
+    font-size: 2em;
+    color    : red;
 }

@@ -4,9 +4,12 @@ import Navigation from '../components/Navigation';
 
 const dev = false
 const localHost = dev ? 'http://localhost:3001/' : '/'
+
+
 class Records extends Component {
 
     //______________________________Constructor__________________________________
+
     constructor(props) {
         super(props);
 
@@ -60,24 +63,28 @@ class Records extends Component {
         //All records
 
         //FLAPPY
-        const flappyRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
-            game_id: 1 //flappy game_id
-        })
+        const flappyRecords =
+            await Axios.post(`${localHost}apiroutes/gameRecords`, {
+                game_id: 1 //flappy game_id
+            })
         this.setState({ flappyRecords: flappyRecords.data });
         //SNAKE
-        const snakeRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
-            game_id: 2 //snake game_id
-        })
+        const snakeRecords =
+            await Axios.post(`${localHost}apiroutes/gameRecords`, {
+                game_id: 2 //snake game_id
+            })
         this.setState({ snakeRecords: snakeRecords.data });
         //WHACK
-        const whackRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
-            game_id: 3 //whack game_id
-        })
+        const whackRecords =
+            await Axios.post(`${localHost}apiroutes/gameRecords`, {
+                game_id: 3 //whack game_id
+            })
         this.setState({ whackRecords: whackRecords.data });
         //BRICK
-        const brickRecords = await Axios.post(`${localHost}apiroutes/gameRecords`, {
-            game_id: 4 //brick game_id
-        })
+        const brickRecords =
+            await Axios.post(`${localHost}apiroutes/gameRecords`, {
+                game_id: 4 //brick game_id
+            })
         this.setState({ brickRecords: brickRecords.data });
 
     };
@@ -92,14 +99,14 @@ class Records extends Component {
         const topFlappyUsers = this.state.topFlappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const topFlappyDate = this.state.topFlappyRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
         // ALL FLAPPY
         const flappyRecords = this.state.flappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
         const flappyUsers = this.state.flappyRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const flappyDate = this.state.flappyRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
 
         // TOP SNAKE
@@ -107,14 +114,14 @@ class Records extends Component {
         const topSnakeUsers = this.state.topSnakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const topSnakeDate = this.state.topSnakeRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
         // ALL SNAKE
         const snakeRecords = this.state.snakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
         const snakeUsers = this.state.snakeRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const snakeDate = this.state.snakeRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
 
         // TOP WHACK
@@ -122,14 +129,14 @@ class Records extends Component {
         const topWhackUsers = this.state.topWhackRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const topWhackDate = this.state.topWhackRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
         // ALL WHACK
         const whackRecords = this.state.whackRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
         const whackUsers = this.state.whackRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const whackDate = this.state.whackRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
 
         // TOP BRICK
@@ -137,14 +144,14 @@ class Records extends Component {
         const topBrickUsers = this.state.topBrickRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const topBrickDate = this.state.topBrickRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
         // ALL BRICK
         const brickRecords = this.state.brickRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.record}</div> : <div>{record.record}</div> })
         const brickUsers = this.state.brickRecords.map((record) => { return record.user_name === this.state.username ? <div className="myrow">{record.user_name}</div> : <div>{record.user_name}</div> })
         const brickDate = this.state.brickRecords.map((record) => {
             const cleanDate = new Date(record.updatedAt)
-            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toDateString()}</div> : <div>{cleanDate.toDateString()}</div>
+            return record.user_name === this.state.username ? <div className="myrow">{cleanDate.toLocaleString().split('', 10)}</div> : <div>{cleanDate.toLocaleString().split('', 10)}</div>
         })
 
         //Swap page from top3 to all records
