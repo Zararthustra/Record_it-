@@ -52,19 +52,17 @@ podium
 }
 
 .first {
-    border          : #cfcc00 solid 3px;
-    background-color: #fffb0a;
+    background: linear-gradient(45deg, #fffb0a, #fffb0a, #fffb0a, #fffb0a, #fffc9e, #fffb0a, #fffb0a);
     animation       : breathe1 0.7s infinite ease-in;
 }
 
 .second {
-    border          : #8f8d8d solid 3px;
-    background-color: #aaaaaa;
+    background: linear-gradient(45deg, #aaaaaa, #aaaaaa, #aaaaaa, #aaaaaa, rgb(218, 218, 218), #aaaaaa, #aaaaaa);
     animation       : breathe2 0.7s infinite ease-in;
 }
 
 .third {
-    border          : #6d3710 solid 3px;
+    background: linear-gradient(45deg, #8b4513, #8b4513, #8b4513, #8b4513, #b16d3d, #8b4513, #8b4513);
     background-color: #8b4513;
     animation       : breathe3 0.7s infinite ease-in;
 }
@@ -79,7 +77,7 @@ podium
     50% {
         width: 5em;
         box-shadow:
-            0 0 130px 30px #fffb0a,
+            0 0 120px 30px #fffb0a,
     }
 
     100% {

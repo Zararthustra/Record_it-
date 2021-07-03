@@ -1,0 +1,59 @@
+.contact {
+    margin-top: 5em;
+    @include verticalCenter;
+    gap           : 3em;
+    flex-direction: column;
+    align-items   : center;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.links {
+    display: flex;
+}
+
+.link img {
+    width : 5em;
+    height: 5em;
+}
+
+.link {
+    width         : 6em;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.comments {
+    margin-bottom  : 5em;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    flex-wrap      : wrap;
+}
+
+.mycomment {
+    display       : flex;
+    flex-direction: column;
+
+    input {
+        width : 15em;
+        height: 5em;
+    }
+}
+
+.allcomments {
+    padding       : 2em;
+    display       : flex;
+    flex-direction: column;
+
+    p {
+        display   : flex;
+        flex-wrap : wrap;
+        text-align: center;
+        max-width : 100ch;
+    }
+}

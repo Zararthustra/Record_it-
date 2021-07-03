@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import Axios from 'axios';
 import $ from 'jquery';
 
-const dev = true
+const dev = false
 const localHost = dev ? 'http://localhost:3001/' : '/'
 class Home extends Component {
 

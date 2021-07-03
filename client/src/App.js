@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Logout from './pages/Logout';
 import SignUp from './pages/Signup';
 import Records from './pages/Records';
+import Contact from './pages/Contact';
 import ProtectedRoute from "./components/ProtectedRoute";
 import Games from './pages/Games';
 import FlappyHolbie from './pages/FlappyHolbie';
@@ -25,6 +26,8 @@ function App() {
           <Route path="/" exact component={Login} />
           <Route path="/SignUp" component={SignUp} />
           <Route path="/Logout" exact component={Logout} />
+
+          <ProtectedRoute path="/Contact" component={Contact} />
           <ProtectedRoute path="/Home" component={Home} />
           <ProtectedRoute path="/Records" component={Records} />
           <ProtectedRoute path="/Games" component={Games} />

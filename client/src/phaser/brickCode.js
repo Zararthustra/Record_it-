@@ -6,7 +6,7 @@ import brickimg from './assets/images/brick.png';
 import deadbrickimg from './assets/images/deadbrick.png';
 import backGround from './assets/images/BG.jfif';
 
-const dev = true
+const dev = false
 const localHost = dev ? 'http://localhost:3001/' : '/'
 
 let Record = 0;
