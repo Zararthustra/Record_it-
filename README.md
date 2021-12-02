@@ -13,7 +13,19 @@ Une plateforme de mini jeux où le but est d'accumuler des points en faisant un 
     <img src="https://user-images.githubusercontent.com/70105093/144502991-d8a73458-794d-4f7c-a761-ead7559ab8e8.png" />
     </div>
   </div>
-</div>
+</div>  
+
+## Technologies utilisée:
+
+* React
+* Axios
+* HTML/SCSS
+* JavaScript
+* Node
+* Express
+* Sequelize
+* MySQL
+
 
 ## Auteur
 [Github](https://github.com/Zararthustra)  
