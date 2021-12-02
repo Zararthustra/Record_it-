@@ -4,7 +4,7 @@ Une plateforme de mini jeux où le but est d'accumuler des points en faisant un 
 <div align="center">
   <div style="display: flex;">
     <div>
-    <img src="https://user-images.githubusercontent.com/70105093/144502628-c883165c-8ade-44fc-b2c2-063dda2c2a18.png" />
+    <img src="https://user-images.githubusercontent.com/70105093/144502855-4e56bcdf-4f28-4a5b-9798-b5183904dbf0.png" />
       </div>
     <div>
     <img src="https://user-images.githubusercontent.com/70105093/144501657-f6b0cea1-d863-4baf-9563-cf774b5e9fed.png" />
