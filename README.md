@@ -1,4 +1,4 @@
-# [Record !t](https://recordit.games/)
+# [Record !t](https://recordit.arthurmayer.fr/)
 Une plateforme de mini jeux où le but est d'accumuler des points en faisant un maximum de records !
 
 <div align="center">
