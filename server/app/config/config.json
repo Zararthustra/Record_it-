@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "arthur",
-    "password": "viveleschips",
+    "password": "******",
     "database": "recordit_db",
     "host": "localhost",
     "dialect": "mysql"
